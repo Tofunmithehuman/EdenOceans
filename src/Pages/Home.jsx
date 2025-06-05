@@ -122,14 +122,14 @@ function Home() {
               <div className="w-full md:w-2/3">
                 <div>
                   <motion.h3
-                    className="bg-secondary p-1.5 sm:p-2 rounded-md inline font-medium text-black/80 text-xs sm:text-sm md:text-base bricolage-grotesque"
+                    className="bg-primary p-1.5 sm:p-2 rounded-md inline font-medium text-secondary text-xs sm:text-sm md:text-base bricolage-grotesque"
                     variants={itemVariants}
                   >
                     Luxury Wellness Travel Club
                   </motion.h3>
 
                   <motion.h1
-                    className="bricolage-grotesque text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-6 sm:mt-8 md:mt-10 text-pretty leading-tight sm:leading-snug md:leading-relaxed lg:leading-20 font-semibold"
+                    className="bricolage-grotesque text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-6 sm:mt-8 md:mt-10 text-pretty leading-tight sm:leading-snug md:leading-relaxed lg:leading-20 font-semibold text-primary"
                     variants={titleVariants}
                   >
                     Where Luxury Meets {" "}
@@ -144,10 +144,10 @@ function Home() {
                   </motion.h1>
 
                   <motion.p
-                    className="mt-2 text-black/80 text-sm sm:text-base md:text-lg lg:text-xl"
+                    className="mt-2 text-primary/80 text-sm sm:text-base md:text-lg lg:text-xl font-medium"
                     variants={itemVariants}
                   >
-                    A global travel and wellness club designed for high-achieving individuals who seek more than a getaway. We offer transformation through ocean cruises, elite travel, personalized coaching, and spiritual alignment.
+                    A global travel and wellness club designed for high achieving individuals who seek more than a getaway. We offer transformation through ocean cruises, elite travel, personalized coaching, and spiritual alignment.
                   </motion.p>
 
                   <motion.div
@@ -162,7 +162,7 @@ function Home() {
                       whileTap="tap"
                       className="w-full md:w-auto"
                     >
-                      <Link className="text-center w-full bg-secondary py-2 px-4 rounded-md text-black/80 block">
+                      <Link className="text-center w-full bg-secondary py-2 px-4 rounded-md text-primary block">
                         Begin Your Transformation
                       </Link>
                     </motion.div>
@@ -174,7 +174,7 @@ function Home() {
                       transition={{ delay: 0.1 }}
                       className="w-full md:w-auto"
                     >
-                      <Link className="text-center w-full bg-transparent border border-black py-2 px-4 rounded-md text-black/80 block">
+                      <Link className="text-center w-full bg-transparent border-2 border-primary py-2 px-4 rounded-md text-primary block">
                         Explore Destinations
                       </Link>
                     </motion.div>

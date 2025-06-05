@@ -78,14 +78,14 @@ function Navigation() {
             <div className="bg-white border-b border-black/10 fixed top-0 left-0 right-0 z-50">
                 <header className="p-3 sm:p-4 flex justify-between items-center max-w-screen-2xl mx-auto">
                     <nav>
-                        <a href="/" className="font-semibold text-xl text-black bricolage-grotesque">
+                        <a href="/" className="font-semibold text-xl text-primary bricolage-grotesque">
                             Eden<span className="text-secondary">Oceans</span>
                         </a>
                     </nav>
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:block">
-                        <ul className="nav-links flex space-x-5 text-sm text-black/80 bricolage-grotesque">
+                        <ul className="nav-links flex space-x-5 text-sm text-primary font-medium bricolage-grotesque">
                             <li>
                                 <button
                                     onClick={() => scrollToSection("about-section")}
