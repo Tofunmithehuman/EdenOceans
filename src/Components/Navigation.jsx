@@ -163,7 +163,7 @@ function Navigation() {
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        className="text-black"
+                                        className="text-primary"
                                         initial={{ rotate: 90, opacity: 0 }}
                                         animate={{ rotate: 0, opacity: 1 }}
                                         transition={{ duration: 0.2 }}
