@@ -75,37 +75,37 @@ function Navigation() {
 
     return (
         <div className="Navigation">
-            <div className="bg-white border-b border-black/10">
-                <header className="p-4 flex justify-between items-center max-w-screen-2xl mx-auto">
+            <div className="bg-white border-b border-black/10 fixed top-0 left-0 right-0 z-50">
+                <header className="p-3 sm:p-4 flex justify-between items-center max-w-screen-2xl mx-auto">
                     <nav>
-                        <a href="/" className="font-semibold text-xl text-black">
-                            Eden<span className="text-amber-400">Oceans</span>
+                        <a href="/" className="font-semibold text-xl text-black bricolage-grotesque">
+                            Eden<span className="text-secondary">Oceans</span>
                         </a>
                     </nav>
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:block">
-                        <ul className="nav-links flex space-x-5 text-sm text-black/80">
+                        <ul className="nav-links flex space-x-5 text-sm text-black/80 bricolage-grotesque">
                             <li>
                                 <button
                                     onClick={() => scrollToSection("about-section")}
-                                    className="hover:text-amber-400 cursor-pointer transition-colors duration-200"
+                                    className="hover:text-secondary cursor-pointer transition-colors duration-200"
                                 >
                                     About Us
                                 </button>
                             </li>
                             <li>
-                                <a href="/services" className="hover:text-amber-400 transition-colors duration-200">
+                                <a href="/services" className="hover:text-secondary transition-colors duration-200">
                                     Services
                                 </a>
                             </li>
                             <li>
-                                <a href="/membership" className="hover:text-amber-400 transition-colors duration-200">
+                                <a href="/membership" className="hover:text-secondary transition-colors duration-200">
                                     Membership Tiers
                                 </a>
                             </li>
                             <li>
-                                <a href="/contact" className="hover:text-amber-400 transition-colors duration-200">
+                                <a href="/contact" className="hover:text-secondary transition-colors duration-200">
                                     Contact Us
                                 </a>
                             </li>
@@ -116,12 +116,12 @@ function Navigation() {
                     <nav className="md:hidden relative">
                         <motion.button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="w-12 h-12 flex items-center justify-center relative z-50 overflow-hidden"
+                            className="w-8 h-8 flex items-center justify-center relative z-50 overflow-hidden"
                             whileTap={{ scale: 0.95 }}
                             aria-label="Toggle menu"
                         >
                             <motion.div
-                                className="absolute inset-0 bg-amber-400 rounded-full"
+                                className="absolute inset-0 bg-secondary rounded-full"
                                 variants={buttonBackgroundVariants}
                                 animate={isOpen ? "open" : "closed"}
                             />
@@ -182,7 +182,7 @@ function Navigation() {
                                 <>
                                     {/* Backdrop */}
                                     <motion.div
-                                        className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30"
+                                        className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 bricolage-grotesque"
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
