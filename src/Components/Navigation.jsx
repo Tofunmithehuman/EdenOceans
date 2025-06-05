@@ -203,7 +203,7 @@ function Navigation() {
                                             initial="closed"
                                             animate="open"
                                             exit="closed"
-                                            className="space-y-8"
+                                            className="space-y-8 bricolage-grotesque"
                                         >
                                             <motion.button
                                                 variants={itemVariants}
