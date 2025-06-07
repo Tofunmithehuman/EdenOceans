@@ -312,6 +312,110 @@ function Home() {
               </div>
             </div>
           </section>
+
+          <section className="py-16">
+            <div className="container mx-auto">
+              <div className="bg-gray-50 py-24 sm:py-32">
+                <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+                  <p className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque">
+                    Services & Experience
+                  </p>
+                  <div className="mt-10 grid gap-4 sm:mt-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 lg:grid-rows-2">
+
+                    {/* Ocean Cruises */}
+                    <div className="relative">
+                      <div className="absolute inset-px rounded-lg bg-white"></div>
+                      <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+                        <div className="px-8 pt-8 sm:px-10 sm:pt-10">
+                          <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
+                            Ocean Cruises
+                          </p>
+                          <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                            Luxurious cruises in destinations like the Maldives, Seychelles, and Fiji
+                            Islands, offering wellness activities onboard and shore excursions to pristine beaches and
+                            luxury resorts.
+                          </p>
+                        </div>
+                        <img
+                          className="w-full max-lg:max-w-xs mt-4"
+                          src="https://images.unsplash.com/photo-1554254648-2d58a1bc3fd5?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                          alt=""
+                        />
+                      </div>
+                      <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5"></div>
+                    </div>
+
+                    {/* Luxury Wellness Retreats */}
+                    <div className="relative">
+                      <div className="absolute inset-px rounded-lg bg-white"></div>
+                      <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+                        <div className="px-8 pt-8 sm:px-10 sm:pt-10">
+                          <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
+                            Luxury Wellness Retreats
+                          </p>
+                          <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                            Immersive experiences in destinations like Mauritius, Barbados, and Cape Verde, blending relaxation, adventure, and
+                            healing at luxury resorts.
+                          </p>
+                        </div>
+                        <img
+                          className="w-full max-lg:max-w-xs mt-4"
+                          src="https://images.unsplash.com/photo-1554244933-d876deb6b2ff?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                          alt=""
+                        />
+                      </div>
+                      <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5"></div>
+                    </div>
+
+                    {/* Safari & Wellness Journeys */}
+                    <div className="relative">
+                      <div className="absolute inset-px rounded-lg bg-white"></div>
+                      <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+                        <div className="px-8 pt-8 sm:px-10 sm:pt-10">
+                          <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
+                            Safari & Wellness Journeys
+                          </p>
+                          <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                            Unique experiences in Kenya and Tanzania, combining
+                            safaris with wellness retreats for a transformative adventure.
+                          </p>
+                        </div>
+                        <img
+                          className="w-full max-lg:max-w-xs mt-4"
+                          src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=2068&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                          alt=""
+                        />
+                      </div>
+                      <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5"></div>
+                    </div>
+
+                    {/* Exclusive Events */}
+                    <div className="relative">
+                      <div className="absolute inset-px rounded-lg bg-white"></div>
+                      <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+                        <div className="px-8 pt-8 sm:px-10 sm:pt-10">
+                          <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
+                            Exclusive Events
+                          </p>
+                          <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                            Goddess Nights, Book Clubs, Game Nights, Dance, Painting—
+                            fostering creativity and connection, often hosted at luxury resorts in destinations like Dubai.
+                          </p>
+                        </div>
+                        <img
+                          className="w-full max-lg:max-w-xs mt-4"
+                          src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                          alt=""
+                        />
+                      </div>
+                      <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5"></div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </main>
       {/* <Footer /> */}
