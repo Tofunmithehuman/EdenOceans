@@ -127,22 +127,22 @@ function Home() {
               <div className="w-full max-w-4xl mt-30">
                 <div>
                   <motion.h1
-                    className="bricolage-grotesque text-left md:text-center text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-6 sm:mt-8 md:mt-10 text-pretty leading-tight sm:leading-snug md:leading-relaxed lg:leading-20 font-semibold text-white"
+                    className="bricolage-grotesque text-left sm:text-center text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-6 sm:mt-8 md:mt-10 text-pretty leading-tight sm:leading-snug md:leading-relaxed lg:leading-20 font-semibold text-white"
                     variants={titleVariants}
                   >
-                    Where Luxury Meets {" "}
+                    Luxury wellness {" "}
                     <motion.span
                       className="text-secondary"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.8, delay: 1.2 }}
                     >
-                      Holistic Wellness
+                      Reimagined for you
                     </motion.span>
                   </motion.h1>
 
                   <motion.p
-                    className="mt-2 text-white/90 text-left md:text-center text-sm sm:text-base md:text-lg lg:text-xl text-pretty font-medium max-w-3xl mx-auto"
+                    className="mt-2 text-white/90 text-left sm:text-center text-sm sm:text-base md:text-lg lg:text-xl text-pretty font-medium max-w-3xl mx-auto"
                     variants={itemVariants}
                   >
                     A global travel and wellness club designed for high achieving individuals who seek more than a getaway. We offer transformation through ocean cruises, elite travel, personalized coaching, and spiritual alignment.
@@ -221,6 +221,10 @@ function Home() {
                 </div>
               </div>
             </motion.div>
+          </section>
+
+          <section>
+
           </section>
         </div>
       </main>
