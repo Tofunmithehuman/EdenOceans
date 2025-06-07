@@ -2,11 +2,15 @@ import Navigation from "../Components/Navigation"
 // import Footer from "../Components/Footer"
 import { Link } from "react-router-dom"
 import Beach from "../assets/beach.jpg"
+import BeachOne from "../assets/beach01.jpg"
+import BeachTwo from "../assets/beach02.jpg"
 import { useEffect, useState } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 
 function Home() {
   const [scrollY, setScrollY] = useState(0)
+  const [currentImage, setCurrentImage] = useState(0)
+  const images = [Beach, BeachOne, BeachTwo]
   const { scrollYProgress } = useScroll()
 
   // Handle scroll position for zoom effect
@@ -18,7 +22,15 @@ function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Zoom effect for beach image (applied to all devices)
+  // Image slideshow effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length)
+    }, 10000)
+    return () => clearInterval(interval)
+  }, [images.length])
+
+  // Zoom effect for beach image
   const zoomLevel = Math.min(1.2, 1 + scrollY * 0.0005)
 
   // Parallax effect for content
@@ -96,6 +108,13 @@ function Home() {
     }
   }
 
+  // Image transition variants
+  const imageVariants = {
+    enter: { opacity: 0 },
+    center: { opacity: 1 },
+    exit: { opacity: 0 }
+  }
+
   return (
     <div className="Home">
       <Navigation />
@@ -104,14 +123,22 @@ function Home() {
           <section className="relative px-4 py-4 sm:py-6 md:py-8 sm:px-4 md:px-12 lg:px-20 max-w-screen-2xl mx-auto h-full min-h-screen flex items-center overflow-hidden">
             {/* Background Image and Overlay Container */}
             <div className="absolute inset-0 h-full">
-              <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-300 ease-out h-full"
-                style={{
-                  backgroundImage: `url(${Beach})`,
-                  transform: `scale(${zoomLevel})`,
-                  transformOrigin: 'center center'
-                }}
-              />
+              <AnimatePresence>
+                <motion.div
+                  key={currentImage}
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-300 ease-out h-full"
+                  style={{
+                    backgroundImage: `url(${images[currentImage]})`,
+                    transform: `scale(${zoomLevel})`,
+                    transformOrigin: 'center center'
+                  }}
+                  variants={imageVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.5 }}
+                />
+              </AnimatePresence>
               {/* Dark Overlay */}
               <div className="absolute inset-0 bg-black/70 sm:bg-black/80 backdrop-blur-[0.5px] sm:backdrop-blur-[1px]" />
             </div>
@@ -223,8 +250,67 @@ function Home() {
             </motion.div>
           </section>
 
-          <section>
+          <section id="about-section" className="px-4 py-8 sm:py-12 md:py-16 lg:py-20 max-w-screen-xl mx-auto">
+            <div>
+              <motion.h2
+                className="text-4xl md:text-5xl lg:text-6xl text-left text-primary font-semibold mb-3 md:mb-6 bricolage-grotesque"
+                variants={titleVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                About Us
+              </motion.h2>
 
+              <motion.h2
+                className="text-2xl md:text-3xl lg:text-4xl text-left text-secondary font-semibold mb-2 bricolage-grotesque"
+                variants={titleVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                Who We Are
+              </motion.h2>
+
+              <motion.p
+                className="text-lg sm:text-xl md:text-2xl text-left text-primary/70 mb-8 max-w-2xl bricolage-grotesque text-pretty"
+                variants={itemVariants}
+              >
+                “EdenOceans is where luxury meets holistic wellness. We are a global travel and
+                wellness club designed for high-achieving women and men who seek more than a getaway we
+                offer transformation. Through ocean cruises, riverboat cruises, elite travel, personalized
+                coaching, and spiritual alignment, we guide our members toward vitality, joy, and meaningful
+                connection in destinations like Phuket, Seychelles, and beyond.”
+              </motion.p>
+            </div>
+
+
+            <div>
+              <div>
+                <h1 className="text-2xl md:text-3xl lg:text-4xl text-left text-secondary font-semibold mb-3 md:mb-6 bricolage-grotesque">Core Values</h1>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="bg-white/10 p-6 rounded-lg shadow-md">
+                    <h1 className="text-lg font-semibold flex items-center gap-2 mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-house-plus-icon lucide-house-plus"><path d="M13.22 2.416a2 2 0 0 0-2.511.057l-7 5.999A2 2 0 0 0 3 10v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7.354" /><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M15 6h6" /><path d="M18 3v6" /></svg>Intentional Living</h1>
+                    <p className="text-base text-primary/80">We believe in living with purpose, presence, and mindfulness.
+                      Every experience we curate empowers our members to align their inner wellbeing with theirName
+                      outer lifestyle</p>
+                  </div>
+
+                  <div className="bg-white/10 p-6 rounded-lg shadow-md">
+                    <h1 className="text-lg font-semibold flex items-center gap-2 mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-plane-takeoff-icon lucide-plane-takeoff"><path d="M2 22h20" /><path d="M6.36 17.4 4 17l-2-4 1.1-.55a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L8 12 5 6l.9-.45a2 2 0 0 1 2.09.2l4.02 3a2 2 0 0 0 2.1.2l4.19-2.06a2.41 2.41 0 0 1 1.73-.17L21 7a1.4 1.4 0 0 1 .87 1.99l-.38.76c-.23.46-.6.84-1.07 1.08L7.58 17.2a2 2 0 0 1-1.22.18Z" /></svg>Transformational Travel</h1>
+                    <p className="text-base text-primary/80">We view travel not as escape, but as elevation, gateway to
+                      healing, self-discovery, and renewal in the most inspiring places on Earth</p>
+                  </div>
+
+                  <div className="bg-white/10 p-6 rounded-lg shadow-md">
+                    <h1 className="text-lg font-semibold flex items-center gap-2 mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-hand-heart-icon lucide-hand-heart"><path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16" /><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" /><path d="m2 15 6 6" /><path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z" /></svg>Service Excellence</h1>
+                    <p className="text-base text-primary/80">We are uncompromising in our standards. From curated retreats
+                      to concierge services, every detail is designed to deliver elegance, privacy, and lasting impact.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </section>
         </div>
       </main>
