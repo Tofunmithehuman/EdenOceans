@@ -179,43 +179,43 @@ function Home() {
                   </motion.div>
 
                   <motion.div
-                    className="flex justify-center flex-col gap-10 sm:flex-row sm:gap-8 mt-10 bricolage-grotesque"
+                    className="flex justify-center flex-col gap-10 sm:flex-row sm:gap-8 mt-20 md:mt-10 bricolage-grotesque"
                     variants={statsVariants}
                   >
                     <motion.div variants={itemVariants} className="text-center">
                       <motion.h3
-                        className="font-bold text-2xl md:text-3xl text-white"
+                        className="font-bold text-3xl text-white"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 0.5, delay: 1.2, type: "spring" }}
                       >
                         500+
                       </motion.h3>
-                      <p className="text-sm md:text-base text-white/80">Members Transformed</p>
+                      <p className="text-base text-white/80">Members Transformed</p>
                     </motion.div>
 
                     <motion.div variants={itemVariants} className="text-center">
                       <motion.h3
-                        className="font-bold text-2xl md:text-3xl text-white"
+                        className="font-bold text-3xl text-white"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 0.5, delay: 1.4, type: "spring" }}
                       >
                         25+
                       </motion.h3>
-                      <p className="text-sm md:text-base text-white/80">Luxury Destinations</p>
+                      <p className="text-base text-white/80">Luxury Destinations</p>
                     </motion.div>
 
                     <motion.div variants={itemVariants} className="text-center">
                       <motion.h3
-                        className="font-bold text-2xl md:text-3xl text-white"
+                        className="font-bold text-3xl text-white"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 0.5, delay: 1.6, type: "spring" }}
                       >
                         98%
                       </motion.h3>
-                      <p className="text-sm md:text-base text-white/80">Satisfaction Rate</p>
+                      <p className="text-base text-white/80">Satisfaction Rate</p>
                     </motion.div>
                   </motion.div>
                 </div>
