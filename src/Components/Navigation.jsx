@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Logo from "../assets/Logo.jpeg"; 
+import Logo from "../assets/Logo.jpeg";
 import { motion, AnimatePresence } from "framer-motion";
 
 function Navigation() {
@@ -81,7 +81,7 @@ function Navigation() {
                     <nav>
                         <a href="/" className="font-semibold flex flex-row-reverse items-center text-xl text-white bricolage-grotesque">
                             Eden<span className="text-secondary">Oceans</span>
-                            <img src={Logo} width={40} alt="EdenOceans Logo" />    
+                            <img src={Logo} width={40} alt="EdenOceans Logo" />
                         </a>
                     </nav>
 
@@ -97,24 +97,28 @@ function Navigation() {
                                 </button>
                             </li>
                             <li>
-                                <a href="/services" className="hover:text-secondary transition-colors duration-200">
+                                <button onClick={() => scrollToSection("services-section")}
+                                    className="hover:text-secondary cursor-pointer transition-colors duration-200">
                                     Services
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a href="/services" className="hover:text-secondary transition-colors duration-200">
+                                <button onClick={() => scrollToSection("gallery-section")}
+                                    className="hover:text-secondary cursor-pointer transition-colors duration-200">
                                     Gallery
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a href="/membership" className="hover:text-secondary transition-colors duration-200">
+                                <button onClick={() => scrollToSection("membership-section")}
+                                    className="hover:text-secondary transition-colors duration-200">
                                     Membership Tiers
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a href="/contact" className="hover:text-secondary transition-colors duration-200">
+                                <button onClick={() => scrollToSection("contact-section")}
+                                    className="hover:text-secondary cursor-pointer transition-colors duration-200">
                                     Contact Us
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </nav>
@@ -158,7 +162,7 @@ function Navigation() {
                                         <path d="m6 6 12 12" />
                                     </motion.svg>
 
-                                    
+
                                 ) : (
                                     <motion.svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -225,21 +229,23 @@ function Navigation() {
                                                 About Us
                                             </motion.button>
 
-                                            <motion.a
+                                            <motion.button
                                                 variants={itemVariants}
-                                                href="/services"
-                                                onClick={() => setIsOpen(false)}
+                                                onClick={() => {
+                                                    scrollToSection("services-section");
+                                                    setIsOpen(false);
+                                                }}
                                                 className="block hover:text-amber-300 transition-colors duration-200"
                                                 whileHover={{ x: 10 }}
                                                 whileTap={{ scale: 0.95 }}
                                             >
                                                 Services
-                                            </motion.a>
+                                            </motion.button>
 
                                             <motion.a
                                                 variants={itemVariants}
                                                 href="/services"
-                                                onClick={() => setIsOpen(false)}
+                                                onClick={() => { setIsOpen(false) }}
                                                 className="block hover:text-amber-300 transition-colors duration-200"
                                                 whileHover={{ x: 10 }}
                                                 whileTap={{ scale: 0.95 }}
