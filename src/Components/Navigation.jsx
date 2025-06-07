@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Logo from "../assets/logo.jpeg"; 
+import Logo from "../assets/Logo.jpeg"; 
 import { motion, AnimatePresence } from "framer-motion";
 
 function Navigation() {
