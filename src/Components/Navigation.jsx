@@ -242,16 +242,18 @@ function Navigation() {
                                                 Services
                                             </motion.button>
 
-                                            <motion.a
+                                            <motion.button
                                                 variants={itemVariants}
-                                                href="/services"
-                                                onClick={() => { setIsOpen(false) }}
+                                                onClick={() => {
+                                                    scrollToSection("gallery-section");
+                                                    setIsOpen(false);
+                                                }}
                                                 className="block hover:text-amber-300 transition-colors duration-200"
                                                 whileHover={{ x: 10 }}
                                                 whileTap={{ scale: 0.95 }}
                                             >
                                                 Gallery
-                                            </motion.a>
+                                            </motion.button>
 
                                             <motion.a
                                                 variants={itemVariants}

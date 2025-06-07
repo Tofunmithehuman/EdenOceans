@@ -8,14 +8,25 @@ import Wellness from "../assets/wellness.jpg"
 import safari from "../assets/safari.jpg"
 import Boat from "../assets/boat.jpg"
 import Club from "../assets/club.jpg"
-import { useEffect, useState } from "react"
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import ResortOne from "../assets/resort01.jpg"
+import ResortTwo from "../assets/resort02.jpg"
+import ResortThree from "../assets/resort03.jpg"
+import ResortFour from "../assets/resort04.jpg"
+import ResortFive from "../assets/resort05.jpg"
+import ResortSix from "../assets/resort06.jpg"
+import ResortSeven from "../assets/resort07.jpg"
+import { useEffect, useState, useRef } from "react"
+import { motion, useScroll, useTransform, AnimatePresence, useInView } from "framer-motion"
 
 function Home() {
   const [scrollY, setScrollY] = useState(0)
   const [currentImage, setCurrentImage] = useState(0)
   const images = [Beach, BeachOne, BeachTwo]
   const { scrollYProgress } = useScroll()
+  const servicesRef = useRef(null)
+  const galleryRef = useRef(null)
+  const isServicesInView = useInView(servicesRef, { once: false, margin: "-100px" })
+  const isGalleryInView = useInView(galleryRef, { once: false, margin: "-100px" })
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,8 +52,9 @@ function Home() {
     visible: {
       opacity: 1,
       transition: {
+        delay: 1,
         staggerChildren: 0.2,
-        delayChildren: 0.1
+        delayChildren: 1.1 
       }
     }
   }
@@ -66,8 +78,7 @@ function Home() {
       y: 0,
       transition: {
         duration: 1.2,
-        ease: [0.6, -0.05, 0.01, 0.99],
-        delay: 0.2
+        ease: [0.6, -0.05, 0.01, 0.99]
       }
     }
   }
@@ -111,6 +122,30 @@ function Home() {
     enter: { opacity: 0 },
     center: { opacity: 1 },
     exit: { opacity: 0 }
+  }
+
+  const serviceImageVariants = {
+    hidden: { scale: 1, opacity: 0.8 },
+    visible: {
+      scale: 1.1,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.6, -0.05, 0.01, 0.99]
+      }
+    }
+  }
+
+  const galleryImageVariants = {
+    hidden: { scale: 1, opacity: 0.8 },
+    visible: {
+      scale: 1.05,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.6, -0.05, 0.01, 0.99]
+      }
+    }
   }
 
   return (
@@ -280,7 +315,6 @@ function Home() {
               </motion.p>
             </div>
 
-
             <div>
               <div>
                 <h1 className="text-2xl md:text-3xl lg:text-4xl text-left text-secondary font-semibold mb-3 bricolage-grotesque">Core Values</h1>
@@ -289,7 +323,7 @@ function Home() {
                   <div className="bg-secondary/30 p-6 rounded-lg border-2 border-slate-100">
                     <h1 className="text-lg font-semibold flex items-center gap-2 mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-house-plus-icon lucide-house-plus"><path d="M13.22 2.416a2 2 0 0 0-2.511.057l-7 5.999A2 2 0 0 0 3 10v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7.354" /><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M15 6h6" /><path d="M18 3v6" /></svg>Intentional Living</h1>
                     <p className="text-base text-black/80 font-medium text-pretty">We believe in living with purpose, presence, and mindfulness.
-                      Every experience we curate empowers our members to align their inner wellbeing with theirName
+                      Every experience we curate empowers our members to align their inner wellbeing with their
                       outer lifestyle.</p>
                   </div>
 
@@ -305,96 +339,238 @@ function Home() {
                       to concierge services, every detail is designed to deliver elegance, privacy, and lasting impact.
                     </p>
                   </div>
-
                 </div>
               </div>
             </div>
           </section>
 
-          <section id="services-section" className="py-16">
-            <div className="container mx-auto">
+          <section id="services-section" className="pt-16" ref={servicesRef}>
+            <motion.div
+              className="container mx-auto"
+              variants={containerVariants}
+              initial="hidden"
+              animate={isServicesInView ? "visible" : "hidden"}
+            >
               <div className="bg-gray-50 py-24 sm:py-32">
                 <div className="mx-auto max-w-screen-2xl lg:px-8">
-                  <p className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque">
+                  <motion.p
+                    className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque"
+                    variants={titleVariants}
+                  >
                     Services & Experience
-                  </p>
+                  </motion.p>
 
-                  <div className="mt-10 p-6 grid gap-8 sm:mt-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 lg:grid-rows-2 max-w-7xl mx-auto">
-                    <div className="rounded-lg shadow">
-                      <div className="p-4">
+                  <motion.div
+                    className="mt-10 p-6 grid gap-8 sm:mt-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 lg:grid-rows-2 max-w-7xl mx-auto"
+                    variants={containerVariants}
+                  >
+                    <motion.div
+                      className="rounded-lg shadow overflow-hidden"
+                      variants={itemVariants}
+                    >
+                      <div className="p-3">
                         <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
                           Ocean Cruises
                         </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-24">
-                          Luxurious cruises in destinations like the Maldives, Seychelles, and Fiji
+                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-30">
+                          Luxurious cruises in destinations like the Maldives, and Fiji
                           Islands, offering wellness activities onboard and shore excursions to pristine beaches and
                           luxury resorts.
                         </p>
                       </div>
-                      <img
-                        className="w-full mt-4 rounded-b-lg"
+                      <motion.img
+                        className="w-full rounded-b-lg"
                         src={Boat}
                         alt="Boat Cruise"
+                        variants={serviceImageVariants}
                       />
-                    </div>
+                    </motion.div>
 
-                    <div className="rounded-lg shadow">
-                      <div className="p-4">
+                    <motion.div
+                      className="rounded-lg shadow overflow-hidden"
+                      variants={itemVariants}
+                    >
+                      <div className="p-3">
                         <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
                           Luxury Wellness Retreats
                         </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-24">
-                          Immersive experiences in destinations like Mauritius, Barbados, and Cape Verde, blending relaxation, adventure, and
+                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-30">
+                            Experience immersive experiences in beautiful destinations like Mauritius, Barbados, and Cape Verde, blending relaxation, adventure, and
                           healing at luxury resorts.
                         </p>
                       </div>
-                      <img
-                        className="w-full mt-4 rounded-b-lg"
+                      <motion.img
+                        className="w-full rounded-b-lg"
                         src={Wellness}
                         alt="Wellness Retreat"
+                        variants={serviceImageVariants}
                       />
-                    </div>
+                    </motion.div>
 
-                    <div className="rounded-lg shadow">
-                      <div className="p-4">
+                    <motion.div
+                      className="rounded-lg shadow overflow-hidden"
+                      variants={itemVariants}
+                    >
+                      <div className="p-3">
                         <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
                           Safari & Wellness Journeys
                         </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-24">
-                          Unique experiences in Kenya and Tanzania, combining
-                          safaris with wellness retreats for a transformative adventure.
+                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-30">
+                          Enjoy unique and captivating experiences in Kenya, Rawanda and Tanzania, combining
+                          safaris with wellness retreats for a transformative and rejuvenating adventure.
                         </p>
                       </div>
-                      <img
-                        className="w-full mt-4 rounded-b-lg"
+                      <motion.img
+                        className="w-full rounded-b-lg"
                         src={safari}
                         alt="Safari & Wellness Journeys"
+                        variants={serviceImageVariants}
                       />
-                    </div>
+                    </motion.div>
 
-                    <div className="rounded-lg shadow">
-                      <div className="p-4">
+                    <motion.div
+                      className="rounded-lg shadow overflow-hidden"
+                      variants={itemVariants}
+                    >
+                      <div className="p-3">
                         <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
                           Exclusive Events
                         </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-24">
-                          Goddess Nights, Book Clubs, Game Nights, Dance, Painting—
+                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-30">
+                          Book Clubs, Game Nights, Dance, Painting and Cooking Classes, and more,
                           fostering creativity and connection, often hosted at luxury resorts in destinations like Dubai.
                         </p>
                       </div>
-                      <div>
-                        <img
-                          className="w-full mt-4 rounded-b-lg"
-                          src={Club}
-                          alt="Exclusive Events"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                      <motion.img
+                        className="w-full rounded-b-lg"
+                        src={Club}
+                        alt="Exclusive Events"
+                        variants={serviceImageVariants}
+                      />
+                    </motion.div>
+                  </motion.div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </section>
+
+
+          <section id="gallery-section" ref={galleryRef}>
+            <motion.div
+              className="container mx-auto"
+              variants={containerVariants}
+              initial="hidden"
+              animate={isGalleryInView ? "visible" : "hidden"}
+            >
+              <div className="bg-gray-50 py-24 sm:py-32">
+                <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+                  <motion.p
+                    className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque"
+                    variants={titleVariants}
+                  >
+                    Gallery
+                  </motion.p>
+                  <motion.div
+                    className="mt-10 sm:mt-16 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[200px] max-w-7xl mx-auto"
+                    variants={containerVariants}
+                  >
+                    <motion.div
+                      className="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 rounded-lg shadow overflow-hidden"
+                      variants={itemVariants}
+                    >
+                      <motion.img
+                        className="w-full h-full object-cover"
+                        src={ResortOne}
+                        alt="Beach Scene"
+                        variants={galleryImageVariants}
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </motion.div>
+                    <motion.div
+                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden"
+                      variants={itemVariants}
+                    >
+                      <motion.img
+                        className="w-full h-full object-cover"
+                        src={ResortTwo}
+                        alt="Beach View"
+                        variants={galleryImageVariants}
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </motion.div>
+                    <motion.div
+                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden"
+                      variants={itemVariants}
+                    >
+                      <motion.img
+                        className="w-full h-full object-cover"
+                        src={ResortThree}
+                        alt="Coastal Landscape"
+                        variants={galleryImageVariants}
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </motion.div>
+                    <motion.div
+                      className="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 rounded-lg shadow overflow-hidden"
+                      variants={itemVariants}
+                    >
+                      <motion.img
+                        className="w-full h-full object-cover"
+                        src={ResortFour}
+                        alt="Wellness Retreat"
+                        variants={galleryImageVariants}
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </motion.div>
+                    <motion.div
+                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden"
+                      variants={itemVariants}
+                    >
+                      <motion.img
+                        className="w-full h-full object-cover"
+                        src={ResortFive}
+                        alt="Safari Journey"
+                        variants={galleryImageVariants}
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </motion.div>
+                    <motion.div
+                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden"
+                      variants={itemVariants}
+                    >
+                      <motion.img
+                        className="w-full h-full object-cover"
+                        src={ResortSix}
+                        alt="Ocean Cruise"
+                        variants={galleryImageVariants}
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </motion.div>
+                    <motion.div
+                      className="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 rounded-lg shadow overflow-hidden"
+                      variants={itemVariants}
+                    >
+                      <motion.img
+                        className="w-full h-full object-cover"
+                        src={ResortSeven}
+                        alt="Exclusive Event"
+                        variants={galleryImageVariants}
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </section>
+
         </div>
       </main>
       {/* <Footer /> */}
