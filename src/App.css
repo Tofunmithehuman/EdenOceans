@@ -2,8 +2,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
 @import "tailwindcss";
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-family: "Inter", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .bricolage-grotesque {

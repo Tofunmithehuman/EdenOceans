@@ -9,19 +9,22 @@ function Home() {
   const [scrollY, setScrollY] = useState(0)
   const { scrollYProgress } = useScroll()
 
+  // Handle scroll position for zoom effect
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Adjust zoom for smaller screens
-  const zoomLevel = window.innerWidth < 768 ? 1 : Math.min(1.2, 1 + scrollY * 0.0005)
+  // Zoom effect for beach image (applied to all devices)
+  const zoomLevel = Math.min(1.2, 1 + scrollY * 0.0005)
 
-  // Parallax effects
+  // Parallax effect for content
   const y = useTransform(scrollYProgress, [0, 1], [0, -50])
 
-  // Animation variants (unchanged)
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -98,8 +101,8 @@ function Home() {
       <Navigation />
       <main>
         <div>
-          <section className="relative py-4 sm:py-6 md:py-8 px-2 sm:px-4 md:px-12 lg:px-20 max-w-screen-2xl mx-auto h-full min-h-screen flex items-center overflow-hidden">
-            {/* Background Image with Zoom Effect */}
+          <section className="relative px-4 py-4 sm:py-6 md:py-8 px-2 sm:px-4 md:px-12 lg:px-20 max-w-screen-2xl mx-auto h-full min-h-screen flex items-center overflow-hidden">
+            {/* Background Image and Overlay Container */}
             <div className="absolute inset-0 h-full">
               <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-300 ease-out h-full"
@@ -139,7 +142,7 @@ function Home() {
                   </motion.h1>
 
                   <motion.p
-                    className="mt-2 text-white/90 text-left md:text-center text-sm sm:text-base md:text-lg lg:text-xl font-medium max-w-3xl mx-auto"
+                    className="mt-2 text-white/90 text-left md:text-center text-sm sm:text-base md:text-lg lg:text-xl text-pretty font-medium max-w-3xl mx-auto"
                     variants={itemVariants}
                   >
                     A global travel and wellness club designed for high achieving individuals who seek more than a getaway. We offer transformation through ocean cruises, elite travel, personalized coaching, and spiritual alignment.
