@@ -15,13 +15,13 @@ function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Calculate zoom based on scroll position
-  const zoomLevel = Math.min(1.2, 1 + scrollY * 0.0005)
+  // Adjust zoom for smaller screens
+  const zoomLevel = window.innerWidth < 768 ? 1 : Math.min(1.2, 1 + scrollY * 0.0005)
 
-  // Parallax effects - removed opacity transform
+  // Parallax effects
   const y = useTransform(scrollYProgress, [0, 1], [0, -50])
 
-  // Animation variants
+  // Animation variants (unchanged)
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -98,19 +98,20 @@ function Home() {
       <Navigation />
       <main>
         <div>
-          <section className="relative py-4 sm:py-6 md:py-8 px-4 sm:px-8 md:px-12 lg:px-20 max-w-screen-2xl mx-auto min-h-screen flex items-center">
+          <section className="relative py-4 sm:py-6 md:py-8 px-2 sm:px-4 md:px-12 lg:px-20 max-w-screen-2xl mx-auto h-full min-h-screen flex items-center overflow-hidden">
             {/* Background Image with Zoom Effect */}
-            <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-300 ease-out"
-              style={{
-                backgroundImage: `url(${Beach})`,
-                transform: `scale(${zoomLevel})`,
-                transformOrigin: 'center center'
-              }}
-            />
-
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-[0.5px]" />
+            <div className="absolute inset-0 h-full">
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-300 ease-out h-full"
+                style={{
+                  backgroundImage: `url(${Beach})`,
+                  transform: `scale(${zoomLevel})`,
+                  transformOrigin: 'center center'
+                }}
+              />
+              {/* Dark Overlay */}
+              <div className="absolute inset-0 bg-black/70 sm:bg-black/80 backdrop-blur-[0.5px] sm:backdrop-blur-[1px]" />
+            </div>
 
             {/* Content */}
             <motion.div
