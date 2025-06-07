@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Logo from "../assets/logo.jpeg"; 
 import { motion, AnimatePresence } from "framer-motion";
 
 function Navigation() {
@@ -75,17 +76,18 @@ function Navigation() {
 
     return (
         <div className="Navigation">
-            <div className="bg-white border-b border-black/10 fixed top-0 left-0 right-0 z-50">
+            <div className="bg-primary border-b border-black/10 fixed top-0 left-0 right-0 z-50">
                 <header className="p-3 sm:p-4 flex justify-between items-center max-w-screen-2xl mx-auto">
                     <nav>
-                        <a href="/" className="font-semibold text-xl text-primary bricolage-grotesque">
+                        <a href="/" className="font-semibold flex flex-row-reverse items-center text-xl text-white bricolage-grotesque">
                             Eden<span className="text-secondary">Oceans</span>
+                            <img src={Logo} width={40} alt="EdenOceans Logo" />    
                         </a>
                     </nav>
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:block">
-                        <ul className="nav-links flex space-x-5 text-sm text-primary font-medium bricolage-grotesque">
+                        <ul className="nav-links flex space-x-5 text-sm text-secondary font-medium bricolage-grotesque">
                             <li>
                                 <button
                                     onClick={() => scrollToSection("about-section")}
@@ -163,7 +165,7 @@ function Navigation() {
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        className="text-primary"
+                                        className="text-secondary"
                                         initial={{ rotate: 90, opacity: 0 }}
                                         animate={{ rotate: 0, opacity: 1 }}
                                         transition={{ duration: 0.2 }}
@@ -217,6 +219,17 @@ function Navigation() {
                                             >
                                                 About Us
                                             </motion.button>
+
+                                            <motion.a
+                                                variants={itemVariants}
+                                                href="/services"
+                                                onClick={() => setIsOpen(false)}
+                                                className="block hover:text-amber-300 transition-colors duration-200"
+                                                whileHover={{ x: 10 }}
+                                                whileTap={{ scale: 0.95 }}
+                                            >
+                                                Gallery
+                                            </motion.a>
 
                                             <motion.a
                                                 variants={itemVariants}
