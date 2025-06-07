@@ -101,7 +101,7 @@ function Home() {
       <Navigation />
       <main>
         <div>
-          <section className="relative px-4 py-4 sm:py-6 md:py-8 px-2 sm:px-4 md:px-12 lg:px-20 max-w-screen-2xl mx-auto h-full min-h-screen flex items-center overflow-hidden">
+          <section className="relative px-4 py-4 sm:py-6 md:py-8 sm:px-4 md:px-12 lg:px-20 max-w-screen-2xl mx-auto h-full min-h-screen flex items-center overflow-hidden">
             {/* Background Image and Overlay Container */}
             <div className="absolute inset-0 h-full">
               <div

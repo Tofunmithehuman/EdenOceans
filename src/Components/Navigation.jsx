@@ -87,7 +87,7 @@ function Navigation() {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:block">
-                        <ul className="nav-links flex space-x-5 text-sm text-secondary font-medium bricolage-grotesque">
+                        <ul className="nav-links flex space-x-5 text-sm text-white font-medium bricolage-grotesque">
                             <li>
                                 <button
                                     onClick={() => scrollToSection("about-section")}
@@ -99,6 +99,11 @@ function Navigation() {
                             <li>
                                 <a href="/services" className="hover:text-secondary transition-colors duration-200">
                                     Services
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/services" className="hover:text-secondary transition-colors duration-200">
+                                    Gallery
                                 </a>
                             </li>
                             <li>
@@ -228,7 +233,7 @@ function Navigation() {
                                                 whileHover={{ x: 10 }}
                                                 whileTap={{ scale: 0.95 }}
                                             >
-                                                Gallery
+                                                Services
                                             </motion.a>
 
                                             <motion.a
@@ -239,7 +244,7 @@ function Navigation() {
                                                 whileHover={{ x: 10 }}
                                                 whileTap={{ scale: 0.95 }}
                                             >
-                                                Services
+                                                Gallery
                                             </motion.a>
 
                                             <motion.a
