@@ -840,12 +840,12 @@ function Home() {
                         </motion.div>
                         <motion.div variants={itemVariants}>
                           <a
-                            href="https://pinterest.com/edenoceans_"
+                            href="https://linkedin.com/edenoceans_"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-white hover:text-[#DDF48C] transition-colors duration-300"
                           >
-                            Pinterest
+                            LinkedIn
                           </a>
                         </motion.div>
                         <motion.div variants={itemVariants}>
