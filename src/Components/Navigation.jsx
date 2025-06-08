@@ -80,7 +80,7 @@ function Navigation() {
                 <header className="p-3 sm:p-4 flex justify-between items-center max-w-screen-2xl mx-auto">
                     <nav>
                         <a href="/" className="font-semibold flex flex-row-reverse items-center text-xl text-white bricolage-grotesque">
-                            Eden<span className="text-secondary">Oceans</span>
+                            <div> Eden<span className="text-secondary">Oceans</span></div>
                             <img src={Logo} width={40} alt="EdenOceans Logo" />
                         </a>
                     </nav>
@@ -268,16 +268,18 @@ function Navigation() {
                                                 Membership Tiers
                                             </motion.button>
 
-                                            <motion.a
+                                            <motion.button
                                                 variants={itemVariants}
-                                                href="/contact"
-                                                onClick={() => setIsOpen(false)}
+                                                onClick={() => {
+                                                    scrollToSection("contact-section");
+                                                    setIsOpen(false);
+                                                }}
                                                 className="block hover:text-amber-300 transition-colors duration-200"
                                                 whileHover={{ x: 10 }}
                                                 whileTap={{ scale: 0.95 }}
                                             >
                                                 Contact Us
-                                            </motion.a>
+                                            </motion.button>
                                         </motion.div>
                                     </motion.nav>
                                 </>

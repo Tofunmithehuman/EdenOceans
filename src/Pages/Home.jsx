@@ -1,5 +1,4 @@
 import Navigation from "../Components/Navigation"
-// import Footer from "../Components/Footer"
 import { Link } from "react-router-dom"
 import Beach from "../assets/beach.jpg"
 import BeachOne from "../assets/beach01.jpg"
@@ -26,9 +25,11 @@ function Home() {
   const servicesRef = useRef(null)
   const galleryRef = useRef(null)
   const membershipRef = useRef(null)
+  const contactRef = useRef(null)
   const isServicesInView = useInView(servicesRef, { once: false, margin: "-100px" })
   const isGalleryInView = useInView(galleryRef, { once: false, margin: "-100px" })
   const isMembershipInView = useInView(membershipRef, { once: false, margin: "-100px" })
+  const isContactInView = useInView(contactRef, { once: false, margin: "-100px" })
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,14 +50,25 @@ function Home() {
 
   const y = useTransform(scrollYProgress, [0, 1], [0, -50])
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const getYear = () => {
+    return new Date().getFullYear();
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        delay: 0.5,
+        delay: 0.2,
         staggerChildren: 0.2,
-        delayChildren: 1.1
+        delayChildren: 0.3
       }
     }
   }
@@ -150,6 +162,19 @@ function Home() {
     }
   }
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
 
 
   const Faqs = [
@@ -171,6 +196,22 @@ function Home() {
       answer: "“Our faith based empowerment programs are optional and designed to support spiritual growth for those who seek it",
     }
   ];
+
+  const people = [
+    {
+      name: 'Leslie Alexander',
+      role: 'Co-Founder / CEO',
+      imageUrl:
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    },
+    {
+      name: 'Leslie Alexander',
+      role: 'Co-Founder / CEO',
+      imageUrl:
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    }
+    // More people...
+  ]
 
 
   return (
@@ -245,9 +286,10 @@ function Home() {
                       whileTap="tap"
                       className="w-full sm:w-auto"
                     >
-                      <Link className="text-center w-full bg-secondary py-3 px-6 rounded-md text-primary block font-medium">
+                      <button className="text-center w-full bg-secondary cursor-pointer py-3 px-6 rounded-md text-primary block font-medium"
+                        onClick={() => scrollToSection("about-section")}>
                         Begin Your Transformation
-                      </Link>
+                      </button>
                     </motion.div>
 
                     <motion.div
@@ -257,9 +299,10 @@ function Home() {
                       transition={{ delay: 0.1 }}
                       className="w-full sm:w-auto"
                     >
-                      <Link className="text-center w-full bg-transparent border-2 border-white py-3 px-6 rounded-md text-white block font-medium hover:bg-white hover:text-primary transition-colors">
+                      <button className="text-center w-full bg-transparent border-2 border-white py-3 px-6 rounded-md text-white block font-medium hover:bg-white hover:text-primary transition-colors"
+                        onClick={() => scrollToSection("gallery-section")}>
                         Explore Destinations
-                      </Link>
+                      </button>
                     </motion.div>
                   </motion.div>
 
@@ -730,9 +773,172 @@ function Home() {
 
           </section>
 
+
+          <section>
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="bg-white py-24 sm:py-32">
+              <div className="mx-auto grid max-w-7xl gap-20 px-6 lg:px-8 xl:grid-cols-3">
+                <div className="max-w-xl">
+                  <motion.h2 className="text-3xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl"
+                    variants={titleVariants}
+                  >
+                    Meet our directors and team
+                  </motion.h2>
+                  <motion.p className="mt-6 text-lg/8 text-gray-600"
+                    variants={titleVariants}>
+                    We’re a dynamic group of individuals who are passionate about what we do and dedicated to delivering the
+                    best results for our clients.
+                  </motion.p>
+                </div>
+                <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+                  {people.map((person) => (
+                    <li key={person.name}>
+                      <motion.div className="flex items-center gap-x-6" variants={titleVariants}>
+                        <img alt="" src={person.imageUrl} className="size-16 rounded-full" />
+                        <div>
+                          <h3 className="text-base/7 font-semibold tracking-tight text-gray-900">{person.name}</h3>
+                          <p className="text-sm/6 font-semibold text-indigo-600">{person.role}</p>
+                        </div>
+                      </motion.div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          </section>
+
+
+          <section id="contact-section" className="pt-16" ref={contactRef}>
+            <div className="Footer">
+              <div className="bg-primary text-white">
+                <div className="max-w-7xl mx-auto pt-16 pb-8 px-6 sm:px-10">
+                  <motion.div
+                    className="flex flex-col md:flex-row items-start gap-10 md:gap-20"
+                    variants={sectionVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                  >
+
+                    <motion.div variants={sectionVariants}>
+                      <h1 className="bricolage-grotesque font-semibold text-2xl mb-5">
+                       Contact
+                      </h1>
+                      <nav className="flex flex-col gap-3">
+                        <motion.div variants={itemVariants}>
+                          <a
+                            href="https://instagram.com/edenoceans_"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-white hover:text-[#DDF48C] transition-colors duration-300"
+                          >
+                            Instagram
+                          </a>
+                        </motion.div>
+                        <motion.div variants={itemVariants}>
+                          <a
+                            href="https://pinterest.com/edenoceans_"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-white hover:text-[#DDF48C] transition-colors duration-300"
+                          >
+                            Pinterest
+                          </a>
+                        </motion.div>
+                        <motion.div variants={itemVariants}>
+                          <a
+                            href="https://whatsapp.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-white hover:text-[#DDF48C] transition-colors duration-300"
+                          >
+                            Whatsapp
+                          </a>
+                        </motion.div>
+                      </nav>
+                    </motion.div>
+                    <motion.div variants={sectionVariants}>
+                      <h1 className="bricolage-grotesque font-semibold text-2xl mb-5">
+                        Explore
+                      </h1>
+                      <nav className="flex flex-col gap-3">
+                        <motion.div variants={itemVariants}>
+                          <Link
+                            onClick={() => scrollToSection("about-section")}
+                            className="text-white hover:text-[#DDF48C] transition-colors duration-300"
+                          >
+                            About
+                          </Link>
+                        </motion.div>
+                        <motion.div variants={itemVariants}>
+                          <Link
+                            to="/skills"
+                            className="text-white hover:text-[#DDF48C] transition-colors duration-300"
+                          >
+                            Gallery
+                          </Link>
+                        </motion.div>
+                        <motion.div variants={itemVariants}>
+                          <Link
+                            to="/socials"
+                            className="text-white hover:text-[#DDF48C] transition-colors duration-300"
+                          >
+                            Membership Teirs
+                          </Link>
+                        </motion.div>
+                      </nav>
+                    </motion.div>
+
+
+
+                    <motion.div variants={sectionVariants}>
+                      <h1 className="bricolage-grotesque font-semibold text-2xl mb-5">
+                        Destinations
+                      </h1>
+                      <nav className="flex flex-col gap-3">
+                        <motion.div variants={itemVariants}>
+                          <p className="text-white">Maldives</p>
+                        </motion.div>
+                        <motion.div variants={itemVariants}>
+                          <p className="text-white">Mauritiuss</p>
+                        </motion.div>
+                        <motion.div variants={itemVariants}>
+                          <p className="text-white">Dubai</p>
+                        </motion.div>
+                        <motion.div variants={itemVariants}>
+                          <p className="text-white">Bali</p>
+                        </motion.div>
+                        <motion.div variants={itemVariants}>
+                          <p className="text-white">More</p>
+                        </motion.div>
+                      </nav>
+                    </motion.div>
+                  </motion.div>
+
+                  <div className="border-t border-[#DDF48C] my-8"></div>
+
+                  <div className="pb-8">
+                    <nav className="flex flex-col md:flex-row md:items-center gap-4">
+                      <p className="text-sm text-white">
+                        {getYear()} © EdenOceans
+                      </p>
+                      <a
+                        href="mailto:  info@edenoceans.com"
+                        className="text-sm text-[#E1E1E1] hover:text-white transition-colors duration-300"
+                      >
+                        info@edenoceans.com
+                      </a>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </main>
-      {/* <Footer /> */}
     </div>
   )
 }
