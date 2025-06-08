@@ -110,7 +110,7 @@ function Navigation() {
                             </li>
                             <li>
                                 <button onClick={() => scrollToSection("membership-section")}
-                                    className="hover:text-secondary transition-colors duration-200">
+                                    className="hover:text-secondary cursor-pointer transition-colors duration-200">
                                     Membership Tiers
                                 </button>
                             </li>
@@ -255,16 +255,18 @@ function Navigation() {
                                                 Gallery
                                             </motion.button>
 
-                                            <motion.a
+                                            <motion.button
                                                 variants={itemVariants}
-                                                href="/membership"
-                                                onClick={() => setIsOpen(false)}
+                                                onClick={() => {
+                                                    scrollToSection("membership-section");
+                                                    setIsOpen(false);
+                                                }}
                                                 className="block hover:text-amber-300 transition-colors duration-200"
                                                 whileHover={{ x: 10 }}
                                                 whileTap={{ scale: 0.95 }}
                                             >
                                                 Membership Tiers
-                                            </motion.a>
+                                            </motion.button>
 
                                             <motion.a
                                                 variants={itemVariants}

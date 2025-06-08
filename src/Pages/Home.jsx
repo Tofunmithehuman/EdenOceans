@@ -25,8 +25,10 @@ function Home() {
   const { scrollYProgress } = useScroll()
   const servicesRef = useRef(null)
   const galleryRef = useRef(null)
+  const membershipRef = useRef(null)
   const isServicesInView = useInView(servicesRef, { once: false, margin: "-100px" })
   const isGalleryInView = useInView(galleryRef, { once: false, margin: "-100px" })
+  const isMembershipInView = useInView(membershipRef, { once: false, margin: "-100px" })
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,9 +54,9 @@ function Home() {
     visible: {
       opacity: 1,
       transition: {
-        delay: 1,
+        delay: 0.5,
         staggerChildren: 0.2,
-        delayChildren: 1.1 
+        delayChildren: 1.1
       }
     }
   }
@@ -147,6 +149,29 @@ function Home() {
       }
     }
   }
+
+
+
+  const Faqs = [
+    {
+      question: "Purpose",
+      answer: "To address common questions about EdenOceans, ensuring clarity for prospective members, and to provide a comprehensive understanding of our offerings and values.",
+      defaultChecked: true,
+    },
+    {
+      question: "Eligibility",
+      answer: "EdenOceans is for high achieving individuals seeking holistic wellness. We welcome applications from women and men globally.",
+    },
+    {
+      question: "Retreat Schedule",
+      answer: "Our retreats and cruises are held quarterly in stunning destinations like the Maldives, Seychelles, and Bali.Members receive schedules upon joining.",
+    },
+    {
+      question: "Faith Component",
+      answer: "“Our faith based empowerment programs are optional and designed to support spiritual growth for those who seek it",
+    }
+  ];
+
 
   return (
     <div className="Home">
@@ -395,7 +420,7 @@ function Home() {
                           Luxury Wellness Retreats
                         </p>
                         <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-30">
-                            Experience immersive experiences in beautiful destinations like Mauritius, Barbados, and Cape Verde, blending relaxation, adventure, and
+                          Experience immersive experiences in beautiful destinations like Mauritius, Barbados, and Cape Verde, blending relaxation, adventure, and
                           healing at luxury resorts.
                         </p>
                       </div>
@@ -569,6 +594,140 @@ function Home() {
                 </div>
               </div>
             </motion.div>
+          </section>
+
+
+          <section id="membership-section" ref={membershipRef}>
+            <motion.div
+              className="container mx-auto"
+              variants={containerVariants}
+              initial="hidden"
+              animate={isMembershipInView ? "visible" : "hidden"}
+            >
+              <div className="bg-gray-50 py-24 sm:py-32">
+                <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+                  <motion.p
+                    className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque"
+                    variants={titleVariants}
+                  >
+                    Membership
+                  </motion.p>
+                  <motion.p
+                    className="mt-6 max-w-2xl mx-auto text-center text-lg sm:text-xl md:text-2xl text-gray-600"
+                    variants={itemVariants}
+                  >
+                    Join our exclusive community of high achieving individuals and experience the transformative power of luxury wellness travel.
+                  </motion.p>
+                  <motion.div
+                    className="mt-10 sm:mt-16 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
+                    variants={containerVariants}
+                  >
+                    <motion.div
+                      className="w-full max-w-sm mx-auto rounded-lg shadow-lg relative overflow-hidden"
+                      variants={itemVariants}
+                      style={{ backgroundImage: `url(${ResortOne})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                    >
+                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
+                      <div className="relative p-6 text-white">
+                        <h1 className="text-xl font-semibold mb-2 bricolage-grotesque text-secondary">Royal Membership</h1>
+                        <p className="text-white/90 text-sm">
+                          Begin your journey with Eden Oceans through our Royal Membership, designed for individuals who are just starting to explore a world of wellness and lifestyle refinement. Enjoy curated experiences, exclusive access, and foundational privileges that open the door to something greater.
+                        </p>
+                        <div className="mt-4 flex justify-center">
+                          <motion.button
+                            className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
+                            variants={buttonVariants}
+                            whileHover="hover"
+                            whileTap="tap"
+                          >
+                            Join Royal
+                          </motion.button>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    <motion.div
+                      className="w-full max-w-sm mx-auto rounded-lg shadow-lg relative overflow-hidden"
+                      variants={itemVariants}
+                      style={{ backgroundImage: `url(${ResortTwo})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                    >
+                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
+                      <div className="relative p-6 text-white">
+                        <h1 className="text-xl font-semibold mb-2 bricolage-grotesque text-secondary">Premium Membership</h1>
+                        <p className="text-white/90 text-sm">
+                          The Premium Membership is for those ready to embrace a richer journey. With access to immersive wellness escapes, premium experiences across Nigeria, and invitations to members-only empowerment events, you’ll step deeper into the Eden Oceans lifestyle.
+                        </p>
+                        <div className="mt-4 flex justify-center">
+                          <motion.button
+                            className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
+                            variants={buttonVariants}
+                            whileHover="hover"
+                            whileTap="tap"
+                          >
+                            Join Premium
+                          </motion.button>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    <motion.div
+                      className="w-full max-w-sm mx-auto rounded-lg shadow-lg relative overflow-hidden"
+                      variants={itemVariants}
+                      style={{ backgroundImage: `url(${ResortThree})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                    >
+                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
+                      <div className="relative p-6 text-white">
+                        <h1 className="text-xl font-semibold mb-2 bricolage-grotesque text-secondary">Elite Membership</h1>
+                        <p className="text-white/90 text-sm">
+                          Our Elite Membership is reserved for those who demand the best. Gain VIP access to international retreats, private yacht cruises, luxury spa escapes, and personalized wellness planning. This is your all-access pass to the most exclusive offerings Eden Oceans has to offer.
+                        </p>
+                        <div className="mt-4 flex justify-center">
+                          <motion.button
+                            className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
+                            variants={buttonVariants}
+                            whileHover="hover"
+                            whileTap="tap"
+                          >
+                            Join Elite
+                          </motion.button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </section>
+
+
+          <section id="faq" className="">
+            <motion.div
+              className="container mx-auto px-4 sm:px-6 lg:px-8 py-24"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.h2
+                className="text-4xl font-semibold text-center text-primary mb-8 bricolage-grotesque"
+                variants={titleVariants}
+              >
+                Frequently Asked Questions
+              </motion.h2>
+
+              <div className="max-w-3xl mx-auto">
+                {Faqs.map((faq, index) => (
+                  <motion.div
+                    key={index}
+                    className="mb-6 border-b border-gray-200 pb-4"
+                    variants={itemVariants}
+                  >
+                    <h3 className="text-lg font-semibold text-secondary mb-2">{faq.question}</h3>
+                    <p className="text-gray-600">{faq.answer}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
           </section>
 
         </div>
