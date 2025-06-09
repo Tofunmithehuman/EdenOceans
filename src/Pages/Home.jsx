@@ -381,6 +381,46 @@ function Home() {
                 coaching, and spiritual alignment, we guide our members toward vitality, joy, and meaningful
                 connection in destinations like Phuket, Seychelles, and beyond.”
               </motion.p>
+
+              <motion.h2
+                className="text-2xl md:text-3xl lg:text-4xl text-left text-secondary font-semibold mb-2 bricolage-grotesque"
+                variants={titleVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                Mission
+              </motion.h2>
+
+              <motion.p
+                className="text-lg sm:text-xl md:text-2xl text-left text-primary/70 mb-8 max-w-2xl bricolage-grotesque text-pretty font-medium"
+                variants={itemVariants}
+              >
+                “We curate transformative wellness journeys that blend elite hospitality, strong social support systems,
+                personalized wellness programs, lifestyle coaching and seamless concierge services, with home care, and travel to selected 5
+                star resorts across the world. Through global partnerships with world-class resorts and wellness experts, we offer our
+                members access to premium retreats, & home wellness programs, designed to elevate physical vitality, mental clarity,
+                emotional balance, and soulful living”
+              </motion.p>
+
+
+              <motion.h2
+                className="text-2xl md:text-3xl lg:text-4xl text-left text-secondary font-semibold mb-2 bricolage-grotesque"
+                variants={titleVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                Vision
+              </motion.h2>
+
+
+              <motion.p
+                className="text-lg sm:text-xl md:text-2xl text-left text-primary/70 mb-8 max-w-2xl bricolage-grotesque text-pretty font-medium"
+                variants={itemVariants}
+              >
+                “To be the world's most exclusive integrated wellness club, empowering high-achieving individuals to experience
+                holistic rejuvenation, relaxation, restoration and life style transformation at the finest luxury destinations across the globe”
+              </motion.p>
+
             </div>
 
             <div>
@@ -825,7 +865,7 @@ function Home() {
 
                     <motion.div variants={sectionVariants}>
                       <h1 className="bricolage-grotesque font-semibold text-2xl mb-5">
-                       Contact
+                        Contact
                       </h1>
                       <nav className="flex flex-col gap-3">
                         <motion.div variants={itemVariants}>
