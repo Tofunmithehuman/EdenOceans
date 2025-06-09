@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Logo from "../assets/Logo.jpeg";
+import Logo from "../assets/Logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 function Navigation() {
@@ -79,7 +79,7 @@ function Navigation() {
             <div className="bg-primary border-b border-black/10 fixed top-0 left-0 right-0 z-50">
                 <header className="p-3 sm:p-4 flex justify-between items-center max-w-screen-2xl mx-auto">
                     <nav>
-                        <a href="/" className="font-semibold flex flex-row-reverse items-center text-xl text-white bricolage-grotesque">
+                        <a href="/" className="font-semibold flex flex-row-reverse gap-1 items-center text-xl text-white bricolage-grotesque">
                             <div> Eden<span className="text-secondary">Oceans</span></div>
                             <img src={Logo} width={40} alt="EdenOceans Logo" />
                         </a>

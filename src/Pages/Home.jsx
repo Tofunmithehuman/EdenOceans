@@ -256,7 +256,7 @@ function Home() {
                     className="bricolage-grotesque text-left sm:text-center text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-6 sm:mt-8 md:mt-10 text-pretty leading-tight sm:leading-snug md:leading-relaxed lg:leading-20 font-semibold text-white"
                     variants={titleVariants}
                   >
-                    Luxury wellness {" "}
+                    Signature wellness {" "}
                     <motion.span
                       className="text-secondary"
                       initial={{ opacity: 0, x: -20 }}
@@ -918,7 +918,13 @@ function Home() {
                     </motion.div>
                   </motion.div>
 
-                  <div className="border-t border-[#DDF48C] my-8"></div>
+                  <div className="border-t border-secondary my-8"></div>
+
+                  <p className="mb-4">
+                    Mulliner Towers <br />
+                    39 Alfred Rewane Road <br />
+                    Ikoyi, Lagos, Nigeria <br />
+                  </p>
 
                   <div className="pb-8">
                     <nav className="flex flex-col md:flex-row md:items-center gap-4">
