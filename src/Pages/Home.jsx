@@ -301,7 +301,7 @@ function Home() {
                       transition={{ delay: 0.1 }}
                       className="w-full sm:w-auto"
                     >
-                      <button className="text-center w-full bg-transparent border-2 border-white py-3 px-6 rounded-md text-white block font-medium hover:bg-white hover:text-primary transition-colors"
+                      <button className="text-center w-full bg-transparent cursor-pointer border-2 border-white py-3 px-6 rounded-md text-white block font-medium hover:bg-white hover:text-primary transition-colors"
                         onClick={() => scrollToSection("gallery-section")}>
                         Explore Destinations
                       </button>
