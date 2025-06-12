@@ -635,7 +635,7 @@ function Home() {
                         transition={{ duration: 0.3 }}
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                        <p className="text-white text-lg font-semibold p-4">Tailand</p>
+                        <p className="text-white text-lg font-semibold p-4">Thailand</p>
                       </div>
                     </motion.div>
                     <motion.div
