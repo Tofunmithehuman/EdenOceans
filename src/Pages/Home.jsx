@@ -753,7 +753,8 @@ function Home() {
                             variants={buttonVariants}
                             whileHover="hover"
                             whileTap="tap"
-                            href="//forms.gle/XBvV5eDxgmgGksL58"
+                            href="https://forms.gle/XBvV5eDxgmgGksL58"
+                            rel="noopener noreferrer"
                             target="_blank"
                           >
                             Apply Now
