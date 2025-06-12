@@ -3,10 +3,10 @@ import { Link } from "react-router-dom"
 import Beach from "../assets/beach.jpg"
 import BeachOne from "../assets/beach01.jpg"
 import BeachTwo from "../assets/beach02.jpg"
-import Wellness from "../assets/wellness.jpg"
+import Wellness from "../assets/wellness.jpeg"
 import safari from "../assets/safari.jpg"
-import Boat from "../assets/boat.jpg"
-import Club from "../assets/club.jpg"
+import Boat from "../assets/boat.jpeg"
+import Concierge from "../assets/Concierge.jpeg"
 import ResortOne from "../assets/resort01.jpg"
 import ResortTwo from "../assets/resort02.jpg"
 import ResortThree from "../assets/resort03.jpg"
@@ -193,7 +193,7 @@ function Home() {
     },
     {
       question: "Faith Component",
-      answer: "“Our faith based empowerment programs are optional and designed to support spiritual growth for those who seek it",
+      answer: "Our faith based empowerment programs are optional and designed to support spiritual growth for those who seek it",
     }
   ];
 
@@ -508,7 +508,7 @@ function Home() {
                         <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
                           Safari & Wellness Journeys
                         </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-30">
+                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-40">
                           Enjoy unique and captivating experiences in Kenya, Rawanda and Tanzania, combining
                           safaris with wellness retreats for a transformative and rejuvenating adventure.
                         </p>
@@ -527,16 +527,15 @@ function Home() {
                     >
                       <div className="p-3">
                         <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
-                          Red Carpet Event Access
+                          High-Value Concierge Services
                         </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-30">
-                          Book Clubs, Game Nights, Dance, Painting and Cooking Classes, and more,
-                          fostering creativity and connection, often hosted at luxury resorts in destinations like Dubai.
+                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-40">
+                         We offer personalized services such as bridal shopping assistance, event planning support, airport protocol services, professional airport pickups and drop-offs, and international escort services for persons with disabilities.
                         </p>
                       </div>
                       <motion.img
                         className="w-full rounded-b-lg"
-                        src={Club}
+                        src={Concierge}
                         alt="Exclusive Events"
                         variants={serviceImageVariants}
                       />
