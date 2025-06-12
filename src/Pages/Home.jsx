@@ -6,6 +6,9 @@ import BeachTwo from "../assets/beach02.jpg"
 import Wellness from "../assets/wellness.jpeg"
 import safari from "../assets/safari.jpg"
 import Boat from "../assets/boat.jpeg"
+import Tems from "../assets/tems.jpeg"
+import ceoOne from "../assets/ceoOne.jpeg"
+import ceoTwo from "../assets/ceoTwo.jpeg"
 import Concierge from "../assets/Concierge.jpeg"
 import ResortOne from "../assets/resort01.jpg"
 import ResortTwo from "../assets/resort02.jpg"
@@ -199,16 +202,16 @@ function Home() {
 
   const people = [
     {
-      name: 'Leslie Alexander',
-      role: 'Co-Founder / CEO',
+      name: 'Olasimbo Davison',
+      role: 'Director of Travel & Lifestyle Management',
       imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        ceoOne
     },
     {
-      name: 'Leslie Alexander',
-      role: 'Co-Founder / CEO',
+      name: 'Nene Aderibigbe',
+      role: 'Director of Home service and VIP Events',
       imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        ceoTwo
     }
     // More people...
   ]
@@ -239,7 +242,7 @@ function Home() {
                 />
               </AnimatePresence>
               {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-black/70 sm:bg-black/80 backdrop-blur-[0.5px] sm:backdrop-blur-[1px]" />
+              <div className="absolute inset-0 bg-black/60 sm:bg-black/60 backdrop-blur-[0.5px] sm:backdrop-blur-[1px]" />
             </div>
 
             {/* Content */}
@@ -373,12 +376,12 @@ function Home() {
           <section id="about-section" className="px-4 py-20 md:py-20 lg:py-24 max-w-screen-xl mx-auto">
             <div>
               <motion.h2
-                className="text-4xl md:text-5xl lg:text-6xl text-left text-primary font-semibold mb-3 md:mb-6 bricolage-grotesque"
+                className="text-4xl md:text-5xl lg:text-6xl text-left text-primary font-semibold mb-2 md:mb-4 bricolage-grotesque"
                 variants={titleVariants}
                 initial="hidden"
                 animate="visible"
               >
-                Who We Are
+                Who we are
               </motion.h2>
 
               <motion.p
@@ -392,7 +395,7 @@ function Home() {
 
 
               <motion.h2
-                className="text-3xl lg:text-4xl text-left text-amber-300 font-semibold mb-2 bricolage-grotesque"
+                className="text-3xl lg:text-4xl text-left text-primary font-semibold mb-2 bricolage-grotesque"
                 variants={titleVariants}
                 initial="hidden"
                 animate="visible"
@@ -413,7 +416,7 @@ function Home() {
 
             <div>
               <div>
-                <h1 className="text-2xl md:text-3xl lg:text-4xl text-left text-amber-300 font-semibold mb-3 bricolage-grotesque">Core Values</h1>
+                <h1 className="text-2xl md:text-3xl lg:text-4xl text-left text-primary font-semibold mb-3 bricolage-grotesque">Core Values</h1>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   <div className="bg-secondary/30 p-6 rounded-lg border-2 border-slate-100">
@@ -460,21 +463,21 @@ function Home() {
                     className="mt-10 p-6 grid gap-8 sm:mt-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 lg:grid-rows-2 max-w-7xl mx-auto"
                     variants={containerVariants}
                   >
+
                     <motion.div
                       className="rounded-lg shadow overflow-hidden"
                       variants={itemVariants}
                     >
                       <div className="p-3">
                         <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
-                          Ocean Cruises
+                          Red Carpet Event Access
                         </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-40">
-                          Enjoy the best of private, adults-only 5-star cruises around the world including European cruises, Asian cruises visiting Singapore, South Korea, Thailand, Malaysia, and Japan, and Caribbean cruises to popular Caribbean destinations and private island resorts.
-                        </p>
+                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-50 md:h-45">
+                          At EdenOceans we facilitate access to Celebrity red carpet events including award nights, musical shows, film premieres and international festivals. We also organize members’ red carpet events including Dinner & Dance events, music nights, theatrical performances, Black tie ballroom events and much more.</p>
                       </div>
                       <motion.img
                         className="w-full rounded-b-lg"
-                        src={Boat}
+                        src={Tems}
                         alt="Boat Cruise"
                         variants={serviceImageVariants}
                       />
@@ -488,7 +491,7 @@ function Home() {
                         <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
                           Advanced Wellness and Lifestyle Management
                         </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-40">
+                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center  h-50 md:h-45">
                           Experience the beauty and transformative power of our advanced wellness options including complete Home SPAs, specialist wellness evaluations, full makeover retreats, international telemedicine consultations, life coaching, and global wellness retreats.
                         </p>
                       </div>
@@ -508,8 +511,8 @@ function Home() {
                         <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
                           Safari & Wellness Journeys
                         </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-40">
-                          Enjoy unique and captivating experiences in Kenya, Rawanda and Tanzania, combining
+                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center  h-50 md:h-45 ">
+                          Enjoy unique and captivating experiences in Kenya, Rwanda and Tanzania, combining
                           safaris with wellness retreats for a transformative and rejuvenating adventure.
                         </p>
                       </div>
@@ -517,6 +520,27 @@ function Home() {
                         className="w-full rounded-b-lg"
                         src={safari}
                         alt="Safari & Wellness Journeys"
+                        variants={serviceImageVariants}
+                      />
+                    </motion.div>
+
+
+                    <motion.div
+                      className="rounded-lg shadow overflow-hidden"
+                      variants={itemVariants}
+                    >
+                      <div className="p-3">
+                        <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
+                          Ocean Cruises
+                        </p>
+                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center  h-50 md:h-45 ">
+                          Enjoy the best of private, adults-only 5-star cruises around the world including European cruises, Asian cruises visiting Singapore, South Korea, Thailand, Malaysia, and Japan, and Caribbean cruises to popular Caribbean destinations and private island resorts.
+                        </p>
+                      </div>
+                      <motion.img
+                        className="w-full rounded-b-lg"
+                        src={Boat}
+                        alt="Boat Cruise"
                         variants={serviceImageVariants}
                       />
                     </motion.div>
@@ -529,8 +553,8 @@ function Home() {
                         <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
                           High-Value Concierge Services
                         </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-40">
-                         We offer personalized services such as bridal shopping assistance, event planning support, airport protocol services, professional airport pickups and drop-offs, and international escort services for persons with disabilities.
+                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-65 md:h-50 text-pretty">
+                          EdenOceans offers personalized, added-value concierge services such as bridal shopping assistance in any country of your choice, event planning support in any country of your choice, airport protocol services, business and professional airport pickups and drop-offs in Nigeria, Europe, and other travel destinations, and international escort services for seniors or persons with disabilities.
                         </p>
                       </div>
                       <motion.img
@@ -579,7 +603,7 @@ function Home() {
                         transition={{ duration: 0.3 }}
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                        <p className="text-white text-lg font-semibold p-4">Maldives</p>
+                        <p className="text-white text-lg font-semibold p-4">Dubai</p>
                       </div>
                     </motion.div>
                     <motion.div
@@ -595,7 +619,7 @@ function Home() {
                         transition={{ duration: 0.3 }}
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                        <p className="text-white text-lg font-semibold p-4">Dubai</p>
+                        <p className="text-white text-lg font-semibold p-4">Barbados</p>
                       </div>
                     </motion.div>
                     <motion.div
@@ -611,7 +635,7 @@ function Home() {
                         transition={{ duration: 0.3 }}
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                        <p className="text-white text-lg font-semibold p-4">Bali</p>
+                        <p className="text-white text-lg font-semibold p-4">Tailand</p>
                       </div>
                     </motion.div>
                     <motion.div
@@ -627,7 +651,7 @@ function Home() {
                         transition={{ duration: 0.3 }}
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                        <p className="text-white text-lg font-semibold p-4">Santorini</p>
+                        <p className="text-white text-lg font-semibold p-4">Spain</p>
                       </div>
                     </motion.div>
                     <motion.div
@@ -659,7 +683,7 @@ function Home() {
                         transition={{ duration: 0.3 }}
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                        <p className="text-white text-lg font-semibold p-4">Caribbean</p>
+                        <p className="text-white text-lg font-semibold p-4">Mauritius</p>
                       </div>
                     </motion.div>
                     <motion.div
@@ -830,7 +854,7 @@ function Home() {
                   <motion.h2 className="text-3xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl"
                     variants={titleVariants}
                   >
-                    Meet our directors and team
+                    Meet our Directors and team
                   </motion.h2>
                   <motion.p className="mt-6 text-lg/8 text-gray-600"
                     variants={titleVariants}>
@@ -855,8 +879,8 @@ function Home() {
             </motion.div>
           </section>
 
-          <section className="contact-section" ref={contactRef}>
-            <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+          <section id="contact-section" className="contact-section" ref={contactRef}>
+            <motion.div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8" variants={containerVariants}>
               <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
                 <div
                   className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
@@ -987,7 +1011,7 @@ function Home() {
                   </button>
                 </div>
               </form>
-            </div>
+            </motion.div>
           </section>
 
 
@@ -1007,7 +1031,7 @@ function Home() {
 
                     <motion.div variants={sectionVariants}>
                       <h1 className="bricolage-grotesque font-semibold text-2xl mb-5">
-                        Contact
+                        Socials
                       </h1>
                       <nav className="flex flex-col gap-3">
                         <motion.div variants={itemVariants}>
