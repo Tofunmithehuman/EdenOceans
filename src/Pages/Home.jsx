@@ -17,6 +17,9 @@ import ResortFour from "../assets/resort04.jpeg"
 import ResortFive from "../assets/resort05.jpg"
 import ResortSix from "../assets/resort06.jpeg"
 import ResortSeven from "../assets/resort07.jpg"
+import memberOne from "../assets/member01.jpg"
+import memberTwo from "../assets/member02.jpg"
+import memberThree from "../assets/member03.jpg"
 import { useEffect, useState, useRef } from "react"
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from "framer-motion"
 
@@ -728,7 +731,7 @@ function Home() {
                     className="mt-6 max-w-2xl mx-auto text-center text-lg sm:text-xl md:text-2xl text-gray-600"
                     variants={itemVariants}
                   >
-                    Join our exclusive community of high achieving individuals and experience the transformative power of luxury wellness travel.
+                    At EdenOceans  we welcome interested women of like minds  who love to network, and prioritize : personal growth, physical, emotional & spiritual wellness, social impact, purposeful  travel, and lifestyle transformation. Whatever your needs are, We have three membership tiers you can select from.
                   </motion.p>
                   <motion.div
                     className="mt-10 sm:mt-16 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
@@ -737,14 +740,13 @@ function Home() {
                     <motion.div
                       className="w-full max-w-sm mx-auto rounded-lg shadow-lg relative overflow-hidden"
                       variants={itemVariants}
-                      style={{ backgroundImage: `url(${ResortOne})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                      style={{ backgroundImage: `url(${memberOne})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                     >
                       <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
                       <div className="relative p-6 text-white">
                         <h1 className="text-xl font-semibold mb-2 bricolage-grotesque text-secondary">Royal Membership</h1>
-                        <p className="text-white/90 text-sm">
-                          Begin your journey with Eden Oceans through our Royal Membership, designed for individuals who are just starting to explore a world of wellness and lifestyle refinement. Enjoy curated experiences, exclusive access, and foundational privileges that open the door to something greater.
-                        </p>
+                        <p className="text-white/90 text-sm h-50">
+                          Royal Membership is designed for young women 21-49 who are ready to discover or enhance purposeful living,  and secure and build meaningful social and community connections to thrive and prosper, using their new strengths, gifts, skills and  talents. At EdenOceans our vision for Royal members is to stimulate self-discovery and improve skills in the area of show business, music, movie production, acting, performing arts and other non traditional career paths.                        </p>
                         <div className="mt-4 flex justify-center">
                           <motion.button
                             className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
@@ -753,7 +755,7 @@ function Home() {
                             whileTap="tap"
                             onClick={() => scrollToSection("contact-section")}
                           >
-                            Join Royal
+                            Apply Now
                           </motion.button>
                         </div>
                       </div>
@@ -762,14 +764,13 @@ function Home() {
                     <motion.div
                       className="w-full max-w-sm mx-auto rounded-lg shadow-lg relative overflow-hidden"
                       variants={itemVariants}
-                      style={{ backgroundImage: `url(${ResortTwo})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                      style={{ backgroundImage: `url(${memberTwo})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                     >
                       <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
                       <div className="relative p-6 text-white">
                         <h1 className="text-xl font-semibold mb-2 bricolage-grotesque text-secondary">Premium Membership</h1>
-                        <p className="text-white/90 text-sm">
-                          The Premium Membership is for those ready to embrace a richer journey. With access to immersive wellness escapes, premium experiences across Nigeria, and invitations to members-only empowerment events, you’ll step deeper into the Eden Oceans lifestyle.
-                        </p>
+                        <p className="text-white/90 text-sm h-50">
+                          Premium membership is a best fit for women aged 35-50 who are mid career and keen to: embrace optimal health and wellness, launch & scale their businesses, or explore strategic decisions, relationships and personal development needs through upscale local & international retreats. Premium members can also build valuable new social connections and  partnerships through our exclusive red carpet events.                        </p>
                         <div className="mt-4 flex justify-center">
                           <motion.button
                             className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
@@ -778,7 +779,7 @@ function Home() {
                             whileTap="tap"
                             onClick={() => scrollToSection("contact-section")}
                           >
-                            Join Premium
+                            Apply Now
                           </motion.button>
                         </div>
                       </div>
@@ -787,14 +788,13 @@ function Home() {
                     <motion.div
                       className="w-full max-w-sm mx-auto rounded-lg shadow-lg relative overflow-hidden"
                       variants={itemVariants}
-                      style={{ backgroundImage: `url(${ResortThree})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                      style={{ backgroundImage: `url(${memberThree})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                     >
                       <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
                       <div className="relative p-6 text-white">
                         <h1 className="text-xl font-semibold mb-2 bricolage-grotesque text-secondary">Elite Membership</h1>
-                        <p className="text-white/90 text-sm">
-                          Our Elite Membership is reserved for those who demand the best. Gain VIP access to international retreats, private yacht cruises, luxury spa escapes, and personalized wellness planning. This is your all-access pass to the most exclusive offerings Eden Oceans has to offer.
-                        </p>
+                        <p className="text-white/90 text-sm h-50">
+                          Elite Membership is the best choice for you if you are 40 years or older, at the peak of your career, or expanding your business,  but seeking a more meaningful lifestyle, new  networking opportunities, optimal wellness, exciting travel retreats, social or community impact, or an advanced leadership role.                        </p>
                         <div className="mt-4 flex justify-center">
                           <motion.button
                             className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
@@ -803,7 +803,7 @@ function Home() {
                             whileTap="tap"
                             onClick={() => scrollToSection("contact-section")}
                           >
-                            Join Elite
+                            Apply Now
                           </motion.button>
                         </div>
                       </div>
