@@ -748,7 +748,7 @@ function Home() {
                         <p className="text-white/90 text-sm h-50">
                           Royal Membership is designed for young women 21-49 who are ready to discover or enhance purposeful living,  and secure and build meaningful social and community connections to thrive and prosper, using their new strengths, gifts, skills and  talents. At EdenOceans our vision for Royal members is to stimulate self-discovery and improve skills in the area of show business, music, movie production, acting, performing arts and other non traditional career paths.                        </p>
                         <div className="mt-4 flex justify-center">
-                          <motion.Link
+                          <motion.a
                             className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
                             variants={buttonVariants}
                             whileHover="hover"
@@ -757,7 +757,7 @@ function Home() {
                             target="_blank"
                           >
                             Apply Now
-                          </motion.Link>
+                          </motion.a>
                         </div>
                       </div>
                     </motion.div>
