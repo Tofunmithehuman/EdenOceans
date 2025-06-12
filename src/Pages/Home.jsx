@@ -1004,8 +1004,8 @@ function Home() {
                 </div>
                 <div className="mt-10">
                   <button
-                    type="submit"
-                    className="block w-full rounded-md bg-primary px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    type="reset"
+                    className="block w-full cursor-pointer rounded-md bg-primary px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                   >
                     Let's talk
                   </button>
