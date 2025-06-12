@@ -205,14 +205,14 @@ function Home() {
 
   const people = [
     {
-      name: 'Olasimbo Davison',
+      name: 'Dr Olasimbo Davidson',
       role: 'Director of Travel & Lifestyle Management',
       imageUrl:
         ceoOne
     },
     {
-      name: 'Nene Aderibigbe',
-      role: 'Director of Home service and VIP Events',
+      name: 'Mrs Nene Aderibigbe',
+      role: 'Director of Home services and VIP Events',
       imageUrl:
         ceoTwo
     }
@@ -861,8 +861,7 @@ function Home() {
                   </motion.h2>
                   <motion.p className="mt-6 text-lg/8 text-gray-600"
                     variants={titleVariants}>
-                    We’re a dynamic group of individuals who are passionate about what we do and dedicated to delivering the
-                    best results for our clients.
+                    We are a dynamic group of women and celebrity Mums who are passionate about what we do. We are dedicated to uplifting other high achieving women and supporting their journey to wellness and success.
                   </motion.p>
                 </div>
                 <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
