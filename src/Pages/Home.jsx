@@ -751,6 +751,7 @@ function Home() {
                             variants={buttonVariants}
                             whileHover="hover"
                             whileTap="tap"
+                            onClick={() => scrollToSection("contact-section")}
                           >
                             Join Royal
                           </motion.button>
@@ -775,6 +776,7 @@ function Home() {
                             variants={buttonVariants}
                             whileHover="hover"
                             whileTap="tap"
+                            onClick={() => scrollToSection("contact-section")}
                           >
                             Join Premium
                           </motion.button>
@@ -799,6 +801,7 @@ function Home() {
                             variants={buttonVariants}
                             whileHover="hover"
                             whileTap="tap"
+                            onClick={() => scrollToSection("contact-section")}
                           >
                             Join Elite
                           </motion.button>
