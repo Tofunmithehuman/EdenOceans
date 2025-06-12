@@ -774,15 +774,17 @@ function Home() {
                         <p className="text-white/90 text-sm h-50">
                           Premium membership is a best fit for women aged 35-50 who are mid career and keen to: embrace optimal health and wellness, launch & scale their businesses, or explore strategic decisions, relationships and personal development needs through upscale local & international retreats. Premium members can also build valuable new social connections and  partnerships through our exclusive red carpet events.                        </p>
                         <div className="mt-4 flex justify-center">
-                          <motion.button
+                          <motion.a
                             className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
                             variants={buttonVariants}
                             whileHover="hover"
                             whileTap="tap"
-                            onClick={() => scrollToSection("contact-section")}
+                            href="https://forms.gle/XBvV5eDxgmgGksL58"
+                            rel="noopener noreferrer"
+                            target="_blank"
                           >
                             Apply Now
-                          </motion.button>
+                          </motion.a>
                         </div>
                       </div>
                     </motion.div>
@@ -798,15 +800,17 @@ function Home() {
                         <p className="text-white/90 text-sm h-50">
                           Elite Membership is the best choice for you if you are 40 years or older, at the peak of your career, or expanding your business,  but seeking a more meaningful lifestyle, new  networking opportunities, optimal wellness, exciting travel retreats, social or community impact, or an advanced leadership role.                        </p>
                         <div className="mt-4 flex justify-center">
-                          <motion.button
+                          <motion.a
                             className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
                             variants={buttonVariants}
                             whileHover="hover"
                             whileTap="tap"
-                            onClick={() => scrollToSection("contact-section")}
+                            href="https://forms.gle/XBvV5eDxgmgGksL58"
+                            rel="noopener noreferrer"
+                            target="_blank"
                           >
                             Apply Now
-                          </motion.button>
+                          </motion.a>
                         </div>
                       </div>
                     </motion.div>
