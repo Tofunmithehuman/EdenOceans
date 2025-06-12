@@ -568,95 +568,116 @@ function Home() {
                     variants={containerVariants}
                   >
                     <motion.div
-                      className="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 rounded-lg shadow overflow-hidden"
+                      className="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 rounded-lg shadow overflow-hidden relative"
                       variants={itemVariants}
                     >
                       <motion.img
                         className="w-full h-full object-cover"
                         src={ResortOne}
-                        alt="Beach Scene"
+                        alt="Maldives Beach Scene"
                         variants={galleryImageVariants}
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.3 }}
                       />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
+                        <p className="text-white text-lg font-semibold p-4">Maldives</p>
+                      </div>
                     </motion.div>
                     <motion.div
-                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden"
+                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden relative"
                       variants={itemVariants}
                     >
                       <motion.img
                         className="w-full h-full object-cover"
                         src={ResortTwo}
-                        alt="Beach View"
+                        alt="Dubai Beach View"
                         variants={galleryImageVariants}
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.3 }}
                       />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
+                        <p className="text-white text-lg font-semibold p-4">Dubai</p>
+                      </div>
                     </motion.div>
                     <motion.div
-                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden"
+                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden relative"
                       variants={itemVariants}
                     >
                       <motion.img
                         className="w-full h-full object-cover"
                         src={ResortThree}
-                        alt="Coastal Landscape"
+                        alt="Bali Coastal Landscape"
                         variants={galleryImageVariants}
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.3 }}
                       />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
+                        <p className="text-white text-lg font-semibold p-4">Bali</p>
+                      </div>
                     </motion.div>
                     <motion.div
-                      className="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 rounded-lg shadow overflow-hidden"
+                      className="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 rounded-lg shadow overflow-hidden relative"
                       variants={itemVariants}
                     >
                       <motion.img
                         className="w-full h-full object-cover"
                         src={ResortFour}
-                        alt="Wellness Retreat"
+                        alt="Santorini Wellness Retreat"
                         variants={galleryImageVariants}
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.3 }}
                       />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
+                        <p className="text-white text-lg font-semibold p-4">Santorini</p>
+                      </div>
                     </motion.div>
                     <motion.div
-                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden"
+                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden relative"
                       variants={itemVariants}
                     >
                       <motion.img
                         className="w-full h-full object-cover"
                         src={ResortFive}
-                        alt="Safari Journey"
+                        alt="Kenya Safari Journey"
                         variants={galleryImageVariants}
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.3 }}
                       />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
+                        <p className="text-white text-lg font-semibold p-4">Kenya</p>
+                      </div>
                     </motion.div>
                     <motion.div
-                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden"
+                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden relative"
                       variants={itemVariants}
                     >
                       <motion.img
                         className="w-full h-full object-cover"
                         src={ResortSix}
-                        alt="Ocean Cruise"
+                        alt="Caribbean Ocean Cruise"
                         variants={galleryImageVariants}
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.3 }}
                       />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
+                        <p className="text-white text-lg font-semibold p-4">Caribbean</p>
+                      </div>
                     </motion.div>
                     <motion.div
-                      className="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 rounded-lg shadow overflow-hidden"
+                      className="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 rounded-lg shadow overflow-hidden relative"
                       variants={itemVariants}
                     >
                       <motion.img
                         className="w-full h-full object-cover"
                         src={ResortSeven}
-                        alt="Exclusive Event"
+                        alt="Paris Exclusive Event"
                         variants={galleryImageVariants}
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.3 }}
                       />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
+                        <p className="text-white text-lg font-semibold p-4">Paris</p>
+                      </div>
                     </motion.div>
                   </motion.div>
                 </div>
