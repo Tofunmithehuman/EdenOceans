@@ -10,12 +10,12 @@ import Tems from "../assets/tems.jpeg"
 import ceoOne from "../assets/ceoOne.jpeg"
 import ceoTwo from "../assets/ceoTwo.jpeg"
 import Concierge from "../assets/Concierge.jpeg"
-import ResortOne from "../assets/resort01.jpg"
+import ResortOne from "../assets/resort01.jpeg"
 import ResortTwo from "../assets/resort02.jpg"
-import ResortThree from "../assets/resort03.jpg"
-import ResortFour from "../assets/resort04.jpg"
+import ResortThree from "../assets/resort03.jpeg"
+import ResortFour from "../assets/resort04.jpeg"
 import ResortFive from "../assets/resort05.jpg"
-import ResortSix from "../assets/resort06.jpg"
+import ResortSix from "../assets/resort06.jpeg"
 import ResortSeven from "../assets/resort07.jpg"
 import { useEffect, useState, useRef } from "react"
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from "framer-motion"
@@ -509,7 +509,7 @@ function Home() {
                     >
                       <div className="p-3">
                         <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
-                          Safari & Wellness Journeys
+                          Safari Retreats
                         </p>
                         <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center  h-50 md:h-45 ">
                           Enjoy unique and captivating experiences in Kenya, Rwanda and Tanzania, combining
@@ -667,7 +667,7 @@ function Home() {
                         transition={{ duration: 0.3 }}
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                        <p className="text-white text-lg font-semibold p-4">Kenya</p>
+                        <p className="text-white text-lg font-semibold p-4">Nigeria</p>
                       </div>
                     </motion.div>
                     <motion.div
