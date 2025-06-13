@@ -21,11 +21,11 @@ import ResortFive from "../assets/resort05.jpg"
 import ResortSix from "../assets/resort06.jpeg"
 import conciergeOne from "../assets/Concierge01.jpg"
 import conciergeTwo from "../assets/Concierge02.jpg"
-import conciergeThree from "../assets/Concierge03.jpg"
+import conciergeThree from "../assets/Concierge03.jpeg"
 import conciergeFour from "../assets/Concierge04.jpg"
 import conciergeFive from "../assets/Concierge05.jpg"
 import conciergeSix from "../assets/Concierge06.jpg"
-import conciergeSeven from "../assets/Concierge07.jpg"
+import conciergeSeven from "../assets/Concierge07.jpeg"
 import galOne from "../assets/gal01.jpeg"
 import galTwo from "../assets/gal02.jpg"
 import galThree from "../assets/gal03.jpg"
@@ -1305,7 +1305,7 @@ function Home() {
                     {duplicatedServices.map((service, index) => (
                       <motion.div
                         key={`${service.id}-${index}`}
-                        className="relative flex-shrink-0 w-80 h-96 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
+                        className="relative flex-shrink-0 w-80 h-96 rounded-sm overflow-hidden shadow-lg group cursor-pointer"
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
