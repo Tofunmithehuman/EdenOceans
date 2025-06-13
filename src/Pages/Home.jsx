@@ -18,10 +18,13 @@ import ResortThree from "../assets/resort03.jpeg"
 import ResortFour from "../assets/resort04.jpeg"
 import ResortFive from "../assets/resort05.jpg"
 import ResortSix from "../assets/resort06.jpeg"
-import ResortSeven from "../assets/resort07.jpg"
-import memberOne from "../assets/member01.jpg"
-import memberTwo from "../assets/member02.jpg"
-import memberThree from "../assets/member03.jpg"
+import conciergeOne from "../assets/Concierge01.jpg"
+import conciergeTwo from "../assets/Concierge02.jpg"
+import conciergeThree from "../assets/Concierge03.jpg"
+import conciergeFour from "../assets/Concierge04.jpg"
+import conciergeFive from "../assets/Concierge05.jpg"
+import conciergeSix from "../assets/Concierge06.jpg"
+import conciergeSeven from "../assets/Concierge07.jpg"
 import whoweare from "../assets/whoweare.jpg"
 import vision from "../assets/vision.jpg"
 import { useEffect, useState, useRef } from "react"
@@ -551,6 +554,64 @@ function Home() {
     }
   ];
 
+  const conciergeServices = [
+    {
+      id: 1,
+      title: "Shopping for you in another country",
+      image: conciergeOne,
+      alt: "International Shopping Service"
+    },
+    {
+      id: 2,
+      title: "Wealth management",
+      image: conciergeTwo,
+      alt: "Wealth Management Services"
+    },
+    {
+      id: 3,
+      title: "Escort services",
+      image: conciergeThree,
+      alt: "Professional Escort Services"
+    },
+    {
+      id: 4,
+      title: "Tour guides and therapists for retreats",
+      image: conciergeFour,
+      alt: "Retreat Support Services"
+    },
+    {
+      id: 5,
+      title: "Event planning support in another country for parties, weddings, birthdays",
+      image: conciergeFive,
+      alt: "International Event Planning"
+    },
+    {
+      id: 6,
+      title: "Airport protocols when members are traveling at their own time",
+      image: conciergeSix,
+      alt: "Airport Protocol Service"
+    },
+    {
+      id: 7,
+      title: "International airport transfers",
+      image: conciergeSeven,
+      alt: "Airport Transfer Service"
+    },
+  ];
+
+  const duplicatedServices = [...conciergeServices, ...conciergeServices];
+
+  useEffect(() => {
+    const preloadConciergeImages = duplicatedServices.map((service) => {
+      const img = new Image();
+      img.src = service.image;
+      return img;
+    });
+    return () => {
+      preloadConciergeImages.forEach((img) => (img.src = ''));
+    };
+  }, []);
+
   const memberships = [
     {
       title: 'Royal Membership',
@@ -682,7 +743,7 @@ function Home() {
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.5 }}
-                >x
+                >
                   <source src={EdenoceansVideo} type="video/mp4" />
                   Your browser does not support the video tag.
                 </motion.video>
@@ -934,7 +995,7 @@ function Home() {
                     >
                       <button
                         className="text-center w-full bg-white cursor-pointer border-2 border-primary py-3 px-6 rounded-md text-primary  block font-medium hover:bg-white hover:text-primary transition-colors"
-                        onClick={() => scrollToSection("membership-section")}
+                        onClick={() => scrollToSection("Concierge")}
                       >
                         Explore Concierge
                       </button>
@@ -1075,107 +1136,155 @@ function Home() {
 
 
           <section id="gallery-section" ref={galleryRef}>
-  <motion.div
-    className="container mx-auto"
-    variants={containerVariants}
-    initial="hidden"
-    animate={isGalleryInView ? "visible" : "hidden"}
-  >
-    <div className="bg-gray-50 py-20">
-      <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-        <motion.p
-          className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque"
-          variants={titleVariants}
-        >
-          Gallery
-        </motion.p>
-        <motion.div
-          className="mt-10 sm:mt-16 grid gap-4 sm:gap-6 
-                     grid-cols-1 
-                     sm:grid-cols-2 sm:grid-rows-3
-                     lg:grid-cols-3 lg:grid-rows-2
-                     h-auto
-                     max-w-7xl mx-auto"
-          variants={containerVariants}
-        >
-          {galleryItems.map((item) => (
             <motion.div
-              key={item.id}
-              className="rounded-lg shadow overflow-hidden relative cursor-pointer min-h-[250px] sm:min-h-[200px] lg:min-h-[300px]"
-              variants={itemVariants}
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.3 }}
+              className="container mx-auto"
+              variants={containerVariants}
+              initial="hidden"
+              animate={isGalleryInView ? "visible" : "hidden"}
             >
-              <motion.img
-                className="w-full h-full object-cover"
-                src={item.src}
-                alt={item.alt}
-                variants={galleryImageVariants}
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-              />
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
-              </div>
-              {/* Always visible location label */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                <p className="text-white text-lg font-semibold p-4">
-                  {item.location}
-                </p>
+              <div className="bg-gray-50 py-20">
+                <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+                  <motion.p
+                    className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque"
+                    variants={titleVariants}
+                  >
+                    Gallery
+                  </motion.p>
+                  <motion.div
+                    className="mt-10 sm:mt-16 grid gap-4 sm:gap-6 
+                    grid-cols-1 
+                    sm:grid-cols-2 sm:grid-rows-3
+                    lg:grid-cols-3 lg:grid-rows-2
+                    h-auto
+                    max-w-7xl mx-auto"
+                    variants={containerVariants}
+                  >
+                    {galleryItems.map((item) => (
+                      <motion.div
+                        key={item.id}
+                        className="rounded-lg shadow overflow-hidden relative cursor-pointer min-h-[250px] sm:min-h-[200px] lg:min-h-[300px]"
+                        variants={itemVariants}
+                        whileHover={{ y: -5 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <motion.img
+                          className="w-full h-full object-cover"
+                          src={item.src}
+                          alt={item.alt}
+                          variants={galleryImageVariants}
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                        {/* Hover overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        {/* Always visible location label */}
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
+                          <p className="text-white text-lg font-semibold p-4">
+                            {item.location}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </div>
-  </motion.div>
-</section>
+          </section>
 
-<section id="social-gallery">
-  <mdiv
-    className="container mx-auto"
-    initial="hidden"  >
-    <div className="bg-gray-50 py-20">
-      <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-        <motion.p
-          className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque"
-          variants={titleVariants}
-        >
-          Social Gallery
-        </motion.p>
-        <motion.div
-          className="mt-10 sm:mt-16 grid gap-4 sm:gap-6 
-                     grid-cols-1 
-                     sm:grid-cols-2 sm:grid-rows-3
-                     lg:grid-cols-3 lg:grid-rows-2
-                     h-auto
-                     max-w-7xl mx-auto"
-          variants={containerVariants}
-        >
-          {galleryItems.map((item) => (
-            <motion.div
-              key={item.id}
-              className="rounded-lg shadow overflow-hidden relative cursor-pointer min-h-[250px] sm:min-h-[200px] lg:min-h-[300px]"
-              variants={itemVariants}
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.img
-                className="w-full h-full object-cover"
-                src={item.src}
-                alt={item.alt}
-                variants={galleryImageVariants}
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-              />
-          
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </div>
-  </mdiv>
-</section>
+          <section id="social-gallery">
+            <div
+              className="container mx-auto"
+              initial="hidden"  >
+              <div className="bg-gray-50 py-20">
+                <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+                  <motion.p
+                    className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque"
+                    variants={titleVariants}
+                  >
+                    Social Gallery
+                  </motion.p>
+                  <motion.div
+                    className="mt-10 sm:mt-16 grid gap-4 sm:gap-6 
+                    grid-cols-1 
+                    sm:grid-cols-2 sm:grid-rows-3
+                    lg:grid-cols-3 lg:grid-rows-2
+                    h-auto
+                    max-w-7xl mx-auto"
+                    variants={containerVariants}
+                  >
+                    {galleryItems.map((item) => (
+                      <motion.div
+                        key={item.id}
+                        className="rounded-lg shadow overflow-hidden relative cursor-pointer min-h-[250px] sm:min-h-[200px] lg:min-h-[300px]"
+                        variants={itemVariants}
+                        whileHover={{ y: -5 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <motion.img
+                          className="w-full h-full object-cover"
+                          src={item.src}
+                          alt={item.alt}
+                          variants={galleryImageVariants}
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="Concierge" className="bg-gray-50 py-20">
+            <div className="container mx-auto">
+              <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+                <motion.h2
+                  className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque mb-16"
+                  variants={titleVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  Concierge Services
+                </motion.h2>
+
+                <div className="relative overflow-hidden">
+                  <div className="concierge-scroll-container flex animate-scroll-left space-x-4">
+                    {duplicatedServices.map((service, index) => (
+                      <motion.div
+                        key={`${service.id}-${index}`}
+                        className="relative flex-shrink-0 w-80 h-96 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: (index % conciergeServices.length) * 0.1 }}
+                        {...(!isMobile && { whileHover: { scale: 1.05 } })}
+                      >
+                        <img
+                          src={service.image}
+                          alt={service.alt}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-6">
+                          <h3 className="text-white text-xl font-bold leading-tight tracking-wide">
+                            {service.title}
+                          </h3>
+                        </div>
+                        {!isMobile && (
+                          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        )}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
 
           <section id="membership-section" ref={membershipRef}>
