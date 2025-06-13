@@ -626,7 +626,7 @@ function Home() {
             </motion.div>
 
             <motion.div variants={containerVariants} initial="hidden" animate="visible">
-              <div className="flex flex-col-reverse md:flex-row items-center gap-6  max-w-screen-xl bg-secondary/30 m-auto mb-10">
+              <div className="flex flex-col-reverse md:flex-row items-center gap-6  max-w-screen-xl bg-secondary/30 m-auto mb-5">
                 <div className="w-full">
                   <motion.img
                     src={vision}
@@ -639,7 +639,7 @@ function Home() {
                   <div className="px-6 py-4">
                     <motion.svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-5 lucide lucide-lightbulb-icon lucide-lightbulb mb-2 text-primary" variants={itemVariants}><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx="12" cy="12" r="3" /></motion.svg>
                     <motion.h1
-                      className="bricolage-grotesque text-2xl lg:text-3xl text-left text-primary font-semibold mb-3"
+                      className="bricolage-grotesque text-2xl lg:text-3xl text-left text-primary font-semibold md:mb-3"
                       variants={titleVariants}
                     >
                       Vision
@@ -672,31 +672,31 @@ function Home() {
 
 
             <div>
-              <div>
-                <h1 className="text-2xl md:text-3xl lg:text-4xl text-left text-primary font-semibold mb-3 bricolage-grotesque">Core Values</h1>
+              <motion.div className="px-4" variants={containerVariants} initial="hidden" animate="visible">
+                {/* <h1 className="text-2xl md:text-3xl lg:text-4xl text-center text-primary font-semibold mb-3 bricolage-grotesque">Core Values</h1> */}
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <div className="bg-secondary/30 p-6 rounded-lg border-2 border-slate-100">
-                    <h1 className="text-lg font-semibold flex items-center gap-2 mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-house-plus-icon lucide-house-plus"><path d="M13.22 2.416a2 2 0 0 0-2.511.057l-7 5.999A2 2 0 0 0 3 10v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7.354" /><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M15 6h6" /><path d="M18 3v6" /></svg>Intentional Living</h1>
-                    <p className="text-base text-black/80 font-medium text-pretty">We believe in living with purpose, presence, and mindfulness.
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+                  <div className="bg-secondary/30 p-6 rounded-sm border-2 border-slate-100">
+                    <motion.h1 className="text-lg font-semibold flex items-center gap-2 mb-2" variants={itemVariants}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-house-plus-icon lucide-house-plus"><path d="M13.22 2.416a2 2 0 0 0-2.511.057l-7 5.999A2 2 0 0 0 3 10v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7.354" /><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M15 6h6" /><path d="M18 3v6" /></svg>Intentional Living</motion.h1>
+                    <motion.p className="text-base text-black/80 font-medium text-pretty" variants={itemVariants}>We believe in living with purpose, presence, and mindfulness.
                       Every experience we curate empowers our members to align their inner wellbeing with their
-                      outer lifestyle.</p>
+                      outer lifestyle.</motion.p>
                   </div>
 
-                  <div className="bg-secondary/30 p-6 rounded-lg border-2 border-slate-100">
-                    <h1 className="text-lg font-semibold flex items-center gap-2 mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-plane-takeoff-icon lucide-plane-takeoff"><path d="M2 22h20" /><path d="M6.36 17.4 4 17l-2-4 1.1-.55a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L8 12 5 6l.9-.45a2 2 0 0 1 2.09.2l4.02 3a2 2 0 0 0 2.1.2l4.19-2.06a2.41 2.41 0 0 1 1.73-.17L21 7a1.4 1.4 0 0 1 .87 1.99l-.38.76c-.23.46-.6.84-1.07 1.08L7.58 17.2a2 2 0 0 1-1.22.18Z" /></svg>Transformational Travel</h1>
-                    <p className="text-base text-black/80 font-medium text-pretty">We view travel not as escape, but as elevation, gateway to
-                      healing, self-discovery, and renewal in the most inspiring places on Earth.</p>
+                  <div className="bg-secondary/30 p-6 rounded-sm border-2 border-slate-100">
+                    <motion.h1 className="text-lg font-semibold flex items-center gap-2 mb-2" variants={itemVariants}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-plane-takeoff-icon lucide-plane-takeoff"><path d="M2 22h20" /><path d="M6.36 17.4 4 17l-2-4 1.1-.55a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L8 12 5 6l.9-.45a2 2 0 0 1 2.09.2l4.02 3a2 2 0 0 0 2.1.2l4.19-2.06a2.41 2.41 0 0 1 1.73-.17L21 7a1.4 1.4 0 0 1 .87 1.99l-.38.76c-.23.46-.6.84-1.07 1.08L7.58 17.2a2 2 0 0 1-1.22.18Z" /></svg>Transformational Travel</motion.h1>
+                    <motion.p className="text-base text-black/80 font-medium text-pretty" variants={itemVariants}>We view travel not as escape, but as elevation, gateway to
+                      healing, self-discovery, and renewal in the most inspiring places on Earth.</motion.p>
                   </div>
 
-                  <div className="bg-secondary/30 p-6 rounded-lg border-2 border-slate-100">
-                    <h1 className="text-lg font-semibold flex items-center gap-2 mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-hand-heart-icon lucide-hand-heart"><path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16" /><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" /><path d="m2 15 6 6" /><path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z" /></svg>Service Excellence</h1>
-                    <p className="text-base text-black/80 font-medium text-pretty">We are uncompromising in our standards. From curated retreats
+                  <div className="bg-secondary/30 p-6 rounded-sm border-2 border-slate-100">
+                    <motion.h1 className="text-lg font-semibold flex items-center gap-2 mb-2" variants={itemVariants}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-hand-heart-icon lucide-hand-heart"><path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16" /><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" /><path d="m2 15 6 6" /><path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z" /></svg>Service Excellence</motion.h1>
+                    <motion.p className="text-base text-black/80 font-medium text-pretty" variants={itemVariants}>We are uncompromising in our standards. From curated retreats
                       to concierge services, every detail is designed to deliver elegance, privacy, and lasting impact.
-                    </p>
+                    </motion.p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </section>
 
