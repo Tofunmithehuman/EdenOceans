@@ -1346,12 +1346,11 @@ function Home() {
                   <motion.h2 className="text-3xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl"
                     variants={titleVariants}
                   >
-                    Meet our Directors and team
+                    Meet our Directors
                   </motion.h2>
                   <motion.p className="mt-6 text-lg/8 text-gray-600"
                     variants={titleVariants}>
-                    We’re a dynamic group of individuals who are passionate about what we do and dedicated to delivering the
-                    best results for our clients.
+                    We are a dynamic group of women and Celebrity Mums who are passionate about what we do. We are dedicated to uplifting other high achieving women to  support their journies to wellness and success.
                   </motion.p>
                 </div>
                 <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
