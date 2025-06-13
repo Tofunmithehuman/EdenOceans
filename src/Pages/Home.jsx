@@ -28,9 +28,13 @@ function Home() {
   const [scrollY, setScrollY] = useState(0)
   const [currentImage, setCurrentImage] = useState(0)
   const [isVideoReady, setIsVideoReady] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [videoLoaded, setVideoLoaded] = useState(false)
+  const [userInteracted, setUserInteracted] = useState(false)
+  
   const images = [Beach, BeachOne, BeachTwo]
   const { scrollYProgress } = useScroll()
-  const videoRef = useRef(null);
+  const videoRef = useRef(null)
   const servicesRef = useRef(null)
   const galleryRef = useRef(null)
   const membershipRef = useRef(null)
@@ -40,6 +44,43 @@ function Home() {
   const isMembershipInView = useInView(membershipRef, { once: false, margin: "-100px" })
   const isContactInView = useInView(contactRef, { once: false, margin: "-100px" })
 
+  // Mobile detection
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      setIsMobile(mobile)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Handle user interaction for mobile autoplay
+  useEffect(() => {
+    const handleFirstInteraction = () => {
+      setUserInteracted(true)
+      if (videoRef.current && isMobile) {
+        // Try to play video immediately on first interaction
+        videoRef.current.play().catch(console.log)
+      }
+    }
+
+    // Listen for multiple interaction types to catch user interaction as early as possible
+    const events = ['touchstart', 'touchend', 'click', 'scroll', 'keydown']
+
+    events.forEach(event => {
+      document.addEventListener(event, handleFirstInteraction, { once: true, passive: true })
+    })
+
+    return () => {
+      events.forEach(event => {
+        document.removeEventListener(event, handleFirstInteraction)
+      })
+    }
+  }, [isMobile])
+
+  // Scroll handler
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY)
@@ -48,6 +89,7 @@ function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Image slideshow
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length)
@@ -55,29 +97,73 @@ function Home() {
     return () => clearInterval(interval)
   }, [images.length])
 
+  // Video initialization with mobile optimization
   useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.play().catch(() => {
-        setIsVideoReady(false);
-      });
+    const video = videoRef.current
+    if (!video) return
+
+    const handleCanPlay = () => {
+      setVideoLoaded(true)
+      setIsVideoReady(true)
+
+      // Attempt autoplay for both desktop and mobile
+      if (!isMobile) {
+        video.play().catch((error) => {
+          console.log("Desktop autoplay failed:", error)
+        })
+      } else {
+        // For mobile, try to play if user has already interacted
+        if (userInteracted) {
+          video.play().catch(console.log)
+        }
+      }
     }
-  }, []);
+
+    const handleLoadedData = () => {
+      setVideoLoaded(true)
+    }
+
+    const handleError = () => {
+      console.log("Video failed to load")
+      setIsVideoReady(false)
+      setVideoLoaded(false)
+    }
+
+    // Set video attributes for better mobile compatibility
+    video.setAttribute('playsinline', 'true')
+    video.setAttribute('webkit-playsinline', 'true')
+    video.setAttribute('x5-playsinline', 'true')
+    video.muted = true
+    video.loop = true
+
+    video.addEventListener('canplay', handleCanPlay)
+    video.addEventListener('loadeddata', handleLoadedData)
+    video.addEventListener('error', handleError)
+
+    // Load the video
+    video.load()
+
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay)
+      video.removeEventListener('loadeddata', handleLoadedData)
+      video.removeEventListener('error', handleError)
+    }
+  }, [isMobile, userInteracted])
 
   const zoomLevel = Math.min(1.2, 1 + scrollY * 0.0005)
 
   const y = useTransform(scrollYProgress, [0, 1], [0, -50])
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
+    const element = document.getElementById(sectionId)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth" })
     }
-  };
+  }
 
   const getYear = () => {
-    return new Date().getFullYear();
-  };
+    return new Date().getFullYear()
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -191,7 +277,7 @@ function Home() {
         staggerChildren: 0.1,
       },
     },
-  };
+  }
 
   const Faqs = [
     {
@@ -211,7 +297,7 @@ function Home() {
       question: "Faith Component",
       answer: "Our faith-based empowerment programs are optional and designed to support spiritual growth for those who seek it",
     }
-  ];
+  ]
 
   const people = [
     {
@@ -235,33 +321,15 @@ function Home() {
             {/* Background Image/Video and Overlay Container */}
             <div className="absolute inset-0 h-full">
               <AnimatePresence>
-                {!isVideoReady && (
-                  <motion.div
-                    key="image"
-                    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-300 ease-out h-full"
-                    style={{
-                      backgroundImage: `url(${BeachOne})`,
-                      transform: `scale(${zoomLevel})`,
-                      transformOrigin: 'center center'
-                    }}
-                    variants={imageVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{ duration: 0.5 }}
-                  />
-                )}
-                <motion.video
-                  ref={videoRef}
-                  key="video"
-                  className={`absolute inset-0 w-full h-full object-cover ${isVideoReady ? 'block' : 'hidden'}`}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
+                {/* Fallback Image - shows while video loads or if video fails */}
+                <motion.div
+                  key="image"
+                  className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500 ease-out h-full ${
+                    isVideoReady && videoLoaded ? 'opacity-0' : 'opacity-100'
+                  }`}
                   style={{
-                    transform: `scale(${zoomLevel})`,
+                    backgroundImage: `url(${BeachOne})`,
+                    transform: `scale(${isMobile ? Math.min(zoomLevel, 1.05) : zoomLevel})`,
                     transformOrigin: 'center center'
                   }}
                   variants={imageVariants}
@@ -269,14 +337,66 @@ function Home() {
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.5 }}
-                  onCanPlay={() => setIsVideoReady(true)}
-                  onError={() => setIsVideoReady(false)}
+                />
+
+                {/* Video Background */}
+                <motion.video
+                  ref={videoRef}
+                  key="video"
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isVideoReady && videoLoaded ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  webkit-playsinline="true"
+                  x5-playsinline="true"
+                  x5-video-player-type="h5"
+                  x5-video-player-fullscreen="true"
+                  poster={BeachOne}
+                  style={{
+                    transform: `scale(${isMobile ? Math.min(zoomLevel, 1.05) : zoomLevel})`,
+                    transformOrigin: 'center center',
+                    minHeight: '100%',
+                    minWidth: '100%',
+                    objectPosition: 'center center'
+                  }}
+                  variants={imageVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.5 }}
                 >
                   <source src={EdenoceansVideo} type="video/mp4" />
+                  Your browser does not support the video tag.
                 </motion.video>
               </AnimatePresence>
+
+              {/* Mobile Video Play Button (optional - shows if video doesn't autoplay) */}
+              {isMobile && !userInteracted && videoLoaded && (
+                <motion.button
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 bg-black/50 text-white p-4 rounded-full backdrop-blur-sm hover:bg-black/70 transition-colors"
+                  onClick={() => {
+                    setUserInteracted(true)
+                    if (videoRef.current) {
+                      videoRef.current.play()
+                    }
+                  }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 2 }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </motion.button>
+              )}
+
               {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-black/40 sm:bg-black/40 backdrop-blur-[0.5px] sm:backdrop-blur-[1px]" />
+              <div className="absolute inset-0 bg-black/50 sm:bg-black/40 backdrop-blur-[0.5px] sm:backdrop-blur-[1px]" />
             </div>
 
             {/* Content */}

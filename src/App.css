@@ -28,3 +28,51 @@ body {
   --color-primary: #0d1e6e;
   --color-secondary: #e9dd9e;
 }
+
+video {
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+
+/* iOS Safari specific fixes */
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+video::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+
+/* Android Chrome fixes */
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
+
+/* Prevent video from showing controls */
+video[controls] {
+  controls: none;
+}
+
+/* Mobile portrait orientation fixes */
+@media screen and (orientation: portrait) and (max-width: 768px) {
+  video {
+    width: 100vw !important;
+    height: 100vh !important;
+    object-fit: cover !important;
+  }
+}
+
+/* Mobile landscape orientation fixes */
+@media screen and (orientation: landscape) and (max-height: 768px) {
+  video {
+    width: 100vw !important;
+    height: 100vh !important;
+    object-fit: cover !important;
+  }
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
