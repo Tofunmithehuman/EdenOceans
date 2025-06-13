@@ -51,6 +51,12 @@ function Home() {
   const [itemsPerPage, setItemsPerPage] = useState(2);
   const [direction, setDirection] = useState(0);
 
+  const [openIndex, setOpenIndex] = useState(0);
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? -1 : index);
+  };
+
   // Mobile detection
   useEffect(() => {
     const checkMobile = () => {
@@ -288,6 +294,42 @@ function Home() {
     },
   }
 
+  const answerVariants = {
+    hidden: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    },
+    visible: {
+      opacity: 1,
+      height: "auto",
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const iconVariants = {
+    closed: {
+      rotate: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    },
+    open: {
+      rotate: 180,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    }
+  };
+
   // Special variant for the grid container swipe animation
   const gridVariants = {
     hidden: (direction) => ({
@@ -472,21 +514,40 @@ function Home() {
 
   const Faqs = [
     {
-      question: "Purpose",
-      answer: "To address common questions about EdenOceans, ensuring clarity for prospective members, and to provide a comprehensive understanding of our offerings and values.",
+      question: "What are EdenOcean’s Membership policies? ",
+      answer: `EdenOceans is an ultra-exclusive, invite-only/ referral based, Celebrity club for ambitious and talented women. Membership dues are payable annually, and part- payment options are available.This will be discussed with you once you complete the application form. We offer flexible schedules and our concierge and travel Executives will always contact you to find out if you are interested in an upcoming event, music performance or travel option.Members will require travel insurance to participate in international travel retreats and cruises. EdenOceans Members can present their membership cards at all partnering locations to access service discounts.A list of our privileged access locations including shops, restaurants, SPAs, etc will be forwarded to all new members and updated regularly.`,
       defaultChecked: true,
     },
     {
-      question: "Eligibility",
-      answer: "EdenOceans is for high achieving individuals seeking holistic wellness. We welcome applications from women and men globally.",
+      question: "What sets EdenOceans apart from other women’s clubs?",
+      answer: "EdenOceans is a Celebrity Club focusing on lifestyle transformation, celebrity networking and advanced wellness. We realize that many gifted women may not be where they want to be in life yet. Women are naturally positioned to lead, & transform lives, economies and communities. We help you on your path to self- discovering your strengths, talents, abilities, skills, personal brand, and vision. We provide the environment you need to thrive and grow with access to experiences and social networks that are simply not available to the general public. ",
     },
     {
-      question: "Retreat Schedule",
-      answer: "Our retreats and cruises are held quarterly in stunning destinations like the Maldives, Seychelles, and Bali. Members receive schedules upon joining.",
+      question: "Who is the typical member of EdenOceans?",
+      answer: " Our members are accomplished, talented women from various fields, including entertainment, business, finance, arts, and all key professions. Our women value discretion, integrity, and privacy, and seek extraordinary experiences, and safe spaces to meet and interact with a community of like-minded individuals. Partners, single men and husbands are however welcome at all our events and retreats depending on our theme for the program. ",
     },
     {
-      question: "Faith Component",
-      answer: "Our faith-based empowerment programs are optional and designed to support spiritual growth for those who seek it",
+      question: "What are the membership dues ? ",
+      answer: "Membership dues vary with the membership type. However dues are affordable and available with personalized flexible pay options. Our Customer service can provide more details once your application has been reviewed.",
+    },
+    {
+      question: "What if I live abroad? Am I eligible to become an EdenOceans Member? ",
+      answer: "You can certainly become an EdenOceans Member even if you live abroad because most of our wellness, celebrity, music and arts boot camps, and business retreat options are global. We can also help secure ticket access to international performances by Afrobeat stars or global stars at locations of your choice. "
+    }, {
+      question: "Can I bring guests to club events or on trips?",
+      answer: "Guest policies vary depending on the event or trip. Some experiences are exclusively for members, while others may allow for approved guests. For example anniversary or relationship retreats require that you attend with your  soon to be spouses or husbands. Ballroom events offer guest tickets for partners or friends in some cases. Specifics will be outlined for each  event well in advance."
+    }, {
+      question: "What is the process for applying for membership?",
+      answer: "The application process typically involves an online submission, a personal chat with one of our founders, and a background verification. We prioritize discretion and a seamless experience for our applicants."
+    }, {
+      question: "What sort of retreats does EdenOceans offer?",
+      answer: "Almost everyone has a reason for embarking on a retreat. You could be seeking a safe space to make a life changing decision, especially a relationship or career or business decision, or you may be seeking a new You with a complete makeover and rejuvenation therapy and emotional counseling. On the other hand, you may be interested in building your music or arts skills at a retreat or boot camp facilitated by celebrity trainers or you may simply want somewhere quiet to reflect on your next stage in life, and somewhere safe if you’re single, to meet with prospective life partners at a singles retreat. This is why EdenOceans offers numerous themed retreats that are tailored to our member’s needs.Members are encouraged to discuss their needs and suggest retreat options."
+    }, {
+      question: "Do you partner with Top brands for exclusive member benefits?",
+      answer: "Yes, we will continue to  establish partnerships with leading Top brands across fashion, aviation, travel, entertainment, healthcare, household services, and hospitality industries to offer our members exclusive access, discounts, and bespoke services."
+    }, {
+      question: "How does EdenOceans ensure the privacy and confidentiality of its members?",
+      answer: "Confidentiality is a fundamental principle of our club. All member information is handled with the strictest privacy protocols. We operate under a robust non-disclosure agreement for all staff and partners, and we encourage a culture of discretion among our members. We maintain a policy of consents for selfies at celebrity events. Our member database is strictly private. Member information is never shared with third parties without explicit consent, and only when necessary to facilitate a requested service(e.g., booking a private charter)."
     }
   ]
 
@@ -826,7 +887,7 @@ function Home() {
 
 
             <div>
-              <motion.div className="px-4" variants={containerVariants} initial="hidden" animate="visible">
+              <motion.div className="px-4 md:px-0" variants={containerVariants} initial="hidden" animate="visible">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
                   {coreValues.map((value, index) => (
                     <div key={index} className="bg-secondary/30 p-6 rounded-sm border-2 border-slate-100">
@@ -871,7 +932,7 @@ function Home() {
                           animate="visible"
                           exit="exit"
                           custom={direction}
-                          style={{ position: 'relative' }} 
+                          style={{ position: 'relative' }}
                         >
                           {visibleServices.map((service, index) => (
                             <motion.div
@@ -960,7 +1021,7 @@ function Home() {
               initial="hidden"
               animate={isGalleryInView ? "visible" : "hidden"}
             >
-              <div className="bg-gray-50 py-24 sm:py-32">
+              <div className="bg-gray-50 py-20">
                 <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
                   <motion.p
                     className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque"
@@ -1208,20 +1269,69 @@ function Home() {
                 Frequently Asked Questions
               </motion.h2>
 
-              <div className="max-w-3xl mx-auto">
+
+              <div className="max-w-screen-md mx-auto">
                 {Faqs.map((faq, index) => (
                   <motion.div
                     key={index}
-                    className="mb-6 border-b border-gray-200 pb-4"
+                    className="mb-4  overflow-hidden bg-white "
                     variants={itemVariants}
                   >
-                    <h3 className="text-lg font-semibold text-secondary mb-2">{faq.question}</h3>
-                    <p className="text-gray-600">{faq.answer}</p>
+                    <button
+                      onClick={() => toggleFAQ(index)}
+                      className="w-full px-6 py-4 text-left bg-white focus:outline-none focus:ring-inset transition-colors duration-200 cursor-pointer"
+                      aria-expanded={openIndex === index}
+                      aria-controls={`faq-answer-${index}`}
+                    >
+                      <div className="flex justify-between items-center">
+                        <h3 className="text-lg font-semibold text-primary pr-4">
+                          {faq.question}
+                        </h3>
+                        <motion.div
+                          variants={iconVariants}
+                          animate={openIndex === index ? "open" : "closed"}
+                          className="flex-shrink-0"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="text-primary"
+                          >
+                            <path d="M6 9l6 6 6-6" />
+                          </svg>
+                        </motion.div>
+                      </div>
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {openIndex === index && (
+                        <motion.div
+                          id={`faq-answer-${index}`}
+                          variants={answerVariants}
+                          initial="hidden"
+                          animate="visible"
+                          exit="hidden"
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 pb-4 pt-2">
+                            <p className="text-gray-600 leading-relaxed">
+                              {faq.answer}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
-
           </section>
 
 
