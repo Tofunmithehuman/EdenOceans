@@ -205,7 +205,7 @@ function Home() {
 
   const people = [
     {
-      name: 'Olasimbo Davison',
+      name: 'Dr Olasimbo Davidson',
       role: 'Director of Travel & Lifestyle Management',
       imageUrl: ceoOne
     },
@@ -764,15 +764,17 @@ function Home() {
                         <p className="text-white/90 text-sm h-50">
                           Royal Membership is designed for young women 21-49 who are ready to discover or enhance purposeful living,  and secure and build meaningful social and community connections to thrive and prosper, using their new strengths, gifts, skills and  talents. At EdenOceans our vision for Royal members is to stimulate self-discovery and improve skills in the area of show business, music, movie production, acting, performing arts and other non traditional career paths.                        </p>
                         <div className="mt-4 flex justify-center">
-                          <motion.button
-                            className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
+                          <motion.a
+                            className="bg-secondary text-primary text-center font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
                             variants={buttonVariants}
                             whileHover="hover"
                             whileTap="tap"
-                            onClick={() => scrollToSection("contact-section")}
+                            href="https://forms.gle/XBvV5eDxgmgGksL58"
+                            rel="noopener noreferrer"
+                            target="_blank"
                           >
                             Apply Now
-                          </motion.button>
+                          </motion.a>
                         </div>
                       </div>
                     </motion.div>
@@ -788,15 +790,17 @@ function Home() {
                         <p className="text-white/90 text-sm h-50">
                           Premium membership is a best fit for women aged 35-50 who are mid career and keen to: embrace optimal health and wellness, launch & scale their businesses, or explore strategic decisions, relationships and personal development needs through upscale local & international retreats. Premium members can also build valuable new social connections and  partnerships through our exclusive red carpet events.                        </p>
                         <div className="mt-4 flex justify-center">
-                          <motion.button
-                            className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
+                          <motion.a
+                            className="bg-secondary text-primary text-center font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
                             variants={buttonVariants}
                             whileHover="hover"
                             whileTap="tap"
-                            onClick={() => scrollToSection("contact-section")}
+                            href="https://forms.gle/XBvV5eDxgmgGksL58"
+                            rel="noopener noreferrer"
+                            target="_blank"
                           >
                             Apply Now
-                          </motion.button>
+                          </motion.a>
                         </div>
                       </div>
                     </motion.div>
@@ -812,15 +816,17 @@ function Home() {
                         <p className="text-white/90 text-sm h-50">
                           Elite Membership is the best choice for you if you are 40 years or older, at the peak of your career, or expanding your business,  but seeking a more meaningful lifestyle, new  networking opportunities, optimal wellness, exciting travel retreats, social or community impact, or an advanced leadership role.                        </p>
                         <div className="mt-4 flex justify-center">
-                          <motion.button
-                            className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
+                          <motion.a
+                            className="bg-secondary text-primary text-center font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
                             variants={buttonVariants}
                             whileHover="hover"
                             whileTap="tap"
-                            onClick={() => scrollToSection("contact-section")}
+                            href="https://forms.gle/XBvV5eDxgmgGksL58"
+                            rel="noopener noreferrer"
+                            target="_blank"
                           >
                             Apply Now
-                          </motion.button>
+                          </motion.a>
                         </div>
                       </div>
                     </motion.div>
@@ -877,8 +883,7 @@ function Home() {
                   </motion.h2>
                   <motion.p className="mt-6 text-lg/8 text-gray-600"
                     variants={titleVariants}>
-                    We’re a dynamic group of individuals who are passionate about what we do and dedicated to delivering the
-                    best results for our clients.
+                    We are a dynamic group of women and celebrity Mums who are passionate about what we do. We are dedicated to uplifting other high achieving women and supporting their journey to wellness and success.
                   </motion.p>
                 </div>
                 <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
