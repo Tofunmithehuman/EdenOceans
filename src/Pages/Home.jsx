@@ -512,6 +512,45 @@ function Home() {
   const startIndex = currentIndex * itemsPerPage;
   const visibleServices = services.slice(startIndex, startIndex + itemsPerPage);
 
+  const galleryItems = [
+    {
+      id: 1,
+      src: ResortOne,
+      alt: "Maldives Beach Scene",
+      location: "Dubai"
+    },
+    {
+      id: 2,
+      src: ResortTwo,
+      alt: "Dubai Beach View",
+      location: "Barbados"
+    },
+    {
+      id: 3,
+      src: ResortThree,
+      alt: "Bali Coastal Landscape",
+      location: "Thailand"
+    },
+    {
+      id: 4,
+      src: ResortFour,
+      alt: "Santorini Wellness Retreat",
+      location: "Spain"
+    },
+    {
+      id: 5,
+      src: ResortFive,
+      alt: "Kenya Safari Journey",
+      location: "Nigeria"
+    },
+    {
+      id: 6,
+      src: ResortSix,
+      alt: "Caribbean Ocean Cruise",
+      location: "Mauritius"
+    }
+  ];
+
   const memberships = [
     {
       title: 'Royal Membership',
@@ -1036,141 +1075,61 @@ function Home() {
 
 
           <section id="gallery-section" ref={galleryRef}>
+  <motion.div
+    className="container mx-auto"
+    variants={containerVariants}
+    initial="hidden"
+    animate={isGalleryInView ? "visible" : "hidden"}
+  >
+    <div className="bg-gray-50 py-20">
+      <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+        <motion.p
+          className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque"
+          variants={titleVariants}
+        >
+          Gallery
+        </motion.p>
+        <motion.div
+          className="mt-10 sm:mt-16 grid gap-4 sm:gap-6 
+                     grid-cols-1 
+                     sm:grid-cols-2 sm:grid-rows-3
+                     lg:grid-cols-3 lg:grid-rows-2
+                     h-auto
+                     max-w-7xl mx-auto"
+          variants={containerVariants}
+        >
+          {galleryItems.map((item) => (
             <motion.div
-              className="container mx-auto"
-              variants={containerVariants}
-              initial="hidden"
-              animate={isGalleryInView ? "visible" : "hidden"}
+              key={item.id}
+              className="rounded-lg shadow overflow-hidden relative cursor-pointer min-h-[250px] sm:min-h-[200px] lg:min-h-[300px]"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.3 }}
             >
-              <div className="bg-gray-50 py-20">
-                <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-                  <motion.p
-                    className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque"
-                    variants={titleVariants}
-                  >
-                    Gallery
-                  </motion.p>
-                  <motion.div
-                    className="mt-10 sm:mt-16 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[200px] max-w-7xl mx-auto"
-                    variants={containerVariants}
-                  >
-                    <motion.div
-                      className="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 rounded-lg shadow overflow-hidden relative"
-                      variants={itemVariants}
-                    >
-                      <motion.img
-                        className="w-full h-full object-cover"
-                        src={ResortOne}
-                        alt="Maldives Beach Scene"
-                        variants={galleryImageVariants}
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                        <p className="text-white text-lg font-semibold p-4">Dubai</p>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden relative"
-                      variants={itemVariants}
-                    >
-                      <motion.img
-                        className="w-full h-full object-cover"
-                        src={ResortTwo}
-                        alt="Dubai Beach View"
-                        variants={galleryImageVariants}
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                        <p className="text-white text-lg font-semibold p-4">Barbados</p>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden relative"
-                      variants={itemVariants}
-                    >
-                      <motion.img
-                        className="w-full h-full object-cover"
-                        src={ResortThree}
-                        alt="Bali Coastal Landscape"
-                        variants={galleryImageVariants}
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                        <p className="text-white text-lg font-semibold p-4">Thailand</p>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      className="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 rounded-lg shadow overflow-hidden relative"
-                      variants={itemVariants}
-                    >
-                      <motion.img
-                        className="w-full h-full object-cover"
-                        src={ResortFour}
-                        alt="Santorini Wellness Retreat"
-                        variants={galleryImageVariants}
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                        <p className="text-white text-lg font-semibold p-4">Spain</p>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden relative"
-                      variants={itemVariants}
-                    >
-                      <motion.img
-                        className="w-full h-full object-cover"
-                        src={ResortFive}
-                        alt="Kenya Safari Journey"
-                        variants={galleryImageVariants}
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                        <p className="text-white text-lg font-semibold p-4">Nigeria</p>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      className="col-span-1 lg:col-span-1 row-span-1 rounded-lg shadow overflow-hidden relative"
-                      variants={itemVariants}
-                    >
-                      <motion.img
-                        className="w-full h-full object-cover"
-                        src={ResortSix}
-                        alt="Caribbean Ocean Cruise"
-                        variants={galleryImageVariants}
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                        <p className="text-white text-lg font-semibold p-4">Mauritius</p>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      className="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 rounded-lg shadow overflow-hidden relative"
-                      variants={itemVariants}
-                    >
-                      <motion.img
-                        className="w-full h-full object-cover"
-                        src={ResortSeven}
-                        alt="Paris Exclusive Event"
-                        variants={galleryImageVariants}
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
-                        <p className="text-white text-lg font-semibold p-4">Paris</p>
-                      </div>
-                    </motion.div>
-                  </motion.div>
-                </div>
+              <motion.img
+                className="w-full h-full object-cover"
+                src={item.src}
+                alt={item.alt}
+                variants={galleryImageVariants}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.3 }}
+              />
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+              </div>
+              {/* Always visible location label */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3 flex items-end">
+                <p className="text-white text-lg font-semibold p-4">
+                  {item.location}
+                </p>
               </div>
             </motion.div>
-          </section>
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  </motion.div>
+</section>
 
 
           <section id="membership-section" ref={membershipRef}>
@@ -1180,7 +1139,7 @@ function Home() {
               initial="hidden"
               animate={isMembershipInView ? "visible" : "hidden"}
             >
-              <div className="bg-gray-50 py-32">
+              <div className="bg-gray-50 py-20">
                 <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
                   <motion.p
                     className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque"
