@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0); // Store scroll position
 
   // Handle scroll to toggle blurred background
   useEffect(() => {
@@ -24,43 +23,32 @@ function Navigation() {
   // Lock/unlock body scroll when mobile nav is open/closed
   useEffect(() => {
     if (isOpen) {
-      // Store current scroll position
-      setScrollPosition(window.scrollY);
-      // Prevent scrolling by setting overflow to hidden and fixing position
+      // Prevent scrolling by setting overflow to hidden
       document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%";
-      document.body.style.top = `-${window.scrollY}px`; // Preserve scroll position
     } else {
-      // Restore scrolling and position
+      // Restore scrolling
       document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.width = "";
-      document.body.style.top = "";
-      // Restore scroll position only when closing
-      window.scrollTo(0, scrollPosition);
     }
 
     // Cleanup on component unmount
     return () => {
       document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.width = "";
-      document.body.style.top = "";
     };
-  }, [isOpen, scrollPosition]);
+  }, [isOpen]);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      // Temporarily unlock scroll to allow smooth scrolling
-      document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.width = "";
-      document.body.style.top = "";
-      window.scrollTo(0, scrollPosition); // Restore scroll position before scrolling
-      element.scrollIntoView({ behavior: "smooth" });
+      // Close mobile menu first
       setIsOpen(false);
+
+      // Wait a brief moment for menu close animation, then scroll
+      setTimeout(() => {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 100);
     }
   };
 
@@ -291,7 +279,7 @@ function Navigation() {
                       <motion.button
                         variants={itemVariants}
                         onClick={() => scrollToSection("services-section")}
-                        className="block hover:text-amber-300 transition-colors duration-200"
+                        className="text-left block hover:text-amber-300 transition-colors duration-200"
                         whileHover={{ x: 10 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -301,7 +289,7 @@ function Navigation() {
                       <motion.button
                         variants={itemVariants}
                         onClick={() => scrollToSection("gallery-section")}
-                        className="block hover:text-amber-300 transition-colors duration-200"
+                        className="text-left block hover:text-amber-300 transition-colors duration-200"
                         whileHover={{ x: 10 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -311,7 +299,7 @@ function Navigation() {
                       <motion.button
                         variants={itemVariants}
                         onClick={() => scrollToSection("membership-section")}
-                        className="block hover:text-amber-300 transition-colors duration-200"
+                        className="text-left block hover:text-amber-300 transition-colors duration-200"
                         whileHover={{ x: 10 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -321,7 +309,7 @@ function Navigation() {
                       <motion.button
                         variants={itemVariants}
                         onClick={() => scrollToSection("contact-section")}
-                        className="block hover:text-amber-300 transition-colors duration-200"
+                        className="text-left block hover:text-amber-300 transition-colors duration-200"
                         whileHover={{ x: 10 }}
                         whileTap={{ scale: 0.95 }}
                       >

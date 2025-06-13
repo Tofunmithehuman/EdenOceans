@@ -367,7 +367,7 @@ function Home() {
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.5 }}
-                >
+                >x
                   <source src={EdenoceansVideo} type="video/mp4" />
                   Your browser does not support the video tag.
                 </motion.video>
