@@ -1362,7 +1362,7 @@ function Home() {
           </section>
 
           <section id="contact-section" className="contact-section" ref={contactRef}>
-            <motion.div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8" variants={containerVariants}>
+            <motion.div className="isolate bg-secondary/30 px-6 py-20 lg:px-8" variants={containerVariants}>
               <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
                 <div
                   className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
@@ -1373,9 +1373,9 @@ function Home() {
               </div>
               <div className="mx-auto max-w-2xl text-center">
                 <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl bricolage-grotesque">Contact Us</h2>
-                <p className="mt-2 text-lg/8 text-gray-600 bricolage-grotesque">Get in touch with us, we’d love to hear from you!</p>
+                <p className="mt-2 text-lg/8 text-gray-600">Get in touch with us? </p>
               </div>
-              <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
+              <form action="#" method="POST" className="mx-auto mt-8 max-w-xl sm:mt-20">
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                   <div>
                     <label htmlFor="first-name" className="block text-sm/6 font-semibold text-gray-900">First name</label>
@@ -1487,7 +1487,7 @@ function Home() {
                 <div className="mt-10">
                   <button
                     type="reset"
-                    className="block w-full cursor-pointer rounded-md bg-primary px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    className="block w-full cursor-pointer rounded-md bg-primary/90 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                   >
                     Let's talk
                   </button>
@@ -1499,7 +1499,7 @@ function Home() {
 
 
 
-          <section id="footer-section" className="pt-16">
+          <section id="footer-section">
             <div className="Footer">
               <div className="bg-primary text-white">
                 <div className="max-w-7xl mx-auto pt-16 pb-8 px-6 sm:px-10">
