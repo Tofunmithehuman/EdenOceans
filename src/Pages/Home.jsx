@@ -9,6 +9,7 @@ import Wellness from "../assets/wellness.jpeg"
 import safari from "../assets/safari.jpg"
 import Boat from "../assets/boat.jpeg"
 import Tems from "../assets/tems.jpeg"
+import lux from "../assets/lux.jpg"
 import ceoOne from "../assets/ceoOne.jpeg"
 import ceoTwo from "../assets/ceoTwo.jpeg"
 import Concierge from "../assets/Concierge.jpeg"
@@ -466,6 +467,13 @@ function Home() {
       description:
         'EdenOceans offers personalized, added-value concierge services such as bridal shopping assistance, event planning support in any country of your choice, professional airport pickups & drop off and international escort services for Seniors or persons with disabilities.',
       imageSrc: Concierge,
+      alt: 'Exclusive Events',
+    },
+    {
+      title: 'High-Value Concierge Services',
+      description:
+        'EdenOceans offers personalized, added-value concierge services such as bridal shopping assistance, event planning support in any country of your choice, professional airport pickups & drop off and international escort services for Seniors or persons with disabilities.',
+      imageSrc: lux,
       alt: 'Exclusive Events',
     },
   ], []);
