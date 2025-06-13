@@ -22,6 +22,7 @@ import memberOne from "../assets/member01.jpg"
 import memberTwo from "../assets/member02.jpg"
 import memberThree from "../assets/member03.jpg"
 import whoweare from "../assets/whoweare.jpg"
+import vision from "../assets/vision.jpg"
 import { useEffect, useState, useRef } from "react"
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from "framer-motion"
 
@@ -566,7 +567,7 @@ function Home() {
             </div> */}
 
             <motion.div variants={containerVariants} initial="hidden" animate="visible">
-              <div className="flex flex-col md:flex-row items-center gap-6  max-w-screen-xl bg-secondary/30 m-auto mb-10">
+              <div className="flex flex-col md:flex-row items-center gap-6  max-w-screen-xl bg-secondary/30 m-auto md:mb-10">
                 <div className="w-full">
                   <div className="px-6 py-4">
                     <motion.svg
@@ -620,6 +621,50 @@ function Home() {
                     className="w-full h-auto md:min-h-[400px]"
                     variants={itemVariants}
                   />
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div variants={containerVariants} initial="hidden" animate="visible">
+              <div className="flex flex-col-reverse md:flex-row items-center gap-6  max-w-screen-xl bg-secondary/30 m-auto mb-10">
+                <div className="w-full">
+                  <motion.img
+                    src={vision}
+                    alt="Image 1"
+                    className="w-full h-auto md:min-h-[400px]"
+                    variants={itemVariants}
+                  />
+                </div>
+                <div className="w-full">
+                  <div className="px-6 py-4">
+                    <motion.svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-5 lucide lucide-lightbulb-icon lucide-lightbulb mb-2 text-primary" variants={itemVariants}><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx="12" cy="12" r="3" /></motion.svg>
+                    <motion.h1
+                      className="bricolage-grotesque text-2xl lg:text-3xl text-left text-primary font-semibold mb-3"
+                      variants={titleVariants}
+                    >
+                      Vision
+                    </motion.h1>
+                    <motion.p className="text-base text-black/80 font-medium text-pretty mb-4" variants={itemVariants}
+                    >
+                      To be the world's most exclusive integrated wellness club, empowering high-achieving individuals to experience
+                      holistic rejuvenation, relaxation, restoration and life style transformation at the finest luxury destinations across the globe.
+                    </motion.p>
+
+                    <motion.div
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                      transition={{ delay: 0.1 }}
+                      className="w-full sm:w-auto "
+                    >
+                      <button
+                        className="text-center w-full bg-white cursor-pointer border-2 border-primary py-3 px-6 rounded-md text-primary  block font-medium hover:bg-white hover:text-primary transition-colors"
+                        onClick={() => scrollToSection("membership-section")}
+                      >
+                        Explore Concierge
+                      </button>
+                    </motion.div>
+                  </div>
                 </div>
               </div>
             </motion.div>
