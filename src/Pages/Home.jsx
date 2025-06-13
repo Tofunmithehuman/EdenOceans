@@ -1131,6 +1131,52 @@ function Home() {
   </motion.div>
 </section>
 
+<section id="social-gallery">
+  <mdiv
+    className="container mx-auto"
+    initial="hidden"  >
+    <div className="bg-gray-50 py-20">
+      <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+        <motion.p
+          className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque"
+          variants={titleVariants}
+        >
+          Social Gallery
+        </motion.p>
+        <motion.div
+          className="mt-10 sm:mt-16 grid gap-4 sm:gap-6 
+                     grid-cols-1 
+                     sm:grid-cols-2 sm:grid-rows-3
+                     lg:grid-cols-3 lg:grid-rows-2
+                     h-auto
+                     max-w-7xl mx-auto"
+          variants={containerVariants}
+        >
+          {galleryItems.map((item) => (
+            <motion.div
+              key={item.id}
+              className="rounded-lg shadow overflow-hidden relative cursor-pointer min-h-[250px] sm:min-h-[200px] lg:min-h-[300px]"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.img
+                className="w-full h-full object-cover"
+                src={item.src}
+                alt={item.alt}
+                variants={galleryImageVariants}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.3 }}
+              />
+          
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  </mdiv>
+</section>
+
 
           <section id="membership-section" ref={membershipRef}>
             <motion.div
@@ -1179,15 +1225,16 @@ function Home() {
                             ))}
                           </ul>
                           <div className="mt-4 flex justify-center">
-                            <motion.button
-                              className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
+                            <motion.a
+                              className="bg-secondary text-primary text-center font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
                               variants={buttonVariants}
                               whileHover="hover"
                               whileTap="tap"
-                              onClick={() => scrollToSection('contact-section')}
+                              href="https://forms.gle/XBvV5eDxgmgGksL58"
+                              target="_blank"
                             >
                               Apply Now
-                            </motion.button>
+                            </motion.a>
                           </div>
                         </div>
                       </motion.div>
