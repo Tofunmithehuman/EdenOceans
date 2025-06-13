@@ -1,4 +1,5 @@
 import Navigation from "../Components/Navigation"
+import { useMemo } from "react";
 import { Link } from "react-router-dom"
 import EdenoceansVideo from "../assets/edenoceans.mp4"
 import Beach from "../assets/beach.jpg"
@@ -45,6 +46,10 @@ function Home() {
   const isGalleryInView = useInView(galleryRef, { once: false, margin: "-100px" })
   const isMembershipInView = useInView(membershipRef, { once: false, margin: "-100px" })
   const isContactInView = useInView(contactRef, { once: false, margin: "-100px" })
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(2);
+  const [direction, setDirection] = useState(0);
 
   // Mobile detection
   useEffect(() => {
@@ -167,6 +172,8 @@ function Home() {
     return new Date().getFullYear()
   }
 
+
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -247,14 +254,14 @@ function Home() {
   const serviceImageVariants = {
     hidden: { scale: 1, opacity: 0.8 },
     visible: {
-      scale: 1.1,
+      scale: 1.05,
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: [0.6, -0.05, 0.01, 0.99]
-      }
-    }
-  }
+        ease: [0.6, -0.05, 0.01, 0.99],
+      },
+    },
+  };
 
   const galleryImageVariants = {
     hidden: { scale: 1, opacity: 0.8 },
@@ -280,6 +287,188 @@ function Home() {
       },
     },
   }
+
+  // Special variant for the grid container swipe animation
+  const gridVariants = {
+    hidden: (direction) => ({
+      x: direction > 0 ? '100%' : '-100%', // Enter from right (next) or left (prev)
+      opacity: 0,
+    }),
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        x: { type: 'spring', stiffness: 100, damping: 20 },
+        opacity: { duration: 0.2 },
+      },
+    },
+    exit: (direction) => ({
+      x: direction > 0 ? '-100%' : '100%', // Exit to left (next) or right (prev)
+      opacity: 0,
+      transition: {
+        x: { type: 'spring', stiffness: 100, damping: 20 },
+        opacity: { duration: 0.2 },
+      },
+    }),
+  };
+
+
+  const coreValues = [
+    {
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-house-plus-icon lucide-house-plus"
+        >
+          <path d="M13.22 2.416a2 2 0 0 0-2.511.057l-7 5.999A2 2 0 0 0 3 10v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7.354" />
+          <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+          <path d="M15 6h6" />
+          <path d="M18 3v6" />
+        </svg>
+      ),
+      title: 'Intentional Living',
+      description:
+        'We believe in living with purpose, presence, and mindfulness. Every experience we curate empowers our members to align their inner wellbeing with their outer lifestyle.',
+    },
+    {
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-plane-takeoff-icon lucide-plane-takeoff"
+        >
+          <path d="M2 22h20" />
+          <path d="M6.36 17.4 4 17l-2-4 1.1-.55a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L8 12 5 6l.9-.45a2 2 0 0 1 2.09.2l4.02 3a2 2 0 0 0 2.1.2l4.19-2.06a2.41 2.41 0 0 1 1.73-.17L21 7a1.4 1.4 0 0 1 .87 1.99l-.38.76c-.23.46-.6.84-1.07 1.08L7.58 17.2a2 2 0 0 1-1.22.18Z" />
+        </svg>
+      ),
+      title: 'Transformational Travel',
+      description:
+        'We view travel not as escape, but as elevation, gateway to healing, self-discovery, and renewal in the most inspiring places on Earth.',
+    },
+    {
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-hand-heart-icon lucide-hand-heart"
+        >
+          <path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16" />
+          <path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" />
+          <path d="m2 15 6 6" />
+          <path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z" />
+        </svg>
+      ),
+      title: 'Service Excellence',
+      description:
+        'We are uncompromising in our standards. From curated retreats to concierge services, every detail is designed to deliver elegance, privacy, and lasting impact.',
+    },
+  ];
+
+
+  const services = useMemo(() => [
+    {
+      title: 'Red Carpet Event Access',
+      description:
+        'At EdenOceans we facilitate access to Celebrity red carpet including award nights, musical shows, film premieres and international festivals. We also organize members’ red carpet events including Dinner & Music events, Black tie ballroom events and more.',
+      imageSrc: Tems,
+      alt: 'Boat Cruise',
+    },
+    {
+      title: 'Advanced Wellness and Lifestyle Management',
+      description:
+        'Experience the beauty and transformative power of our advanced wellness options including complete Home SPAs, specialist wellness evaluations, full makeover retreats, international telemedicine consultations, life coaching, and global wellness retreats.',
+      imageSrc: Wellness,
+      alt: 'Wellness Retreat',
+    },
+    {
+      title: 'Safari Retreats',
+      description:
+        'Enjoy unique and captivating experiences in Kenya, Rwanda and Tanzania, combining safaris with wellness retreats for a transformative and rejuvenating adventure, Each moment is designed to awaken your sense of wonder and spark  unforgettable memories.',
+      imageSrc: safari,
+      alt: 'Safari & Wellness Journeys',
+    },
+    {
+      title: 'Ocean Cruises',
+      description:
+        'Enjoy the best of private, adults-only 5-star cruises around the world including European cruises, Asian cruises visiting Singapore, South Korea, Thailand, Malaysia, and Japan, and Caribbean cruises to popular Caribbean destinations and private island resorts.',
+      imageSrc: Boat,
+      alt: 'Boat Cruise',
+    },
+    {
+      title: 'High-Value Concierge Services',
+      description:
+        'EdenOceans offers personalized, added-value concierge services such as bridal shopping assistance, event planning support in any country of your choice, professional airport pickups & drop off and international escort services for Seniors or persons with disabilities.',
+      imageSrc: Concierge,
+      alt: 'Exclusive Events',
+    },
+  ], []);
+
+  // Update itemsPerPage based on screen size
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      if (window.innerWidth < 640) {
+        setItemsPerPage(1); // Mobile: 1 item
+      } else {
+        setItemsPerPage(2); // Tablet and above: 2 items
+      }
+    };
+
+    updateItemsPerPage();
+    window.addEventListener('resize', updateItemsPerPage);
+    return () => window.removeEventListener('resize', updateItemsPerPage);
+  }, []);
+
+  // Preload images to ensure instant display
+  useEffect(() => {
+    const preloadImages = services.map((service) => {
+      const img = new Image();
+      img.src = service.imageSrc;
+      return img;
+    });
+    return () => {
+      preloadImages.forEach((img) => (img.src = '')); // Cleanup
+    };
+  }, [services]);
+
+  // Handle navigation
+  const handleNext = () => {
+    setDirection(1); // Swipe left
+    setCurrentIndex((prev) => {
+      const maxIndex = Math.ceil(services.length / itemsPerPage) - 1;
+      return Math.min(prev + 1, maxIndex);
+    });
+  };
+
+  const handlePrev = () => {
+    setDirection(-1); // Swipe right
+    setCurrentIndex((prev) => Math.max(prev - 1, 0));
+  };
+
+  // Calculate visible services
+  const startIndex = currentIndex * itemsPerPage;
+  const visibleServices = services.slice(startIndex, startIndex + itemsPerPage);
 
   const Faqs = [
     {
@@ -313,6 +502,10 @@ function Home() {
       imageUrl: ceoTwo
     }
   ]
+
+
+
+
 
   return (
     <div className="Home">
@@ -525,46 +718,7 @@ function Home() {
             </motion.div>
           </section>
 
-          <section id="about-section" className="md:px-4 py-0 lg:py-24 max-w-screen-xl mx-auto">
-            {/* <div>
-              <motion.h2
-                className="text-4xl md:text-5xl lg:text-6xl text-left text-primary font-semibold mb-2 md:mb-4 bricolage-grotesque"
-                variants={titleVariants}
-                initial="hidden"
-                animate="visible"
-              >
-                Who we are
-              </motion.h2>
-
-              <motion.p
-                className="text-lg sm:text-xl md:text-2xl text-left text-primary/70 mb-8 max-w-2xl bricolage-grotesque text-pretty font-medium"
-                variants={itemVariants}
-              >
-                “EdenOceans is an exclusive Celebrity Club established to accelerate physical, emotional and spiritual wellness, and stimulate self-discovery, personal growth, lifestyle transformation, social impact, and personal effectiveness.
-                At EdenOceans, we offer our special members advanced wellness options including luxury retreats & personalized wellness services. We also provide elite travel arrangements, concierge services, access to celebrity red carpet events, and access to unique member deals.”
-
-              </motion.p>
-
-
-              <motion.h2
-                className="text-3xl lg:text-4xl text-left text-primary font-semibold mb-2 bricolage-grotesque"
-                variants={titleVariants}
-                initial="hidden"
-                animate="visible"
-              >
-                Vision
-              </motion.h2>
-
-
-              <motion.p
-                className="text-lg sm:text-xl md:text-2xl text-left text-primary/70 mb-8 max-w-2xl bricolage-grotesque text-pretty font-medium"
-                variants={itemVariants}
-              >
-                “To be the world's most exclusive integrated wellness club, empowering high-achieving individuals to experience
-                holistic rejuvenation, relaxation, restoration and life style transformation at the finest luxury destinations across the globe”
-              </motion.p>
-
-            </div> */}
+          <section id="about-section" className="md:px-4 py-0 lg:pt-20 pb-4 max-w-screen-xl mx-auto">
 
             <motion.div variants={containerVariants} initial="hidden" animate="visible">
               <div className="flex flex-col md:flex-row items-center gap-6  max-w-screen-xl bg-secondary/30 m-auto md:mb-10">
@@ -673,155 +827,126 @@ function Home() {
 
             <div>
               <motion.div className="px-4" variants={containerVariants} initial="hidden" animate="visible">
-                {/* <h1 className="text-2xl md:text-3xl lg:text-4xl text-center text-primary font-semibold mb-3 bricolage-grotesque">Core Values</h1> */}
-
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
-                  <div className="bg-secondary/30 p-6 rounded-sm border-2 border-slate-100">
-                    <motion.h1 className="text-lg font-semibold flex items-center gap-2 mb-2" variants={itemVariants}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-house-plus-icon lucide-house-plus"><path d="M13.22 2.416a2 2 0 0 0-2.511.057l-7 5.999A2 2 0 0 0 3 10v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7.354" /><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M15 6h6" /><path d="M18 3v6" /></svg>Intentional Living</motion.h1>
-                    <motion.p className="text-base text-black/80 font-medium text-pretty" variants={itemVariants}>We believe in living with purpose, presence, and mindfulness.
-                      Every experience we curate empowers our members to align their inner wellbeing with their
-                      outer lifestyle.</motion.p>
-                  </div>
-
-                  <div className="bg-secondary/30 p-6 rounded-sm border-2 border-slate-100">
-                    <motion.h1 className="text-lg font-semibold flex items-center gap-2 mb-2" variants={itemVariants}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-plane-takeoff-icon lucide-plane-takeoff"><path d="M2 22h20" /><path d="M6.36 17.4 4 17l-2-4 1.1-.55a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L8 12 5 6l.9-.45a2 2 0 0 1 2.09.2l4.02 3a2 2 0 0 0 2.1.2l4.19-2.06a2.41 2.41 0 0 1 1.73-.17L21 7a1.4 1.4 0 0 1 .87 1.99l-.38.76c-.23.46-.6.84-1.07 1.08L7.58 17.2a2 2 0 0 1-1.22.18Z" /></svg>Transformational Travel</motion.h1>
-                    <motion.p className="text-base text-black/80 font-medium text-pretty" variants={itemVariants}>We view travel not as escape, but as elevation, gateway to
-                      healing, self-discovery, and renewal in the most inspiring places on Earth.</motion.p>
-                  </div>
-
-                  <div className="bg-secondary/30 p-6 rounded-sm border-2 border-slate-100">
-                    <motion.h1 className="text-lg font-semibold flex items-center gap-2 mb-2" variants={itemVariants}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-hand-heart-icon lucide-hand-heart"><path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16" /><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" /><path d="m2 15 6 6" /><path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z" /></svg>Service Excellence</motion.h1>
-                    <motion.p className="text-base text-black/80 font-medium text-pretty" variants={itemVariants}>We are uncompromising in our standards. From curated retreats
-                      to concierge services, every detail is designed to deliver elegance, privacy, and lasting impact.
-                    </motion.p>
-                  </div>
+                  {coreValues.map((value, index) => (
+                    <div key={index} className="bg-secondary/30 p-6 rounded-sm border-2 border-slate-100">
+                      <motion.h1 className="text-lg font-semibold flex items-center gap-2 mb-2" variants={itemVariants}>
+                        {value.icon}
+                        {value.title}
+                      </motion.h1>
+                      <motion.p className="text-base text-black/80 font-medium text-pretty" variants={itemVariants}>
+                        {value.description}
+                      </motion.p>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             </div>
           </section>
 
-          <section id="services-section" className="pt-16" ref={servicesRef}>
+          <section id="services-section" className="pt-4" ref={servicesRef}>
             <motion.div
               className="container mx-auto"
               variants={containerVariants}
               initial="hidden"
-              animate={isServicesInView ? "visible" : "hidden"}
+              animate={isServicesInView ? 'visible' : 'hidden'}
             >
-              <div className="bg-gray-50 py-24 sm:py-32">
-                <div className="mx-auto max-w-screen-2xl lg:px-8">
+              <div className="bg-gray-50 py-8 md:py-12">
+                <div className="mx-auto max-w-screen-xl relative">
                   <motion.p
-                    className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque"
+                    className="mx-auto mt-2 max-w-md text-center text-3xl font-semibold tracking-tight text-balance text-primary sm:text-4xl bricolage-grotesque"
                     variants={titleVariants}
                   >
                     Services & Experience
                   </motion.p>
 
-                  <motion.div
-                    className="mt-10 p-6 grid gap-8 sm:mt-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 lg:grid-rows-2 max-w-7xl mx-auto"
-                    variants={containerVariants}
-                  >
+                  <div className="relative">
+                    <div className="overflow-hidden relative">
+                      <AnimatePresence mode="wait" custom={direction}>
+                        <motion.div
+                          key={currentIndex}
+                          className="p-4 grid gap-10 mt-8 grid-cols-1 sm:grid-cols-2 max-w-5xl mx-auto"
+                          variants={gridVariants}
+                          initial="hidden"
+                          animate="visible"
+                          exit="exit"
+                          custom={direction}
+                          style={{ position: 'relative' }} 
+                        >
+                          {visibleServices.map((service, index) => (
+                            <motion.div
+                              key={startIndex + index}
+                              className="shadow overflow-hidden"
+                              variants={itemVariants}
+                            >
+                              <div className="p-4">
+                                <p className="mt-1 text-base font-medium tracking-tight text-gray-950 text-left">
+                                  {service.title}
+                                </p>
+                                <p className="mt-1 max-w-sm text-xs/5 text-gray-600 text-left h-28 text-pretty">
+                                  {service.description}
+                                </p>
+                              </div>
+                              <motion.img
+                                className="w-full h-100 object-cover"
+                                src={service.imageSrc}
+                                alt={service.alt}
+                                variants={serviceImageVariants}
+                              />
+                            </motion.div>
+                          ))}
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
 
-                    <motion.div
-                      className="rounded-lg shadow overflow-hidden"
-                      variants={itemVariants}
-                    >
-                      <div className="p-3">
-                        <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
-                          Red Carpet Event Access
-                        </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-50 md:h-45">
-                          At EdenOceans we facilitate access to Celebrity red carpet events including award nights, musical shows, film premieres and international festivals. We also organize members’ red carpet events including Dinner & Dance events, music nights, theatrical performances, Black tie ballroom events and much more.</p>
-                      </div>
-                      <motion.img
-                        className="w-full rounded-b-lg"
-                        src={Tems}
-                        alt="Boat Cruise"
-                        variants={serviceImageVariants}
-                      />
-                    </motion.div>
-
-                    <motion.div
-                      className="rounded-lg shadow overflow-hidden"
-                      variants={itemVariants}
-                    >
-                      <div className="p-3">
-                        <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
-                          Advanced Wellness and Lifestyle Management
-                        </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center  h-50 md:h-45">
-                          Experience the beauty and transformative power of our advanced wellness options including complete Home SPAs, specialist wellness evaluations, full makeover retreats, international telemedicine consultations, life coaching, and global wellness retreats.
-                        </p>
-                      </div>
-                      <motion.img
-                        className="w-full rounded-b-lg"
-                        src={Wellness}
-                        alt="Wellness Retreat"
-                        variants={serviceImageVariants}
-                      />
-                    </motion.div>
-
-                    <motion.div
-                      className="rounded-lg shadow overflow-hidden"
-                      variants={itemVariants}
-                    >
-                      <div className="p-3">
-                        <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
-                          Safari Retreats
-                        </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center  h-50 md:h-45 ">
-                          Enjoy unique and captivating experiences in Kenya, Rwanda and Tanzania, combining
-                          safaris with wellness retreats for a transformative and rejuvenating adventure.
-                        </p>
-                      </div>
-                      <motion.img
-                        className="w-full rounded-b-lg"
-                        src={safari}
-                        alt="Safari & Wellness Journeys"
-                        variants={serviceImageVariants}
-                      />
-                    </motion.div>
-
-
-                    <motion.div
-                      className="rounded-lg shadow overflow-hidden"
-                      variants={itemVariants}
-                    >
-                      <div className="p-3">
-                        <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
-                          Ocean Cruises
-                        </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center  h-50 md:h-45 ">
-                          Enjoy the best of private, adults-only 5-star cruises around the world including European cruises, Asian cruises visiting Singapore, South Korea, Thailand, Malaysia, and Japan, and Caribbean cruises to popular Caribbean destinations and private island resorts.
-                        </p>
-                      </div>
-                      <motion.img
-                        className="w-full rounded-b-lg"
-                        src={Boat}
-                        alt="Boat Cruise"
-                        variants={serviceImageVariants}
-                      />
-                    </motion.div>
-
-                    <motion.div
-                      className="rounded-lg shadow overflow-hidden"
-                      variants={itemVariants}
-                    >
-                      <div className="p-3">
-                        <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
-                          High-Value Concierge Services
-                        </p>
-                        <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center h-65 md:h-50 text-pretty">
-                          EdenOceans offers personalized, added-value concierge services such as bridal shopping assistance in any country of your choice, event planning support in any country of your choice, airport protocol services, business and professional airport pickups and drop-offs in Nigeria, Europe, and other travel destinations, and international escort services for seniors or persons with disabilities.
-                        </p>
-                      </div>
-                      <motion.img
-                        className="w-full rounded-b-lg"
-                        src={Concierge}
-                        alt="Exclusive Events"
-                        variants={serviceImageVariants}
-                      />
-                    </motion.div>
-                  </motion.div>
+                    {/* Navigation Buttons - positioned absolutely relative to the outer container */}
+                    {currentIndex > 0 && (
+                      <button
+                        onClick={handlePrev}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-primary/80 text-white p-2 rounded-full hover:bg-primary focus:outline-none focus:ring-2 focus:ring-primary z-20"
+                        aria-label="Previous services"
+                        style={{ transform: 'translateY(-50%)' }} // Ensure consistent positioning
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="lucide lucide-chevron-left"
+                        >
+                          <path d="M15 18l-6-6 6-6" />
+                        </svg>
+                      </button>
+                    )}
+                    {currentIndex < Math.ceil(services.length / itemsPerPage) - 1 && (
+                      <button
+                        onClick={handleNext}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-primary/80 text-white p-2 rounded-full hover:bg-primary focus:outline-none focus:ring-2 focus:ring-primary z-20"
+                        aria-label="Next services"
+                        style={{ transform: 'translateY(-50%)' }} // Ensure consistent positioning
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="lucide lucide-chevron-right"
+                        >
+                          <path d="M9 18l6-6-6-6" />
+                        </svg>
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             </motion.div>
