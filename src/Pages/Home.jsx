@@ -21,6 +21,7 @@ import ResortSeven from "../assets/resort07.jpg"
 import memberOne from "../assets/member01.jpg"
 import memberTwo from "../assets/member02.jpg"
 import memberThree from "../assets/member03.jpg"
+import whoweare from "../assets/whoweare.jpg"
 import { useEffect, useState, useRef } from "react"
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from "framer-motion"
 
@@ -31,7 +32,7 @@ function Home() {
   const [isMobile, setIsMobile] = useState(false)
   const [videoLoaded, setVideoLoaded] = useState(false)
   const [userInteracted, setUserInteracted] = useState(false)
-  
+
   const images = [Beach, BeachOne, BeachTwo]
   const { scrollYProgress } = useScroll()
   const videoRef = useRef(null)
@@ -50,7 +51,7 @@ function Home() {
       const mobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
       setIsMobile(mobile)
     }
-    
+
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
@@ -324,9 +325,8 @@ function Home() {
                 {/* Fallback Image - shows while video loads or if video fails */}
                 <motion.div
                   key="image"
-                  className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500 ease-out h-full ${
-                    isVideoReady && videoLoaded ? 'opacity-0' : 'opacity-100'
-                  }`}
+                  className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500 ease-out h-full ${isVideoReady && videoLoaded ? 'opacity-0' : 'opacity-100'
+                    }`}
                   style={{
                     backgroundImage: `url(${BeachOne})`,
                     transform: `scale(${isMobile ? Math.min(zoomLevel, 1.05) : zoomLevel})`,
@@ -390,7 +390,7 @@ function Home() {
                   whileTap={{ scale: 0.9 }}
                 >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z"/>
+                    <path d="M8 5v14l11-7z" />
                   </svg>
                 </motion.button>
               )}
@@ -524,8 +524,8 @@ function Home() {
             </motion.div>
           </section>
 
-          <section id="about-section" className="px-4 py-20 md:py-20 lg:py-24 max-w-screen-xl mx-auto">
-            <div>
+          <section id="about-section" className="md:px-4 py-0 lg:py-24 max-w-screen-xl mx-auto">
+            {/* <div>
               <motion.h2
                 className="text-4xl md:text-5xl lg:text-6xl text-left text-primary font-semibold mb-2 md:mb-4 bricolage-grotesque"
                 variants={titleVariants}
@@ -563,7 +563,68 @@ function Home() {
                 holistic rejuvenation, relaxation, restoration and life style transformation at the finest luxury destinations across the globe”
               </motion.p>
 
-            </div>
+            </div> */}
+
+            <motion.div variants={containerVariants} initial="hidden" animate="visible">
+              <div className="flex flex-col md:flex-row items-center gap-6  max-w-screen-xl bg-secondary/30 m-auto mb-10">
+                <div className="w-full">
+                  <div className="px-6 py-4">
+                    <motion.svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="mt-5 lucide lucide-lightbulb-icon lucide-lightbulb mb-2 text-primary"
+                      variants={itemVariants}
+                    >
+                      <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+                      <path d="M9 18h6" />
+                      <path d="M10 22h4" />
+                    </motion.svg>                    <motion.h1
+                      className="bricolage-grotesque text-2xl lg:text-3xl text-left text-primary font-semibold mb-3"
+                      variants={titleVariants}
+                    >
+                      Who we are
+                    </motion.h1>
+                    <motion.p className="text-base text-black/80 font-medium text-pretty mb-4" variants={itemVariants}
+                    >
+                      EdenOceans is an exclusive Celebrity Club established to accelerate physical, emotional and spiritual wellness, and stimulate self-discovery, personal growth, lifestyle transformation, social impact, and personal effectiveness.
+                      At EdenOceans, we offer our special members advanced wellness options including luxury retreats & personalized wellness services. We also provide elite travel arrangements, concierge services, access to celebrity red carpet events, and access to unique member deals.
+                    </motion.p>
+
+                    <motion.div
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                      transition={{ delay: 0.1 }}
+                      className="w-full sm:w-auto "
+                    >
+                      <button
+                        className="text-center w-full bg-white cursor-pointer border-2 border-primary py-3 px-6 rounded-md text-primary  block font-medium hover:bg-white hover:text-primary transition-colors"
+                        onClick={() => scrollToSection("membership-section")}
+                      >
+                        Explore Membership
+                      </button>
+                    </motion.div>
+                  </div>
+                </div>
+                <div className="w-full">
+                  <motion.img
+                    src={whoweare}
+                    alt="Image 1"
+                    className="w-full h-auto md:min-h-[400px]"
+                    variants={itemVariants}
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+
 
             <div>
               <div>
