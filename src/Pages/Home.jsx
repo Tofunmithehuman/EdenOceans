@@ -512,6 +512,27 @@ function Home() {
   const startIndex = currentIndex * itemsPerPage;
   const visibleServices = services.slice(startIndex, startIndex + itemsPerPage);
 
+  const memberships = [
+    {
+      title: 'Royal Membership',
+      description:
+        'Royal Membership is designed for young women 21-49 who are ready to discover or enhance purposeful living, and secure and build meaningful social and community connections to thrive and prosper, using their new strengths, gifts, skills and talents. At EdenOceans our vision for Royal members is to stimulate self-discovery and improve skills in the area of show business, music, movie production, acting, performing arts and other non traditional career paths.',
+      features: "Purposeful Living, Social & Community Connections, Skill Development in Creative Arts, Empowerment Through Strengths"
+    },
+    {
+      title: 'Premium Membership',
+      description:
+        'Premium membership is a best fit for women aged 35-50 who are mid career and keen to: embrace optimal health and wellness, launch & scale their businesses, or explore strategic decisions, relationships and personal development needs through upscale local & international retreats. Premium members can also build valuable new social connections and partnerships through our exclusive red carpet events.',
+      features: "Optimal Health & Wellness, Business Growth Support, Personal Development Retreats, Exclusive Networking Events"
+    },
+    {
+      title: 'Elite Membership',
+      description:
+        'Elite Membership is the best choice for you if you are 40 years or older, at the peak of your career, or expanding your business, but seeking a more meaningful lifestyle, new networking opportunities, optimal wellness, exciting travel retreats, social or community impact, or an advanced leadership role.',
+      features: "Meaningful Lifestyle, Advanced Networking, Wellness & Travel Retreats, Leadership Opportunities"
+    },
+  ];
+
   const Faqs = [
     {
       question: "What are EdenOcean’s Membership policies? ",
@@ -1159,7 +1180,7 @@ function Home() {
               initial="hidden"
               animate={isMembershipInView ? "visible" : "hidden"}
             >
-              <div className="bg-gray-50 py-24 sm:py-32">
+              <div className="bg-gray-50 py-32">
                 <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
                   <motion.p
                     className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque"
@@ -1168,7 +1189,7 @@ function Home() {
                     Membership
                   </motion.p>
                   <motion.p
-                    className="mt-6 max-w-2xl mx-auto text-center text-lg sm:text-xl md:text-2xl text-gray-600"
+                    className="mt-6 max-w-2xl mx-auto text-left text-sm md:text-lg  text-gray-600"
                     variants={itemVariants}
                   >
                     At EdenOceans  we welcome interested women of like minds  who love to network, and prioritize : personal growth, physical, emotional & spiritual wellness, social impact, purposeful  travel, and lifestyle transformation. Whatever your needs are, We have three membership tiers you can select from.
@@ -1177,77 +1198,41 @@ function Home() {
                     className="mt-10 sm:mt-16 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
                     variants={containerVariants}
                   >
-                    <motion.div
-                      className="w-full max-w-sm mx-auto rounded-lg shadow-lg relative overflow-hidden"
-                      variants={itemVariants}
-                      style={{ backgroundImage: `url(${memberOne})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-                    >
-                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
-                      <div className="relative p-6 text-white">
-                        <h1 className="text-xl font-semibold mb-2 bricolage-grotesque text-secondary">Royal Membership</h1>
-                        <p className="text-white/90 text-sm h-50">
-                          Royal Membership is designed for young women 21-49 who are ready to discover or enhance purposeful living,  and secure and build meaningful social and community connections to thrive and prosper, using their new strengths, gifts, skills and  talents. At EdenOceans our vision for Royal members is to stimulate self-discovery and improve skills in the area of show business, music, movie production, acting, performing arts and other non traditional career paths.                        </p>
-                        <div className="mt-4 flex justify-center">
-                          <motion.button
-                            className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
-                            variants={buttonVariants}
-                            whileHover="hover"
-                            whileTap="tap"
-                            onClick={() => scrollToSection("contact-section")}
-                          >
-                            Apply Now
-                          </motion.button>
+                    {memberships.map((membership, index) => (
+                      <motion.div
+                        key={index}
+                        className="w-full max-w-sm mx-auto rounded-lg shadow-lg relative overflow-hidden bg-primary"
+                        variants={itemVariants}
+                        style={{
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
+                        <div className="relative p-6 text-white">
+                          <h1 className="text-xl font-semibold mb-2 bricolage-grotesque text-secondary">
+                            {membership.title}
+                          </h1>
+                          <p className="text-white/90 text-sm h-20">{membership.description}</p>
+                          <ul className="mt-35 md:mt-30 text-white/90 text-sm list-disc pl-5 space-y-1">
+                            {membership.features.split(', ').map((feature, featureIndex) => (
+                              <li key={featureIndex}>{feature}</li>
+                            ))}
+                          </ul>
+                          <div className="mt-4 flex justify-center">
+                            <motion.button
+                              className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
+                              variants={buttonVariants}
+                              whileHover="hover"
+                              whileTap="tap"
+                              onClick={() => scrollToSection('contact-section')}
+                            >
+                              Apply Now
+                            </motion.button>
+                          </div>
                         </div>
-                      </div>
-                    </motion.div>
-
-                    <motion.div
-                      className="w-full max-w-sm mx-auto rounded-lg shadow-lg relative overflow-hidden"
-                      variants={itemVariants}
-                      style={{ backgroundImage: `url(${memberTwo})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-                    >
-                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
-                      <div className="relative p-6 text-white">
-                        <h1 className="text-xl font-semibold mb-2 bricolage-grotesque text-secondary">Premium Membership</h1>
-                        <p className="text-white/90 text-sm h-50">
-                          Premium membership is a best fit for women aged 35-50 who are mid career and keen to: embrace optimal health and wellness, launch & scale their businesses, or explore strategic decisions, relationships and personal development needs through upscale local & international retreats. Premium members can also build valuable new social connections and  partnerships through our exclusive red carpet events.                        </p>
-                        <div className="mt-4 flex justify-center">
-                          <motion.button
-                            className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
-                            variants={buttonVariants}
-                            whileHover="hover"
-                            whileTap="tap"
-                            onClick={() => scrollToSection("contact-section")}
-                          >
-                            Apply Now
-                          </motion.button>
-                        </div>
-                      </div>
-                    </motion.div>
-
-                    <motion.div
-                      className="w-full max-w-sm mx-auto rounded-lg shadow-lg relative overflow-hidden"
-                      variants={itemVariants}
-                      style={{ backgroundImage: `url(${memberThree})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-                    >
-                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
-                      <div className="relative p-6 text-white">
-                        <h1 className="text-xl font-semibold mb-2 bricolage-grotesque text-secondary">Elite Membership</h1>
-                        <p className="text-white/90 text-sm h-50">
-                          Elite Membership is the best choice for you if you are 40 years or older, at the peak of your career, or expanding your business,  but seeking a more meaningful lifestyle, new  networking opportunities, optimal wellness, exciting travel retreats, social or community impact, or an advanced leadership role.                        </p>
-                        <div className="mt-4 flex justify-center">
-                          <motion.button
-                            className="bg-secondary text-primary font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
-                            variants={buttonVariants}
-                            whileHover="hover"
-                            whileTap="tap"
-                            onClick={() => scrollToSection("contact-section")}
-                          >
-                            Apply Now
-                          </motion.button>
-                        </div>
-                      </div>
-                    </motion.div>
+                      </motion.div>
+                    ))}
                   </motion.div>
                 </div>
               </div>
