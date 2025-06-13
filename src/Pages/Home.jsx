@@ -26,6 +26,26 @@ import conciergeFour from "../assets/Concierge04.jpg"
 import conciergeFive from "../assets/Concierge05.jpg"
 import conciergeSix from "../assets/Concierge06.jpg"
 import conciergeSeven from "../assets/Concierge07.jpg"
+import galOne from "../assets/gal01.jpeg"
+import galTwo from "../assets/gal02.jpg"
+import galThree from "../assets/gal03.jpg"
+import galFour from "../assets/gal04.jpeg"
+import galFive from "../assets/gal05.jpeg"
+import galSix from "../assets/gal06.jpeg"
+import galSeven from "../assets/gal07.jpeg"
+import galEight from "../assets/gal08.jpeg"
+import galNine from "../assets/gal09.jpeg"
+import galTen from "../assets/gal10.jpeg"
+import galEleven from "../assets/gal11.jpeg"
+import galTwelve from "../assets/gal12.jpeg"
+import galThirteen from "../assets/gal13.jpeg"
+import galFourteen from "../assets/gal14.jpeg"
+import galFifteen from "../assets/gal15.jpg"
+import galSixteen from "../assets/gal16.jpg"
+import galSeventeen from "../assets/gal17.jpeg"
+import galEighteen from "../assets/gal18.jpeg"
+import galNineteen from "../assets/gal19.jpg"
+import galTwenty from "../assets/gal20.jpg"
 import whoweare from "../assets/whoweare.jpg"
 import vision from "../assets/vision.jpg"
 import { useEffect, useState, useRef } from "react"
@@ -560,6 +580,27 @@ function Home() {
       alt: "Caribbean Ocean Cruise",
       location: "Mauritius"
     }
+  ];
+
+  const socialGalleryItems = [
+    { id: 1, src: galOne },
+    { id: 2, src: galTwo },
+    { id: 3, src: galThree },
+    { id: 4, src: galFour },
+    { id: 5, src: galFive },
+    { id: 6, src: galSix },
+    { id: 7, src: galSeven },
+    { id: 8, src: galEight },
+    { id: 9, src: galNine },
+    { id: 10, src: galTen },
+    { id: 11, src: galEleven },
+    { id: 12, src: galTwelve },
+    { id: 13, src: galThirteen },
+    { id: 14, src: galFourteen },
+    { id: 15, src: galFifteen },
+    { id: 17, src: galSeventeen },
+    { id: 18, src: galEighteen },
+    { id: 20, src: galTwenty }
   ];
 
   const conciergeServices = [
@@ -1221,7 +1262,7 @@ function Home() {
                     max-w-7xl mx-auto"
                     variants={containerVariants}
                   >
-                    {galleryItems.map((item) => (
+                    {socialGalleryItems.map((item) => (
                       <motion.div
                         key={item.id}
                         className="rounded-lg shadow overflow-hidden relative cursor-pointer min-h-[250px] sm:min-h-[200px] lg:min-h-[300px]"
