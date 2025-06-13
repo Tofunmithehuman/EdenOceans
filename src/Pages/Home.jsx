@@ -30,6 +30,7 @@ function Home() {
   const [isVideoReady, setIsVideoReady] = useState(false)
   const images = [Beach, BeachOne, BeachTwo]
   const { scrollYProgress } = useScroll()
+  const videoRef = useRef(null);
   const servicesRef = useRef(null)
   const galleryRef = useRef(null)
   const membershipRef = useRef(null)
@@ -53,6 +54,15 @@ function Home() {
     }, 10000)
     return () => clearInterval(interval)
   }, [images.length])
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.play().catch(() => {
+        setIsVideoReady(false);
+      });
+    }
+  }, []);
 
   const zoomLevel = Math.min(1.2, 1 + scrollY * 0.0005)
 
@@ -242,13 +252,14 @@ function Home() {
                   />
                 )}
                 <motion.video
+                  ref={videoRef}
                   key="video"
                   className={`absolute inset-0 w-full h-full object-cover ${isVideoReady ? 'block' : 'hidden'}`}
                   autoPlay
                   loop
                   muted
                   playsInline
-                  loading="eager"
+                  preload="auto"
                   style={{
                     transform: `scale(${zoomLevel})`,
                     transformOrigin: 'center center'
@@ -259,6 +270,7 @@ function Home() {
                   exit="exit"
                   transition={{ duration: 0.5 }}
                   onCanPlay={() => setIsVideoReady(true)}
+                  onError={() => setIsVideoReady(false)}
                 >
                   <source src={EdenoceansVideo} type="video/mp4" />
                 </motion.video>
