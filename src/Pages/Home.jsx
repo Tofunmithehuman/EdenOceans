@@ -1,5 +1,6 @@
 import Navigation from "../Components/Navigation"
 import { Link } from "react-router-dom"
+import EdenoceansVideo from "../assets/edenoceans.mp4"
 import Beach from "../assets/beach.jpg"
 import BeachOne from "../assets/beach01.jpg"
 import BeachTwo from "../assets/beach02.jpg"
@@ -26,6 +27,7 @@ import { motion, useScroll, useTransform, AnimatePresence, useInView } from "fra
 function Home() {
   const [scrollY, setScrollY] = useState(0)
   const [currentImage, setCurrentImage] = useState(0)
+  const [isVideoReady, setIsVideoReady] = useState(false)
   const images = [Beach, BeachOne, BeachTwo]
   const { scrollYProgress } = useScroll()
   const servicesRef = useRef(null)
@@ -132,7 +134,7 @@ function Home() {
         duration: 0.2,
         ease: "easeInOut"
       }
-    },
+    }, 
     tap: {
       scale: 0.95
     }
@@ -181,8 +183,6 @@ function Home() {
     },
   };
 
-
-
   const Faqs = [
     {
       question: "Purpose",
@@ -195,11 +195,11 @@ function Home() {
     },
     {
       question: "Retreat Schedule",
-      answer: "Our retreats and cruises are held quarterly in stunning destinations like the Maldives, Seychelles, and Bali.Members receive schedules upon joining.",
+      answer: "Our retreats and cruises are held quarterly in stunning destinations like the Maldives, Seychelles, and Bali. Members receive schedules upon joining.",
     },
     {
       question: "Faith Component",
-      answer: "Our faith based empowerment programs are optional and designed to support spiritual growth for those who seek it",
+      answer: "Our faith-based empowerment programs are optional and designed to support spiritual growth for those who seek it",
     }
   ];
 
@@ -207,18 +207,14 @@ function Home() {
     {
       name: 'Olasimbo Davison',
       role: 'Director of Travel & Lifestyle Management',
-      imageUrl:
-        ceoOne
+      imageUrl: ceoOne
     },
     {
       name: 'Nene Aderibigbe',
       role: 'Director of Home service and VIP Events',
-      imageUrl:
-        ceoTwo
+      imageUrl: ceoTwo
     }
-    // More people...
   ]
-
 
   return (
     <div className="Home">
@@ -226,14 +222,34 @@ function Home() {
       <main>
         <div>
           <section className="relative px-4 py-4 sm:py-6 md:py-8 sm:px-4 md:px-12 lg:px-20 max-w-screen-2xl mx-auto h-full min-h-screen flex items-center overflow-hidden">
-            {/* Background Image and Overlay Container */}
+            {/* Background Image/Video and Overlay Container */}
             <div className="absolute inset-0 h-full">
               <AnimatePresence>
-                <motion.div
-                  key={currentImage}
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-300 ease-out h-full"
+                {!isVideoReady && (
+                  <motion.div
+                    key="image"
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-300 ease-out h-full"
+                    style={{
+                      backgroundImage: `url(${BeachOne})`,
+                      transform: `scale(${zoomLevel})`,
+                      transformOrigin: 'center center'
+                    }}
+                    variants={imageVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.5 }}
+                  />
+                )}
+                <motion.video
+                  key="video"
+                  className={`absolute inset-0 w-full h-full object-cover ${isVideoReady ? 'block' : 'hidden'}`}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  loading="eager"
                   style={{
-                    backgroundImage: `url(${images[currentImage]})`,
                     transform: `scale(${zoomLevel})`,
                     transformOrigin: 'center center'
                   }}
@@ -242,10 +258,13 @@ function Home() {
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.5 }}
-                />
+                  onCanPlay={() => setIsVideoReady(true)}
+                >
+                  <source src={EdenoceansVideo} type="video/mp4" />
+                </motion.video>
               </AnimatePresence>
               {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-black/60 sm:bg-black/60 backdrop-blur-[0.5px] sm:backdrop-blur-[1px]" />
+              <div className="absolute inset-0 bg-black/40 sm:bg-black/40 backdrop-blur-[0.5px] sm:backdrop-blur-[1px]" />
             </div>
 
             {/* Content */}
@@ -277,7 +296,8 @@ function Home() {
                     className="mt-2 text-white/90 text-left sm:text-center text-sm sm:text-base md:text-lg lg:text-xl text-pretty font-medium max-w-3xl mx-auto"
                     variants={itemVariants}
                   >
-                    At EdenOceans, we believe that advanced wellness is not just a destination, but a journey of mind, body, and soul. Our curated experiences are tailored for special women from all walks of life who value physical, emotional, and spiritual wellness, exponential growth, social impact, personal effectiveness, luxury travel, and enhanced lifestyles                  </motion.p>
+                    At EdenOceans, we believe that advanced wellness is not just a destination, but a journey of mind, body, and soul. Our curated experiences are tailored for special women from all walks of life who value physical, emotional, and spiritual wellness, exponential growth, social impact, personal effectiveness, luxury travel, and enhanced lifestyles
+                  </motion.p>
 
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -291,8 +311,10 @@ function Home() {
                       whileTap="tap"
                       className="w-full sm:w-auto"
                     >
-                      <button className="text-center w-full bg-secondary cursor-pointer py-3 px-6 rounded-md text-primary block font-medium"
-                        onClick={() => scrollToSection("about-section")}>
+                      <button
+                        className="text-center w-full bg-secondary cursor-pointer py-3 px-6 rounded-md text-primary block font-medium"
+                        onClick={() => scrollToSection("about-section")}
+                      >
                         Begin Your Transformation
                       </button>
                     </motion.div>
@@ -304,20 +326,19 @@ function Home() {
                       transition={{ delay: 0.1 }}
                       className="w-full sm:w-auto"
                     >
-                      <button className="text-center w-full bg-transparent cursor-pointer border-2 border-white py-3 px-6 rounded-md text-white block font-medium hover:bg-white hover:text-primary transition-colors"
-                        onClick={() => scrollToSection("gallery-section")}>
+                      <button
+                        className="text-center w-full bg-transparent cursor-pointer border-2 border-white py-3 px-6 rounded-md text-white block font-medium hover:bg-white hover:text-primary transition-colors"
+                        onClick={() => scrollToSection("gallery-section")}
+                      >
                         Explore Destinations
                       </button>
                     </motion.div>
                   </motion.div>
 
-
-
                   <motion.div
                     className="flex justify-center flex-col gap-10 sm:flex-row sm:gap-8 mt-20 md:mt-10 bricolage-grotesque mb-4"
                     variants={statsVariants}
                   >
-
                     <motion.div variants={itemVariants} className="text-center">
                       <motion.h3
                         className="font-bold text-3xl text-white"
@@ -327,8 +348,7 @@ function Home() {
                       >
                         5+
                       </motion.h3>
-                      <p className="text-base text-white/80">Continents
-                      </p>
+                      <p className="text-base text-white/80">Continents</p>
                     </motion.div>
 
                     <motion.div variants={itemVariants} className="text-center">
@@ -352,10 +372,8 @@ function Home() {
                       >
                         50+
                       </motion.h3>
-                      <p className="text-base text-white/80">Luxury Destinations
-                      </p>
+                      <p className="text-base text-white/80">Luxury Destinations</p>
                     </motion.div>
-
 
                     <motion.div variants={itemVariants} className="text-center">
                       <motion.h3
@@ -366,9 +384,7 @@ function Home() {
                       >
                         60+
                       </motion.h3>
-                      <p className="text-base text-white/80">Privileged Access Partners
-
-                      </p>
+                      <p className="text-base text-white/80">Privileged Access Partners</p>
                     </motion.div>
                   </motion.div>
                 </div>

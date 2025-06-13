@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap");
+
 @import "tailwindcss";
 
 * {
@@ -7,7 +9,7 @@
 }
 
 html {
-  font-family: "Inter", sans-serif;
+  font-family: "Ysabeau", sans-serif;
 }
 
 body {
@@ -16,6 +18,10 @@ body {
 
 .bricolage-grotesque {
   font-family: "Bricolage Grotesque", serif;
+}
+
+.ysabeau {
+  font-family: "Ysabeau", sans-serif;
 }
 
 @theme {
