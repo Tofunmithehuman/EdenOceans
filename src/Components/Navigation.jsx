@@ -128,9 +128,8 @@ function Navigation() {
   return (
     <div className="Navigation">
       <div
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled && !isOpen ? "bg-black/60 backdrop-blur-sm" : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled && !isOpen ? "bg-black/60 backdrop-blur-sm" : "bg-transparent"
+          }`}
       >
         <header className="py-3 px-3 md:px-6 sm:py-4 flex justify-between items-center max-w-screen-2xl mx-auto">
           <nav>
