@@ -1445,57 +1445,18 @@ function Home() {
                     className="mb-4  overflow-hidden bg-white "
                     variants={itemVariants}
                   >
-                    <button
-                      onClick={() => toggleFAQ(index)}
-                      className="w-full px-6 py-4 text-left bg-white focus:outline-none focus:ring-inset transition-colors duration-200 cursor-pointer"
-                      aria-expanded={openIndex === index}
-                      aria-controls={`faq-answer-${index}`}
-                    >
-                      <div className="flex justify-between items-center">
-                        <h3 className="text-lg font-semibold text-primary pr-4">
-                          {faq.question}
-                        </h3>
-                        <motion.div
-                          variants={iconVariants}
-                          animate={openIndex === index ? "open" : "closed"}
-                          className="flex-shrink-0"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="text-primary"
-                          >
-                            <path d="M6 9l6 6 6-6" />
-                          </svg>
-                        </motion.div>
-                      </div>
-                    </button>
 
-                    <AnimatePresence initial={false}>
-                      {openIndex === index && (
-                        <motion.div
-                          id={`faq-answer-${index}`}
-                          variants={answerVariants}
-                          initial="hidden"
-                          animate="visible"
-                          exit="hidden"
-                          className="overflow-hidden"
-                        >
-                          <div className="px-6 pb-4 pt-2">
-                            <p className="text-gray-600 leading-relaxed">
-                              {faq.answer}
-                            </p>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-lg md:text-2xl font-bold text-primary pr-4">
+                        {faq.question}
+                      </h3>
+                    </div>
+
+                    <div className="px-6 pb-4 pt-2">
+                      <p className="text-gray-700 text-lg leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
