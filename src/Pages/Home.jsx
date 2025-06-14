@@ -26,6 +26,9 @@ import conciergeFour from "../assets/Concierge04.jpg"
 import conciergeFive from "../assets/Concierge05.jpg"
 import conciergeSix from "../assets/Concierge06.jpg"
 import conciergeSeven from "../assets/Concierge07.jpeg"
+import memOne from "../assets/mem01.jpeg"
+import memTwo from "../assets/mem02.jpeg"
+import memThree from "../assets/mem03.jpeg"
 import galOne from "../assets/gal01.jpeg"
 import galTwo from "../assets/gal02.jpg"
 import galThree from "../assets/gal03.jpg"
@@ -664,18 +667,21 @@ function Home() {
   const memberships = [
     {
       title: 'Royal Membership',
+      image: memOne,
       description:
         'Royal Membership is designed for young women 21-49 who are ready to discover or enhance purposeful living, and secure and build meaningful social and community connections to thrive and prosper, using their new strengths, gifts, skills and talents. At EdenOceans our vision for Royal members is to stimulate self-discovery and improve skills in the area of show business, music, movie production, acting, performing arts and other non traditional career paths.',
       features: "Purposeful Living, Social & Community Connections, Skill Development in Creative Arts, Empowerment Through Strengths"
     },
     {
       title: 'Premium Membership',
+      image: memTwo,
       description:
         'Premium membership is a best fit for women aged 35-50 who are mid career and keen to: embrace optimal health and wellness, launch & scale their businesses, or explore strategic decisions, relationships and personal development needs through upscale local & international retreats. Premium members can also build valuable new social connections and partnerships through our exclusive red carpet events.',
       features: "Optimal Health & Wellness, Business Growth Support, Personal Development Retreats, Exclusive Networking Events"
     },
     {
       title: 'Elite Membership',
+      image: memThree,
       description:
         'Elite Membership is the best choice for you if you are 40 years or older, at the peak of your career, or expanding your business, but seeking a more meaningful lifestyle, new networking opportunities, optimal wellness, exciting travel retreats, social or community impact, or an advanced leadership role.',
       features: "Meaningful Lifestyle, Advanced Networking, Wellness & Travel Retreats, Leadership Opportunities"
@@ -723,13 +729,13 @@ function Home() {
 
   const people = [
     {
-      name: 'Olasimbo Davison',
+      name: 'Dr Olasimbo Davison',
       role: 'Director of Travel & Lifestyle Management',
       imageUrl: ceoOne
     },
     {
-      name: 'Nene Aderibigbe',
-      role: 'Director of Home service and VIP Events',
+      name: 'Mrs Nene Aderibigbe',
+      role: 'Director of Home services and VIP Events',
       imageUrl: ceoTwo
     }
   ]
@@ -1358,41 +1364,54 @@ function Home() {
                     At EdenOceans  we welcome interested women of like minds  who love to network, and prioritize : personal growth, physical, emotional & spiritual wellness, social impact, purposeful  travel, and lifestyle transformation. Whatever your needs are, We have three membership tiers you can select from.
                   </motion.p>
                   <motion.div
-                    className="mt-10 sm:mt-16 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
                     variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="mt-10 sm:mt-16 max-w-7xl mx-auto"
                   >
                     {memberships.map((membership, index) => (
                       <motion.div
                         key={index}
-                        className="w-full max-w-sm mx-auto rounded-lg shadow-lg relative overflow-hidden bg-primary"
+                        className="flex flex-col md:flex-row items-center gap-6 max-w-screen-xl bg-secondary/30 m-auto mb-5 "
                         variants={itemVariants}
-                        style={{
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center',
-                        }}
                       >
-                        <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
-                        <div className="relative p-6 text-white">
-                          <h1 className="text-xl font-semibold mb-2 bricolage-grotesque text-secondary">
-                            {membership.title}
-                          </h1>
-                          <p className="text-white/90 text-sm h-20">{membership.description}</p>
-                          <ul className="mt-35 md:mt-30 text-white/90 text-sm list-disc pl-5 space-y-1">
-                            {membership.features.split(', ').map((feature, featureIndex) => (
-                              <li key={featureIndex}>{feature}</li>
-                            ))}
-                          </ul>
-                          <div className="mt-4 flex justify-center">
-                            <motion.a
-                              className="bg-secondary text-primary text-center font-medium py-2 px-4 rounded-lg w-full cursor-pointer"
+                        <div className="w-full">
+                          <motion.img
+                            src={membership.image}
+                            alt={`${membership.title} image`}
+                            className="w-full h-auto md:min-h-[300px]"
+                            variants={itemVariants}
+                          />
+                        </div>
+                        <div className="w-full">
+                          <div className="px-6 py-4">
+                            <motion.h1
+                              className="bricolage-grotesque text-2xl lg:text-3xl text-left text-primary font-semibold md:mb-3"
+                              variants={titleVariants}
+                            >
+                              {membership.title}
+                            </motion.h1>
+                            <motion.p
+                              className="text-base text-black/80 font-medium text-pretty mb-4"
+                              variants={itemVariants}
+                            >
+                              {membership.description}
+                            </motion.p>
+                            <motion.div
                               variants={buttonVariants}
                               whileHover="hover"
                               whileTap="tap"
-                              href="https://forms.gle/XBvV5eDxgmgGksL58"
-                              target="_blank"
+                              transition={{ delay: 0.1 }}
+                              className="w-full sm:w-auto"
                             >
-                              Apply Now
-                            </motion.a>
+                              <a
+                                className="text-center w-full bg-white cursor-pointer border-2 border-primary py-3 px-6 rounded-md text-primary block font-medium hover:bg-white hover:text-primary transition-colors"
+                                href="https://forms.gle/XBvV5eDxgmgGksL58"
+                                target="_blank"
+                              >
+                                Apply Now
+                              </a>
+                            </motion.div>
                           </div>
                         </div>
                       </motion.div>
