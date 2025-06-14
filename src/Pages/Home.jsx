@@ -1438,27 +1438,29 @@ function Home() {
               </motion.h2>
 
 
-              <div className="max-w-screen-md mx-auto">
-                {Faqs.map((faq, index) => (
-                  <motion.div
-                    key={index}
-                    className="mb-4  overflow-hidden bg-white "
-                    variants={itemVariants}
-                  >
+              <div className="max-w-screen-xl mx-auto">
+               <div className="grid gap-3 grid-col-1 lg:grid-cols-2">
+                  {Faqs.map((faq, index) => (
+                    <motion.div
+                      key={index}
+                      className="mb-4 p-5 overflow-hidden rounded-md bg-secondary/30"
+                      variants={itemVariants}
+                    >
 
-                    <div className="flex justify-between items-center">
-                      <h3 className="text-lg md:text-2xl font-bold text-primary pr-4">
-                        {faq.question}
-                      </h3>
-                    </div>
+                      <div className="flex justify-between items-center">
+                        <h3 className="text-lg md:text-2xl font-bold text-primary pr-4">
+                          {faq.question}
+                        </h3>
+                      </div>
 
-                    <div className="px-6 pb-4 pt-2">
-                      <p className="text-gray-700 text-lg leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+                      <div className="px-6 pb-4 pt-2">
+                        <p className="text-gray-700 text-lg leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+               </div>
               </div>
             </motion.div>
           </section>
