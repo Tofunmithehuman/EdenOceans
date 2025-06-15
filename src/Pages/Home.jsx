@@ -654,13 +654,13 @@ function Home() {
     },
     {
       id: 8,
-      title: "Therapists for retreat",
+      title: "Therapists for retreats",
       image: conciergeEight,
       alt: "Therapist"
     },
     {
       id: 9,
-      title: "Event planning for Birthday",
+      title: "Event planning for Birthdays",
       image: conciergeNine,
       alt: "Birthday"
     },
