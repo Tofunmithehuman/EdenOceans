@@ -1447,7 +1447,7 @@ function Home() {
               style={{ backgroundImage: `url(${galSixteen})` }}
             >
               <div className="absolute inset-0 bg-black opacity-50"></div>
-              <span className="text-white text-3xl font-bold relative z-10">FAQ</span>
+              <span className="text-white text-3xl font-bold relative z-10">FAQs</span>
             </div>
             <motion.div
               className="container mx-auto px-4 sm:px-6 lg:px-8 py-24"
