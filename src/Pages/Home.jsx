@@ -31,7 +31,7 @@ import memTwo from "../assets/mem02.jpeg"
 import memThree from "../assets/mem03.jpeg"
 import galOne from "../assets/gal01.jpeg"
 import galTwo from "../assets/gal02.jpg"
-import galThree from "../assets/gal03.jpg"
+import galThree from "../assets/gal03.jpeg"
 import galFour from "../assets/gal04.jpeg"
 import galFive from "../assets/gal05.jpeg"
 import galSix from "../assets/gal06.jpeg"
@@ -1358,7 +1358,7 @@ function Home() {
                     Membership
                   </motion.p>
                   <motion.p
-                    className="mt-6 max-w-2xl mx-auto text-left text-sm md:text-lg  text-gray-600"
+                    className="mt-6 max-w-2xl mx-auto text-left text-sm md:text-lg font-semibold text-gray-600"
                     variants={itemVariants}
                   >
                     At EdenOceans  we welcome interested women of like minds  who love to network, and prioritize : personal growth, physical, emotional & spiritual wellness, social impact, purposeful  travel, and lifestyle transformation. Whatever your needs are, We have three membership tiers you can select from.
@@ -1392,7 +1392,7 @@ function Home() {
                               {membership.title}
                             </motion.h1>
                             <motion.p
-                              className="text-base text-black/80 font-medium text-pretty mb-4"
+                              className="text-base md:text-xl text-black/80 font-medium text-pretty mb-4"
                               variants={itemVariants}
                             >
                               {membership.description}
@@ -1424,6 +1424,13 @@ function Home() {
 
 
           <section id="faq" className="">
+            <div
+              className="h-50 bg-cover bg-center relative flex items-center justify-center"
+              style={{ backgroundImage: `url(${galSixteen})` }}
+            >
+              <div className="absolute inset-0 bg-black opacity-50"></div>
+              <span className="text-white text-3xl font-bold relative z-10">FAQ</span>
+            </div>
             <motion.div
               className="container mx-auto px-4 sm:px-6 lg:px-8 py-24"
               variants={containerVariants}
@@ -1439,7 +1446,7 @@ function Home() {
 
 
               <div className="max-w-screen-xl mx-auto">
-               <div className="grid gap-3 grid-col-1 lg:grid-cols-2">
+                <div className="grid gap-3 grid-col-1 lg:grid-cols-2">
                   {Faqs.map((faq, index) => (
                     <motion.div
                       key={index}
@@ -1454,13 +1461,13 @@ function Home() {
                       </div>
 
                       <div className="px-6 pb-4 pt-2">
-                        <p className="text-gray-700 text-lg leading-relaxed">
+                        <p className="text-gray-700 font-semibold text-lg leading-relaxed">
                           {faq.answer}
                         </p>
                       </div>
                     </motion.div>
                   ))}
-               </div>
+                </div>
               </div>
             </motion.div>
           </section>
