@@ -877,7 +877,7 @@ function Home() {
                   </motion.h1>
 
                   <motion.p
-                    className="mt-2 text-white/90 text-left sm:text-center text-sm sm:text-base md:text-lg lg:text-xl text-pretty font-medium max-w-3xl mx-auto"
+                    className="mt-2 text-white/90 text-left font-semibold sm:text-center text-sm sm:text-base md:text-lg lg:text-xl text-pretty max-w-3xl mx-auto"
                     variants={itemVariants}
                   >
                     At EdenOceans, we believe that advanced wellness is not just a destination, but a journey of mind, body, and soul. Our curated experiences are tailored for special women from all walks of life who value physical, emotional, and spiritual wellness, exponential growth, social impact, personal effectiveness, luxury travel, and enhanced lifestyles
