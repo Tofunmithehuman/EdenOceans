@@ -23,9 +23,12 @@ import conciergeOne from "../assets/Concierge01.jpg"
 import conciergeTwo from "../assets/Concierge02.jpg"
 import conciergeThree from "../assets/Concierge03.jpeg"
 import conciergeFour from "../assets/Concierge04.jpg"
-import conciergeFive from "../assets/Concierge05.jpg"
+import conciergeFive from "../assets/Concierge05.jpeg"
 import conciergeSix from "../assets/Concierge06.jpg"
 import conciergeSeven from "../assets/Concierge07.jpeg"
+import conciergeEight from "../assets/Concierge08.jpeg"
+import conciergeNine from "../assets/Concierge09.jpeg"
+import conciergeTen from "../assets/Concierge10.jpeg"
 import memOne from "../assets/mem01.jpeg"
 import memTwo from "../assets/mem02.jpeg"
 import memThree from "../assets/mem03.jpeg"
@@ -621,19 +624,19 @@ function Home() {
     },
     {
       id: 3,
-      title: "Escort services",
+      title: "Travel Escort services",
       image: conciergeThree,
       alt: "Professional Escort Services"
     },
     {
       id: 4,
-      title: "Tour guides and therapists for retreats",
+      title: "Travel Tour guides",
       image: conciergeFour,
       alt: "Retreat Support Services"
     },
     {
       id: 5,
-      title: "Event planning support in another country for parties, weddings, birthdays",
+      title: "Event planning for weddings",
       image: conciergeFive,
       alt: "International Event Planning"
     },
@@ -648,6 +651,24 @@ function Home() {
       title: "International airport transfers",
       image: conciergeSeven,
       alt: "Airport Transfer Service"
+    },
+    {
+      id: 8,
+      title: "Therapists for retreat",
+      image: conciergeEight,
+      alt: "Therapist"
+    },
+    {
+      id: 9,
+      title: "Event planning for Birthday",
+      image: conciergeNine,
+      alt: "Birthday"
+    },
+    {
+      id: 10,
+      title: "Pre-Purchase verification services for real estates and properties in Europe, UK and Africa",
+      image: conciergeTen,
+      alt: "Estates and properties"
     },
   ];
 
@@ -1298,10 +1319,9 @@ function Home() {
               <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
                 <motion.h2
                   className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-primary sm:text-5xl bricolage-grotesque mb-16"
-                  variants={titleVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1.2 }}
                 >
                   Concierge Services
                 </motion.h2>
@@ -1312,9 +1332,8 @@ function Home() {
                       <motion.div
                         key={`${service.id}-${index}`}
                         className="relative flex-shrink-0 w-80 h-96 rounded-sm overflow-hidden shadow-lg group cursor-pointer"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
                         transition={{ duration: 0.3, delay: (index % conciergeServices.length) * 0.1 }}
                         {...(!isMobile && { whileHover: { scale: 1.05 } })}
                       >
@@ -1322,7 +1341,7 @@ function Home() {
                           src={service.image}
                           alt={service.alt}
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                          loading="lazy"
+                          loading="eager"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -1340,7 +1359,6 @@ function Home() {
               </div>
             </div>
           </section>
-
 
           <section id="membership-section" ref={membershipRef}>
             <motion.div
