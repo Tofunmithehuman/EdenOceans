@@ -22,7 +22,7 @@ import ResortSix from "../assets/resort06.jpeg"
 import conciergeOne from "../assets/Concierge01.jpg"
 import conciergeTwo from "../assets/Concierge02.jpg"
 import conciergeThree from "../assets/Concierge03.jpeg"
-import conciergeFour from "../assets/Concierge04.jpg"
+import conciergeFour from "../assets/Concierge04.jpeg"
 import conciergeFive from "../assets/Concierge05.jpg"
 import conciergeSix from "../assets/Concierge06.jpg"
 import conciergeSeven from "../assets/Concierge07.jpeg"
@@ -46,14 +46,17 @@ import galEleven from "../assets/gal11.jpeg"
 import galTwelve from "../assets/gal12.jpeg"
 import galThirteen from "../assets/gal13.jpeg"
 import galFourteen from "../assets/gal14.jpeg"
-import galFifteen from "../assets/gal15.jpg"
+import galFifteen from "../assets/gal15.jpeg"
 import galSixteen from "../assets/gal16.jpg"
 import galSeventeen from "../assets/gal17.jpeg"
 import galEighteen from "../assets/gal18.jpeg"
 import galNineteen from "../assets/gal19.jpg"
 import galTwenty from "../assets/gal20.jpg"
+import galTwentyOne from "../assets/gal21.jpeg"
+import galTwentyTwo from "../assets/gal22.jpg"
+import galTwentyThree from "../assets/gal23.jpeg"
 import whoweare from "../assets/whoweare.jpg"
-import vision from "../assets/vision.jpg"
+import vision from "../assets/vision.jpeg"
 import { useEffect, useState, useRef } from "react"
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from "framer-motion"
 
@@ -606,7 +609,10 @@ function Home() {
     { id: 15, src: galFifteen },
     { id: 17, src: galSeventeen },
     { id: 18, src: galEighteen },
-    { id: 20, src: galTwenty }
+    { id: 20, src: galTwenty },
+    { id: 21, src: galTwentyOne },
+    { id: 22, src: galTwentyTwo },
+    { id: 23, src: galTwentyThree }
   ];
 
   const conciergeServices = [
