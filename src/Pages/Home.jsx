@@ -642,7 +642,7 @@ function Home() {
     },
     {
       id: 5,
-      title: "Event planning for weddings",
+      title: "Event planning for weddings abroad",
       image: conciergeFive,
       alt: "International Event Planning"
     },
@@ -666,7 +666,7 @@ function Home() {
     },
     {
       id: 9,
-      title: "Event planning for Birthdays",
+      title: "Event planning for Birthdays abroad",
       image: conciergeNine,
       alt: "Birthday"
     },
