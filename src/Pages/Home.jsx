@@ -756,7 +756,7 @@ function Home() {
 
   const people = [
     {
-      name: 'Dr Olasimbo Davison',
+      name: 'Dr Olasimbo Davidson',
       role: 'Director of Travel & Lifestyle Management',
       imageUrl: ceoOne
     },
